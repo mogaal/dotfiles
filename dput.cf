@@ -1,0 +1,6 @@
+[ftp-master]
+fqdn                    = ftp.upload.debian.org
+incoming                = /pub/UploadQueue/
+login                   = anonymous
+allow_dcut              = 1
+method                  = ftp
