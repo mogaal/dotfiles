@@ -94,4 +94,4 @@ if ! shopt -oq posix; then
 fi
 
 # Powerline support to Bash
-. /usr/share/powerline/bindings/bash/powerline.sh
+#. /usr/share/powerline/bindings/bash/powerline.sh

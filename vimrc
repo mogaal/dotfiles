@@ -30,9 +30,9 @@ set encoding=utf-8
 set smarttab
 
 " Mapping NERD_Tree toggle command to F2
-map <F2> :NERDTreeToggle<CR>
+"map <F2> :NERDTreeToggle<CR>
 
-call pathogen#infect()
+"call pathogen#infect()
 
 syntax on
 
