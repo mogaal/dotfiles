@@ -33,4 +33,11 @@ export PATH="/home/mogaal/perl5/bin:$PATH";
 # Para Catalyst
 export AUTHOR='Alejandro Garrido Mota <garridomota@gmail.com> '
 
+# Don't duplicate commands in history
+HISTCONTROL=ignoreboth
+
+# Set history configuration
+export HISTSIZE=1000
+export HISTFILESIZE=2000
+
 export XAUTHORITY=$HOME/.Xauthority
