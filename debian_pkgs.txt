@@ -1,1 +1,1 @@
-less mc tmux vim htop links2 wget 
+less mc tmux vim htop links2 wget git tmux
