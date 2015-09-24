@@ -185,6 +185,7 @@ for_window [class="Gnome-terminal"] border 1pixel
 for_window [class="VirtualBox"] floating enable
 for_window [class="file-roller"] floating enable
 for_window [class="vlc"] floating enable
+for_window [class="eog"] floating enable
 #for_window [class="Icedove"] floating enable
 
 # Default applications
