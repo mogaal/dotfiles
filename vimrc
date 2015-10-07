@@ -46,4 +46,13 @@ filetype indent plugin on
 " Variables to vim-notes plugin
 :let g:notes_directories = ['/home/mogaal/Dropbox (Forest)/Shared Notes']
 :let g:notes_suffix = '.txt'
-:highlight notesDoubleQuoted gui=italic
+
+" Vim airline
+set laststatus=2
+:let g:airline#extensions#tabline#enabled = 1
+" Avoid print the status bar as well as the command bar
+:let g:bufferline_echo = 0
+" You have to configure powerline fonts
+:let g:airline_powerline_fonts = 1
+" Set default theme
+:let g:airline_theme='simple'

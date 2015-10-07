@@ -33,6 +33,7 @@ function BackupFile {
    mv $HOME/.$1 $BACKUP/$1
 }
 
+lnFile vim vim
 lnFile vimrc vimrc 
 lnFile bashrc bashrc
 lnFile bash_vars bash_vars 
