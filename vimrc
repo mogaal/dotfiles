@@ -32,9 +32,18 @@ set smarttab
 " Mapping NERD_Tree toggle command to F2
 "map <F2> :NERDTreeToggle<CR>
 
-"call pathogen#infect()
+call pathogen#infect()
+call pathogen#helptags()
 
 syntax on
 
 filetype plugin on
 filetype indent plugin on
+
+:let g:session_autosave = 'no'
+:let g:session_autoload = 'no'
+
+" Variables to vim-notes plugin
+:let g:notes_directories = ['/home/mogaal/Dropbox (Forest)/Shared Notes']
+:let g:notes_suffix = '.txt'
+:highlight notesDoubleQuoted gui=italic
