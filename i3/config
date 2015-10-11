@@ -20,7 +20,7 @@ set $wp1 "1:music"
 set $wp2 "2:term"
 set $wp3 "3:www"
 set $wp4 "4:mail"
-set $wp5 "5:Skype"
+set $wp5 "5:skype"
 set $wp6 "6"
 set $wp7 "7"
 set $wp8 "8"
@@ -121,7 +121,6 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 ##### window customization
 for_window [title="chromium$"] border none
 
-
 # resize window (you can also use the mouse for that)
 mode "resize" {
         bindsym j resize shrink width 10 px or 10 ppt
@@ -174,7 +173,7 @@ bar {
         status_command i3status -c ~/.i3/i3status.conf 
         position top
         # For autohide
-        #mode hide
+        # mode hide
 }
 
 # Use `xprop` to determine class.
@@ -185,14 +184,14 @@ for_window [class="Gnome-terminal"] border 1pixel
 for_window [class="VirtualBox"] floating enable
 for_window [class="file-roller"] floating enable
 for_window [class="vlc"] floating enable
-for_window [class="eog"] floating enable
-#for_window [class="Icedove"] floating enable
+for_window [class="evince"] floating enable
+for_window [class="Icedove"] floating enable
 
 # Default applications
-exec --no-startup-id i3-msg 'workspace 2; exec /usr/bin/gnome-terminal'
-exec --no-startup-id i3-msg 'workspace 3; exec /usr/bin/google-chrome'
-exec --no-startup-id i3-msg 'workspace 4; exec /usr/bin/icedove'
-exec --no-startup-id i3-msg 'workspace 5; exec /usr/bin/skype'
+exec --no-startup-id i3-msg "workspace 2:term; exec /usr/bin/gnome-terminal"
+exec --no-startup-id i3-msg "workspace 3:www; exec /usr/bin/google-chrome"
+exec --no-startup-id i3-msg "workspace 4:mail; exec /usr/bin/icedove"
+exec --no-startup-id i3-msg "workspace 5:skype; exec /usr/bin/skype"
 exec --no-startup-id nm-applet
 exec --no-startup-id xsetroot -solid "#333333" 
 exec --no-startup-id /usr/bin/dropbox start
