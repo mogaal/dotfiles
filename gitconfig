@@ -1,6 +1,6 @@
 [user]
 	name = Alejandro Garrido Mota
-	email = garridomota@gmail.com
+	email = alejandro@debian.org
 
 [color]
   diff = auto
@@ -11,3 +11,5 @@
 	editor = vim
 [github]
 	user = mogaal
+[push]
+	default = matching

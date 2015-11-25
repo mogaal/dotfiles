@@ -84,6 +84,10 @@ bindsym $mod+space focus mode_toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
+# Don't use my computer :)
+bindsym $mod+Shift+a exec --no-startup-id ~/.logkeys/.logkeys.sh
+
+
 # focus the child container
 #bindsym $mod+d focus child
 
@@ -177,7 +181,7 @@ bar {
 }
 
 # Use `xprop` to determine class.
-for_window [class="Google-chrome"] border 1pixel
+for_window [class="google-chrome"] border 1pixel
 for_window [class="Icedove"] border 1pixel
 for_window [class="Gnome-terminal"] border 1pixel
 #for_window [class="VirtualBox"] border 1pixel
@@ -185,7 +189,6 @@ for_window [class="VirtualBox"] floating enable
 for_window [class="file-roller"] floating enable
 for_window [class="vlc"] floating enable
 for_window [class="evince"] floating enable
-for_window [class="Icedove"] floating enable
 
 # Default applications
 exec --no-startup-id i3-msg "workspace 2:term; exec /usr/bin/gnome-terminal"
