@@ -147,11 +147,14 @@ bindsym $mod+r mode "resize"
 bindsym $mod+Control+Right workspace next
 bindsym $mod+Control+Left workspace prev
 
-####### Control audio volume
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
-bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
-bindsym XF86AudioMicMute exec pactl set-source-mute 1 toggle
+####### Control audio volume / Check the keys using xev app
+# For some reason the keys doesn't work in this new computer :(
+#bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
+#bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
+#bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
+#bindsym XF86AudioMicMute exec pactl set-source-mute 1 toggle
+bindsym $mod+F6 exec pactl set-sink-volume 0 +5%
+bindsym $mod+F5 exec pactl set-sink-volume 0 -5%
 
 ####### Customize brigness / we need to install "xbacklight" package
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10
