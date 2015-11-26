@@ -41,3 +41,4 @@ lnFile bash_vars bash_vars
 lnFile bash_aliases bash_aliases 
 lnFile gitconfig gitconfig 
 lnFile tmux.conf tmux.conf
+lnFile gbp.conf gbp.conf
