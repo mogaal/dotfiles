@@ -194,7 +194,7 @@ for_window [class="evince"] floating enable
 exec --no-startup-id i3-msg "workspace 2:term; exec /usr/bin/gnome-terminal"
 exec --no-startup-id i3-msg "workspace 3:www; exec /usr/bin/google-chrome"
 exec --no-startup-id i3-msg "workspace 4:mail; exec /usr/bin/icedove"
-exec --no-startup-id i3-msg "workspace 5:skype; exec /usr/bin/skype"
+exec --no-startup-id i3-msg "workspace 5:skype; exec /opt/skype_unofficial_client/skype/usr/bin/skype"
 exec --no-startup-id nm-applet
 exec --no-startup-id xsetroot -solid "#333333" 
 exec --no-startup-id /usr/bin/dropbox start
