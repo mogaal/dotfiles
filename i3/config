@@ -153,6 +153,11 @@ bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
 bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
 bindsym XF86AudioMicMute exec pactl set-source-mute 1 toggle
 
+####### Customize brigness / we need to install "xbacklight" package
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10
+
+
 # Exit mode
 bindsym $mod+x mode "$mode_system"
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (x) shutdown
@@ -171,7 +176,7 @@ mode "$mode_system" {
 
 # Assign 
 assign [class="gnome-terminal"] $wp2
-assign [class="^Google-chrome"] $wp3
+assign [class="^google-chrome"] $wp3
 
 bar {
         status_command i3status -c ~/.i3/i3status.conf 
