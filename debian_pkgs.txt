@@ -1,1 +1,4 @@
-less mc tmux vim htop links2 wget git tmux powerline tree
+# basics
+apt install less mc tmux vim htop links2 wget git tmux powerline tree
+# extra
+apt install cryptsetup vlc irssi
