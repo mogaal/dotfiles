@@ -34,6 +34,7 @@ function BackupFile {
 }
 
 lnFile vim vim
+lnFile i3 i3
 lnFile vimrc vimrc 
 lnFile bashrc bashrc
 lnFile bash_vars bash_vars 
