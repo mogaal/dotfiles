@@ -36,6 +36,7 @@ function BackupFile {
 lnFile vim vim
 lnFile i3 i3
 lnFile vimrc vimrc 
+lnFile irssi irssi 
 lnFile bashrc bashrc
 lnFile bash_vars bash_vars 
 lnFile bash_aliases bash_aliases 

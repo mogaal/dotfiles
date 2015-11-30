@@ -41,10 +41,10 @@ bindsym $mod+d exec dmenu_run
 #bindsym $mod+semicolon focus right
 
 # alternatively, you can use the cursor keys:
-#bindsym $mod+Left focus left
-#bindsym $mod+Down focus down
-#bindsym $mod+Up focus up
-#bindsym $mod+Right focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
 
 # move focused window
 bindsym $mod+Shift+j move left
@@ -86,7 +86,6 @@ bindsym $mod+a focus parent
 
 # Don't use my computer :)
 bindsym $mod+Shift+a exec --no-startup-id ~/.logkeys/.logkeys.sh
-
 
 # focus the child container
 #bindsym $mod+d focus child
