@@ -56,3 +56,8 @@ set laststatus=2
 :let g:airline_powerline_fonts = 1
 " Set default theme
 :let g:airline_theme='simple'
+
+" To remember the last line we were
+if has("autocmd")
+    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
