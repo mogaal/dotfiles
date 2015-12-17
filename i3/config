@@ -183,6 +183,7 @@ assign [class="^google-chrome"] $wp3
 bar {
         status_command i3status -c ~/.i3/i3status.conf 
         position top
+        output eDP1
         # For autohide
         # mode hide
 }
