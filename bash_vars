@@ -28,7 +28,7 @@ export PERL_LOCAL_LIB_ROOT="/home/mogaal/perl5";
 export PERL_MB_OPT="--install_base /home/mogaal/perl5";
 export PERL_MM_OPT="INSTALL_BASE=/home/mogaal/perl5";
 export PERL5LIB="/home/mogaal/perl5/lib/perl5/i486-linux-gnu-thread-multi-64int:/home/mogaal/perl5/lib/perl5";
-export PATH="/opt/skype_unofficial_client:/home/mogaal/perl5/bin:$PATH";
+export PATH="/home/mogaal/bin:/opt/skype_unofficial_client:/home/mogaal/perl5/bin:$PATH";
 
 # Para Catalyst
 export AUTHOR='Alejandro Garrido Mota <garridomota@gmail.com> '
