@@ -20,7 +20,7 @@ set $wp1 "1:music"
 set $wp2 "2:term"
 set $wp3 "3:www"
 set $wp4 "4:mail"
-set $wp5 "5:skype"
+set $wp5 "5:slack"
 set $wp6 "6"
 set $wp7 "7"
 set $wp8 "8"
@@ -202,7 +202,7 @@ for_window [class="evince"] floating enable
 exec --no-startup-id i3-msg "workspace 2:term; exec /usr/bin/gnome-terminal"
 exec --no-startup-id i3-msg "workspace 3:www; exec /usr/bin/google-chrome"
 exec --no-startup-id i3-msg "workspace 4:mail; exec /usr/bin/icedove"
-exec --no-startup-id i3-msg "workspace 5:skype; exec /opt/skype_unofficial_client/skype/usr/bin/skype"
+exec --no-startup-id i3-msg "workspace 5:slack; exec /usr/bin/slack"
 exec --no-startup-id nm-applet
 exec --no-startup-id xsetroot -solid "#333333" 
 exec --no-startup-id /usr/bin/dropbox start
