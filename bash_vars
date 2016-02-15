@@ -30,6 +30,10 @@ export PERL_MM_OPT="INSTALL_BASE=/home/mogaal/perl5";
 export PERL5LIB="/home/mogaal/perl5/lib/perl5/i486-linux-gnu-thread-multi-64int:/home/mogaal/perl5/lib/perl5";
 export PATH="/home/mogaal/bin:/opt/skype_unofficial_client:/home/mogaal/perl5/bin:$PATH";
 
+# For Ruby/rake
+export LANGUAGE=en_GB.UTF-8
+export LC_ALL=en_GB.UTF-8
+
 # Para Catalyst
 export AUTHOR='Alejandro Garrido Mota <garridomota@gmail.com> '
 
