@@ -1,12 +1,14 @@
 [user]
 	name = Alejandro Garrido Mota
 	email = alejandro@debian.org
-
+[alias]
+  s = status -s
+  c = clone --recursive
+  ca = !git add -A && git commit -av
 [color]
-  diff = auto
-  status = auto
-  branch = auto
-
+	diff = auto
+	status = auto
+	branch = auto
 [core]
 	editor = vim
 [github]

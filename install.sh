@@ -37,7 +37,8 @@ function BackupFile {
 
 # Things to install in base of the OS
 if [[ "$OSTYPE" == darwin* ]]; then
-  echo "Doing nothing..."
+  lnFile gitconfig gitconfig 
+  lnFile vimrc vimrc 
 fi
 
 if [[ "$OSTYPE" == linux* ]]; then

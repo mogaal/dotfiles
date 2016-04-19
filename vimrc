@@ -43,10 +43,6 @@ filetype indent plugin on
 :let g:session_autosave = 'no'
 :let g:session_autoload = 'no'
 
-" Variables to vim-notes plugin
-:let g:notes_directories = ['/home/mogaal/Dropbox (Forest)/Shared Notes', '/home/mogaal/SharedNotes' ]
-:let g:notes_suffix = '.txt'
-
 " Vim airline
 set laststatus=2
 :let g:airline#extensions#tabline#enabled = 1
