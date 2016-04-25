@@ -1,0 +1,36 @@
+if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprofile"
+fi
+
+# default editor
+export EDITOR=vim
+
+# Browser 
+export BROWSER=google-chrome
+
+# Set the default Less options.
+# Mouse-wheel scrolling has been disabled by -X (disable screen clearing).
+# Remove -X and -F (exit if the content fits on one screen) to enable it.
+export PAGER=less
+export LESS='-F -g -i -M -R -S -w -X -z-4'
+
+# locales
+export LANG=en_GB.UTF-8
+
+# set path
+#export PATH=/usr/local/bin:/usr/bin:/bin:/usr/games:~/bin:~/perl5/bin:/opt/jre1.7.0_15/bin:~/.local/bin
+
+# GPG (gpg-mailkeys)
+export NAME='Alejandro Garrido Mota'
+export MAIL='garridomota@gmail.com'
+
+# Debian packing
+export DEBEMAIL='alejandro@debian.org'
+export DEBFULLNAME='Alejandro Garrido Mota'
+export QUILT_PATCHES=debian/patches
+export DEBUILD_DPKG_BUILDPACKAGE_OPTS="-us -uc -sa -i -I"
+export DEBSIGN_KEYID="F1C09EFB"
+
+# Set history configuration
+export HISTSIZE=1000
+export HISTFILESIZE=2000

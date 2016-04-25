@@ -1,0 +1,58 @@
+
+# Determine OS
+if [ "$(uname)" = "Darwin" ]; then
+  OS='mac'
+elif [ "$(expr substr $(uname -s) 1 5)" = "Linux" ]; then
+  OS='linux'
+fi
+
+# Ensure path arrays do not contain duplicates.
+typeset -gU cdpath fpath mailpath path
+
+#
+# Paths
+#
+
+if [ "$OS" = "mac" ]; then
+  # set PATH so it includes /usr/local before the regular
+  # this will help in MacOS X to use brew's installed version isntead of the
+  # outdated on MacOS
+  #
+  # On Mac we use Postgres.app
+  path=(
+    /usr/local/{bin/sbin}
+    $path
+  )
+
+  if [ -d /usr/texbin ]; then
+    path=(
+      /usr/texbin
+      $path
+    )
+  fi
+fi
+
+# Set the list of directories that Zsh searches for programs.
+path=(
+  /usr/local/{bin,sbin}
+  $path
+)
+
+# If there's ~/bin then add it to the path
+if [[ -d $HOME/bin ]]; then
+  path=(
+    $HOME/bin
+    $path
+  );
+fi
+
+# TMP files
+if [[ ! -d "$TMPDIR" ]]; then
+  export TMPDIR="/tmp/$USER";
+  mkdir -p -m 700 "$TMPDIR";
+fi
+
+if [[ ! -d "$TMPPREFIX" ]]; then
+  mkdir -p "$TMPPREFIX";
+fi
+TMPPREFIX="${TMPDIR%/}/zsh"

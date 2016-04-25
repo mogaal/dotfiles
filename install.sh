@@ -39,6 +39,18 @@ function BackupFile {
 if [[ "$OSTYPE" == darwin* ]]; then
   lnFile gitconfig gitconfig 
   lnFile vimrc vimrc 
+  
+  # Tmux 
+  lnFile tmux/tmux.conf tmux.conf
+  lnFile tmux/tmux.osx.conf tmux.osx.conf
+
+  # zsh stuff
+  lnFile zsh/zlogin zlogin
+  lnFile zsh/zlogout zlogout
+  lnFile zsh/zshenv zshenv
+  lnFile zsh/zprofile zprofile
+  lnFile zsh/zpreztorc zpreztorc
+  lnFile zsh/zshrc zshrc
 fi
 
 if [[ "$OSTYPE" == linux* ]]; then
@@ -48,8 +60,20 @@ if [[ "$OSTYPE" == linux* ]]; then
   lnFile irssi irssi 
   lnFile bashrc bashrc
   lnFile bash_vars bash_vars 
-  lnFile bash_aliases bash_aliases 
+  lnFile aliases aliases 
   lnFile gitconfig gitconfig 
   lnFile tmux.conf tmux.conf
   lnFile gbp.conf gbp.conf
+  
+  # Tmux 
+  lnFile tmux/tmux.conf tmux.conf
+  lnFile tmux/tmux.linux.conf tmux.linux.conf
+  
+  # zsh stuff
+  lnFile zsh/zlogin zlogin
+  lnFile zsh/zlogout zlogout
+  lnFile zsh/zshenv zshenv
+  lnFile zsh/zprofile zprofile
+  lnFile zsh/zpreztorc zpreztorc
+  lnFile zsh/zshrc zshrc
 fi
