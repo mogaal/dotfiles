@@ -58,11 +58,7 @@ if [[ "$OSTYPE" == linux* ]]; then
   lnFile i3 i3
   lnFile vimrc vimrc 
   lnFile irssi irssi 
-  lnFile bashrc bashrc
-  lnFile bash_vars bash_vars 
-  lnFile aliases aliases 
   lnFile gitconfig gitconfig 
-  lnFile tmux.conf tmux.conf
   lnFile gbp.conf gbp.conf
   
   # Tmux 
@@ -70,6 +66,7 @@ if [[ "$OSTYPE" == linux* ]]; then
   lnFile tmux/tmux.linux.conf tmux.linux.conf
   
   # zsh stuff
+  lnFile zsh/aliases aliases 
   lnFile zsh/zlogin zlogin
   lnFile zsh/zlogout zlogout
   lnFile zsh/zshenv zshenv
