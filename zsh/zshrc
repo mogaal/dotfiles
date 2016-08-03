@@ -7,3 +7,11 @@ fi
 if [[ -e "$HOME/.aliases" ]]; then
     source "$HOME/.aliases";
 fi
+
+# Load my functions
+if [ -e "$HOME/.zsh/functions" ]; then
+  for function in $HOME/.zsh/functions/*; do
+    source $function
+  done
+fi
+
