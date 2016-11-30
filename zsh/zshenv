@@ -34,3 +34,10 @@ export DEBSIGN_KEYID="F1C09EFB"
 # Set history configuration
 export HISTSIZE=1000
 export HISTFILESIZE=2000
+
+###########
+## Work ###
+###########
+
+# Using terraform docker provider
+export DOCKER_CERT_PATH=~/.docker/cert
