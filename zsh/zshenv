@@ -2,6 +2,8 @@ if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
 
+export GOPATH=/Users/aga35/go
+
 # default editor
 export EDITOR=vim
 
@@ -34,6 +36,12 @@ export DEBSIGN_KEYID="F1C09EFB"
 # Set history configuration
 export HISTSIZE=1000
 export HISTFILESIZE=2000
+export HISTCONTROL=ignoredups:erasedups
+
+# Save and reload the history after each command finishes
+export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+export HISTIGNORE="&:[ ]*:exit:ls:bg:fg:history"
+export HH_CONFIG=hicolor
 
 ###########
 ## Work ###

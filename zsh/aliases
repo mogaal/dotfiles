@@ -29,3 +29,6 @@ fi
 
 # work alias
 alias vault='docker run --rm -ti -v ~/.vault-token:/root/.vault-token artifacts.ath.bskyb.com:5001/maa62/vault-client'
+
+# Akamai 
+alias curl_ak='curl -H "Pragma: akamai-x-cache-on, akamai-x-cache-remote-on, akamai-x-check-cacheable, akamai-x-get-cache-key, akamai-x-get-extracted-values, akamai-x-get-nonces, akamai-x-get-ssl-client-session-id, akamai-x-get-true-cache-key, akamai-x-serial-no" -IXGET'
