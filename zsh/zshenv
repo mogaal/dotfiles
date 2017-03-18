@@ -49,3 +49,5 @@ export HH_CONFIG=hicolor
 
 # Using terraform docker provider
 export DOCKER_CERT_PATH=~/.docker/cert
+
+export XDG_CURRENT_DESKTOP=KDE
