@@ -1,4 +1,0 @@
-# basics
-apt install less mc tmux vim htop links2 wget git tmux powerline tree zsh curl dnsutils
-# extra
-apt install cryptsetup vlc irssi texlive-latex-base libreoffice
