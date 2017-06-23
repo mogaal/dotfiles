@@ -8,7 +8,7 @@ The must
   
 Extras:
 
-    % apt install cryptsetup vlc irssi texlive-latex-base libreoffice
+    % apt install cryptsetup vlc irssi texlive-latex-base libreoffice compton rofi
 
 
 ## How to use it
