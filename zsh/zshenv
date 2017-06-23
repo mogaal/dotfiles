@@ -36,6 +36,7 @@ export DEBSIGN_KEYID="F1C09EFB"
 # Set history configuration
 export HISTSIZE=1000
 export HISTFILESIZE=2000
+export HISTFILE=~/.zsh_history
 export HISTCONTROL=ignoredups:erasedups
 
 # Save and reload the history after each command finishes
@@ -49,3 +50,9 @@ export HH_CONFIG=hicolor
 
 # Using terraform docker provider
 export DOCKER_CERT_PATH=~/.docker/cert
+
+# Consul 
+export CONSUL_HTTP_ADDR=https://servicediscovery.ath.bskyb.com:8080
+
+# k8s 
+export KUBECONFIG=~/workspace/k8s/admin.conf

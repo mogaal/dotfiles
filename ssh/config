@@ -7,3 +7,8 @@ Host lucifer
 Host svn.debian.org git.debian.org bzr.debian.org hg.debian.org darcs.debian.org arch.debian.org alioth.debian.org
   User alejandro
   IdentityFile ~/.ssh/id_rsa
+
+Host mogaal.com
+  HostName www.mogaal.com
+  User mogaal
+  IdentityFile ~/.ssh/id_rsa
