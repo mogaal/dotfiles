@@ -56,6 +56,7 @@ fi
 if [[ "$OSTYPE" == linux* ]]; then
   lnFile vim vim
   lnFile i3 i3
+  lnFile gnupg gnupg
   lnFile vimrc vimrc 
   lnFile irssi irssi 
   lnFile gitconfig gitconfig 
