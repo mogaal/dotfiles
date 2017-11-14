@@ -2,6 +2,8 @@
 
 ## How to use it prerequisites
 
+### Linux
+
 The must 
 
     % apt install less mc tmux vim htop links2 wget git tmux powerline tree zsh curl dnsutils
@@ -10,6 +12,9 @@ Extras:
 
     % apt install cryptsetup vlc irssi texlive-latex-base libreoffice compton rofi
 
+### OSX
+
+    % brew install jq python htop tree mr wget
 
 ## How to use it
 
