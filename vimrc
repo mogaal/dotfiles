@@ -32,8 +32,8 @@ set smarttab
 " Mapping NERD_Tree toggle command to F2
 "map <F2> :NERDTreeToggle<CR>
 
-call pathogen#infect()
-call pathogen#helptags()
+"call pathogen#infect()
+"call pathogen#helptags()
 
 syntax on
 
