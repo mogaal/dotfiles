@@ -51,6 +51,7 @@ if [[ "$OSTYPE" == darwin* ]]; then
   lnFile zsh/zprofile zprofile
   lnFile zsh/zpreztorc zpreztorc
   lnFile zsh/zshrc zshrc
+  lnFile zsh/aliases aliases
 fi
 
 if [[ "$OSTYPE" == linux* ]]; then
