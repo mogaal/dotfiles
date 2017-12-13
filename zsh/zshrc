@@ -16,5 +16,7 @@ if [ -e "$HOME/.zsh/functions" ]; then
 fi
 
 setopt    appendhistory     #Append history to the history file (no overwriting)
-setopt    sharehistory      #Share history across terminals
+# Tired of this, I don't get use to I dunno why
+# setopt    sharehistory      #Share history across terminals
 setopt    incappendhistory  #Immediately append to the history file, not 
+unsetopt  share_histor
