@@ -20,3 +20,7 @@ setopt    appendhistory     #Append history to the history file (no overwriting)
 # setopt    sharehistory      #Share history across terminals
 setopt    incappendhistory  #Immediately append to the history file, not 
 unsetopt  share_history
+
+export HISTFILE=~/.zsh_history  # ensure history file visibility
+export HH_CONFIG=hicolor        # get more colors
+bindkey -s "\C-r" "\eqhh\n"     # bind hh to Ctrl-r (for Vi mode check doc)

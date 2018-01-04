@@ -42,4 +42,4 @@ alias kc='kubectl'
 alias kclf='kubectl logs --tail=200  -f'
 
 # Dashboard
-alias k8s_pf_dashboard='kubectl port-forward  $(kubectl get pods -l "app=kubernetes-dashboard" -o jsonpath="{.items[0].metadata.name}") 9090:9090'
+alias k8s_pf_dashboard='kubectl port-forward  $(kubectl get pods -l "app=kubernetes-dashboard" -o jsonpath="{.items[0].metadata.name}") 8080:9090'
