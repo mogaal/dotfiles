@@ -50,9 +50,6 @@ export XDG_CURRENT_DESKTOP=KDE
 ## Work ###
 ###########
 
-# Using terraform docker provider
-export DOCKER_CERT_PATH=~/.docker/cert
-
 # Consul 
 export CONSUL_HTTP_ADDR=https://servicediscovery.ath.bskyb.com:8080
 
