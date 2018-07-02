@@ -14,7 +14,7 @@ Extras:
 
 ### OSX
 
-    % brew install jq python htop tree mr wget
+    % brew install jq python htop tree mr wget reattach-to-user-namespace tmux
 
 ## How to use it
 
