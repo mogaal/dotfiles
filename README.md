@@ -23,7 +23,7 @@ For personal laptop:
 For work laptop:
 
 ```
-    % brew install terraform packer kops helm kubectl vault
+    % brew install terraform packer kops kubernetes-helm kubectl vault
 ```
 
 ## How to use it
