@@ -14,7 +14,17 @@ Extras:
 
 ### OSX
 
+For personal laptop:
+
+```
     % brew install jq python htop tree mr wget reattach-to-user-namespace tmux
+```
+
+For work laptop:
+
+```
+    % brew install terraform packer kops helm kubectl vault
+```
 
 ## How to use it
 
