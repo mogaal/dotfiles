@@ -2,7 +2,7 @@ if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
 
-export GOPATH=/Users/alejandrogarrido/go
+#export GOPATH=/Users/alejandrogarrido/go
 
 # default editor
 export EDITOR=vim
@@ -49,9 +49,6 @@ export XDG_CURRENT_DESKTOP=KDE
 ###########
 ## Work ###
 ###########
-
-# Consul 
-export CONSUL_HTTP_ADDR=https://servicediscovery.ath.bskyb.com:8080
 
 # k8s 
 export KUBECONFIG=~/workspace/k8s/admin.conf
