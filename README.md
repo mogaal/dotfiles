@@ -17,7 +17,8 @@ Extras:
 For personal laptop:
 
 ```
-    % brew install jq python htop tree mr wget reattach-to-user-namespace tmux iterm2
+    % brew install jq python htop tree mr wget reattach-to-user-namespace tmux
+    % brew cask install iterm2
 ```
 
 For work laptop:
