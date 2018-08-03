@@ -6,11 +6,15 @@
 
 The must 
 
+```
     % apt install less mc tmux vim htop wget git tmux tree zsh curl dnsutils
-  
+```
+
 Extras:
 
+```
     % apt install cryptsetup vlc irssi texlive-latex-base libreoffice compton rofi
+```
 
 ### OSX
 
@@ -31,10 +35,13 @@ For work laptop:
 
 First you need to clone the repository inside your home directory 
 
+```
     % git clone --recursive https://github.com/mogaal/dotfiles.git
     % git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+```
 
-Then we need to execute the installer script
+Finally we execute the installer script
 
+```
     % bash ~/dotfiles/install.sh
-
+```
