@@ -9,8 +9,8 @@ if [[ -e "$HOME/.aliases" ]]; then
 fi
 
 # Load my functions
-if [ -e "$HOME/.zsh/functions" ]; then
-  for function in $HOME/.zsh/functions/*; do
+if [ -e "$HOME/dotfiles/zsh/functions" ]; then
+  for function in $HOME/dotfiles/zsh/functions/*; do
     source $function
   done
 fi
