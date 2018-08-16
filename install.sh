@@ -44,6 +44,9 @@ if [[ "$OSTYPE" == darwin* ]]; then
   lnFile tmux/tmux.conf tmux.conf
   lnFile tmux/tmux.osx.conf tmux.osx.conf
 
+  # hh/hstr
+  lnFile hh_blacklist hh_blacklist
+
   # zsh stuff
   lnFile zsh/zlogin zlogin
   lnFile zsh/zlogout zlogout
