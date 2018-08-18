@@ -7,7 +7,7 @@
 The must 
 
 ```
-    % apt install less mc tmux vim htop wget git tmux tree zsh curl dnsutils
+    % apt install less mc vim htop wget git tmux tree zsh curl dnsutils
 ```
 
 Extras:
