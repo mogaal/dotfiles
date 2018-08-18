@@ -7,13 +7,19 @@
 The must 
 
 ```
-    % apt install less mc vim htop wget git tmux tree zsh curl dnsutils
+    % apt install less mc vim htop wget git tmux tree zsh curl dnsutils git-crypt
 ```
 
 Extras:
 
 ```
-    % apt install cryptsetup vlc irssi texlive-latex-base libreoffice compton rofi
+    % apt install cryptsetup vlc irssi texlive-latex-base libreoffice compton rofi 
+```
+
+For work:
+
+```
+    % apt install myrepos 
 ```
 
 ### OSX
@@ -28,7 +34,7 @@ For personal laptop:
 For work laptop:
 
 ```
-    % brew install terraform packer kops kubernetes-helm kubectl vault
+    % brew install terraform packer kops kubernetes-helm kubectl vault mr
 ```
 
 ## How to use it
