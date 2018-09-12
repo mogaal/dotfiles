@@ -2,8 +2,6 @@ if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
 
-#export GOPATH=/Users/alejandrogarrido/go
-
 # default editor
 export EDITOR=vim
 
@@ -18,9 +16,6 @@ export LESS='-F -g -i -M -R -S -w -X -z-4'
 
 # locales
 export LANG=en_GB.UTF-8
-
-# set path
-#export PATH=/usr/local/bin:/usr/bin:/bin:/usr/games:~/bin:~/perl5/bin:/opt/jre1.7.0_15/bin:~/.local/bin
 
 # GPG (gpg-mailkeys)
 export NAME='Alejandro Garrido Mota'
@@ -44,7 +39,6 @@ export HISTCONTROL=ignoredups:erasedups
 export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 export HISTIGNORE="&:[ ]*:exit:ls:bg:fg:history"
 export HH_CONFIG=hicolor
-export XDG_CURRENT_DESKTOP=KDE
 
 ###########
 ## Work ###

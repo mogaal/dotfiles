@@ -21,7 +21,7 @@ Extras:
 For personal laptop:
 
 ```
-    % brew install jq python htop tree mr wget reattach-to-user-namespace tmux hh gpg git-crypt
+    % brew install jq python htop tree mr wget reattach-to-user-namespace tmux hh gpg git-crypt bat 
     % brew cask install iterm2 docker
 ```
 
