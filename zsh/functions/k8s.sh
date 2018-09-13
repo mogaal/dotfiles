@@ -4,7 +4,7 @@ function k8s-toolbox() {
   if [[ -n $1 ]]; then
     kubectl -n $1 run my-toolbox --rm -i --tty --image mogaal/toolbox
   else
-    echo "You need to set namespace name where you want to run the toolbox, eg: k8s-toolbox \$namespace"
+    kubectl run my-toolbox --rm -i --tty --image mogaal/toolbox
   fi
 }
 
