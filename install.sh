@@ -7,19 +7,9 @@
 DOTFILES=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 BACKUP="$(dirname "$DOTFILES")/dotfiles_old"
 
-
-if [[ -d "$DOTFILES" ]]; then
-  echo "Symlinking dotfiles from $DOTFILES"
-else
-  echo "$DOTFILES does not exist"
-  exit 1
-fi
-
-if [ ! -d "$BACKUP" ]; then
-  echo "Creating the backup dotfiles dir: $BACKUP ... "
-  mkdir $BACKUP
-  echo "Done"
-fi
+##################
+#### FUNCTIONS ###
+##################
 
 function lnFile {
   if [ -f "$HOME/.$2" ]; then
@@ -34,6 +24,26 @@ function BackupFile {
    mv $HOME/.$1 $BACKUP/$1
 }
 
+if [[ -d "$DOTFILES" ]]; then
+  echo "Symlinking dotfiles from $DOTFILES"
+else
+  echo "$DOTFILES does not exist"
+  exit 1
+fi
+
+if [ ! -d "$BACKUP" ]; then
+  echo "Creating the backup dotfiles dir: $BACKUP ... "
+  mkdir $BACKUP
+  echo "Done"
+fi
+
+# Create ~/bin in case it doesn't exist
+if [[ -d "~/bin" ]]; then
+  echo "~/bin already exists. Skipping creation"
+else
+  echo "Creating ~/bin"
+  mkdir ~/bin
+fi
 
 # Things to install in base of the OS
 if [[ "$OSTYPE" == darwin* ]]; then
@@ -79,3 +89,5 @@ if [[ "$OSTYPE" == linux* ]]; then
   lnFile zsh/zpreztorc zpreztorc
   lnFile zsh/zshrc zshrc
 fi
+
+

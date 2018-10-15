@@ -41,13 +41,13 @@ For work laptop:
 
 First you need to clone the repository inside your home directory 
 
-```
+```console
     % git clone --recursive https://github.com/mogaal/dotfiles.git
     % git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 ```
 
 Finally we execute the installer script
 
-```
+```console
     % bash ~/dotfiles/install.sh
 ```
