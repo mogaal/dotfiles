@@ -26,7 +26,8 @@ function install {
     brew cask install iterm2 docker
   fi
   if [[ "$OSTYPE" == linux* ]]; then
-    apt install less mc vim htop wget git tmux tree zsh curl dnsutils git-crypt
+    sudo apt update
+    sudo apt install less mc vim htop wget git tmux tree zsh curl dnsutils git-crypt
   fi
 }
 
@@ -113,7 +114,7 @@ case $1 in
     dotfiles
   ;;
   *)
-    display_help()
+    display_help
   ;;
 esac
 
