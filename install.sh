@@ -14,7 +14,7 @@ BACKUP="$(dirname "$DOTFILES")/dotfiles_old"
 display_help() {
     echo "Usage: $0 [option]" >&2
     echo
-    echo "   -i, --install              Install the must apps"
+    echo "   -i, --install-apps         Install the must apps"
     echo "   -d, --dotfiles             Install the dotfiles "
     echo
     exit 1
@@ -113,7 +113,7 @@ case $1 in
     dotfiles
   ;;
   *)
-    dotfiles
+    display_help()
   ;;
 esac
 
