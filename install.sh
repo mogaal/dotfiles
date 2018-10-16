@@ -119,7 +119,7 @@ case $1 in
 esac
 
 # Create ~/bin in case it doesn't exist
-if [[ -d "~/bin" ]]; then
+if [ ! -d "~/bin" ]; then
   echo "~/bin already exists. Skipping creation"
 else
   echo "Creating ~/bin"
