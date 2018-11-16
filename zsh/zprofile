@@ -46,6 +46,14 @@ if [[ -d $HOME/bin ]]; then
   );
 fi
 
+# If there's ~/bin then add it to the path
+if [[ -d $HOME/go/bin ]]; then
+  path=(
+    $HOME/go/bin
+    $path
+  );
+fi
+
 # TMP files
 if [[ ! -d "$TMPDIR" ]]; then
   export TMPDIR="/tmp/$USER";
