@@ -53,3 +53,4 @@ alias k8s_externalIPs="kubectl get nodes -o template --template='{{range.items}}
 # UME
 alias ume-eyaml="docker run -v ~/workspace/kevin-puppet/keys:/keys/ -it --rm --name eyaml halberom/hiera-eyaml "
 alias keys="cd /Users/mogaal/workspace/keys"
+alias kevin-puppet="cd /Users/mogaal/workspace/kevin-puppet"
