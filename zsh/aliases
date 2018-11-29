@@ -37,7 +37,7 @@ alias prebuild="SECRETS_FILE=/Users/aga35/secret.tfvars ~/workspace/cd-devops-to
 alias ls-my-funcions="cat ~/dotfiles/zsh/functions/* | grep function | cut -d' ' -f 2"
 
 # Alias to go to the workspace folder
-alias wo="cd ~/workspace"
+alias ws="cd ~/workspace"
 
 #######
 # k8s #
