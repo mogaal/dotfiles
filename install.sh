@@ -109,6 +109,10 @@ case $1 in
     echo "Installing the must apps"
     install
   ;;
+  -e|--install-extras)
+    echo "Installing the extra-apps"
+    install
+  ;;
   -d|--dotfiles)
     echo "Symlinking dotfiles"
     dotfiles
