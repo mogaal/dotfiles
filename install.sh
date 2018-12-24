@@ -46,6 +46,13 @@ function dotfiles {
     echo "Done"
   fi
 
+  if [ -d "~/bin" ]; then
+    echo "~/bin already exists. Skipping creation"
+  else
+    echo "Creating ~/bin"
+    mkdir ~/bin
+  fi
+
   if [[ "$OSTYPE" == darwin* ]]; then
     lnFile gitconfig gitconfig 
     lnFile vimrc vimrc 
@@ -104,6 +111,8 @@ function BackupFile {
    mv $HOME/.$1 $BACKUP/$1
 }
 
+
+
 case $1 in
   -i|--install)
     echo "Installing the must apps"
@@ -121,11 +130,3 @@ case $1 in
     display_help
   ;;
 esac
-
-# Create ~/bin in case it doesn't exist
-if [ ! -d "~/bin" ]; then
-  echo "~/bin already exists. Skipping creation"
-else
-  echo "Creating ~/bin"
-  mkdir ~/bin
-fi

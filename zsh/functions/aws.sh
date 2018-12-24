@@ -27,3 +27,29 @@ function aws-snapshots {
   fi
 }
 
+# Restore RDS from snapshot
+function aws-rds-restore-from-snapshot {
+  while [[ $# -gt 0 ]] do
+    key=$1
+    case $key in
+      -h|--help)
+        echo "Example: aws-rds-restore-from-snapshot --instance-name stgqa1-nonprod --snapshot stgqa1-nonprod-20181016094323"
+        return
+      ;;
+      -s|--searchpath)
+        SEARCHPATH="$2"
+        shift # past argument
+        shift # past value
+      ;;
+      *)    # unknown option
+        POSITIONAL+=("$1") # save it in an array for later
+        shift # past argument
+      ;;
+    esac
+  done
+
+  # if [ "$1" = "-h" ]; then
+  #     echo "Example: aws-rds-restore-from-snapshot --instance-name stgqa1-nonprod --snapshot stgqa1-nonprod-20181016094323"
+  # fi
+  echo "Normal $1"
+}

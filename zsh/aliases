@@ -36,6 +36,9 @@ alias prebuild="SECRETS_FILE=/Users/aga35/secret.tfvars ~/workspace/cd-devops-to
 # What are my custom functions?
 alias ls-my-funcions="cat ~/dotfiles/zsh/functions/* | grep function | cut -d' ' -f 2"
 
+# Alias to go to the workspace folder
+alias ws="cd ~/workspace"
+
 #######
 # k8s #
 #######
@@ -50,3 +53,4 @@ alias k8s_externalIPs="kubectl get nodes -o template --template='{{range.items}}
 # UME
 alias ume-eyaml="docker run -v ~/workspace/kevin-puppet/keys:/keys/ -it --rm --name eyaml halberom/hiera-eyaml "
 alias keys="cd /Users/mogaal/workspace/keys"
+alias kevin-puppet="cd /Users/mogaal/workspace/kevin-puppet"
