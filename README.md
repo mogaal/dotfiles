@@ -29,7 +29,7 @@ For personal laptop:
 ```
     % /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     % brew install jq python htop tree mr wget reattach-to-user-namespace tmux hh gpg git-crypt bat 
-    % brew cask install iterm2 docker
+    % brew cask install iterm2 docker google-chrome
 ```
 
 For work laptop:

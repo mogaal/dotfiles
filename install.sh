@@ -23,7 +23,7 @@ display_help() {
 function install {
   if [[ "$OSTYPE" == darwin* ]]; then
     brew install jq python htop tree mr wget reattach-to-user-namespace tmux hh gpg git-crypt bat
-    brew cask install iterm2 docker
+    brew cask install iterm2 docker google-chrome
   fi
   if [[ "$OSTYPE" == linux* ]]; then
     sudo apt update
