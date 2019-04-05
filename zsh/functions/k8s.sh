@@ -17,6 +17,16 @@ function k8s-set-default-ns {
   fi
 }
 
+# EKS, get token for some cluster
+function k8s-get-token {
+  if [ -n "$1" ]; then
+    aws-iam-authenticator token -i $i | jq .status.token
+  else
+    echo "You need tell the cluster name in order to generate a token"
+
+  fi
+}
+
 # Startup the dashboard
 function k8s-dashboard {
   if [[ -n $1 ]]; then
