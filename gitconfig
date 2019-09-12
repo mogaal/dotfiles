@@ -1,6 +1,6 @@
 [user]
 	name = Alejandro Garrido Mota
-	email = alejandro@debian.org
+	email = garridomota@gmail.com
 	signingkey = 71396D61F1C09EFB
 [alias]
   s = status -s
