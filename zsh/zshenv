@@ -40,6 +40,10 @@ export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 export HISTIGNORE="&:[ ]*:exit:ls:bg:fg:history"
 export HH_CONFIG=hicolor
 
+# Only MacOS: brew tap sambadevi/powerlevel9k && brew install powerlevel9k 
+#source /usr/local/opt/powerlevel9k/powerlevel9k.zsh-theme
+#export POWERLEVEL9K_MODE='nerdfont-complete'
+
 ###########
 ## Work ###
 ###########
