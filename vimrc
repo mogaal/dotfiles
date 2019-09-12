@@ -29,6 +29,16 @@ set encoding=utf-8
 " Insert tabs on the start of a line according to shiftwidth, not tabstop
 set smarttab
 
+"let g:netrw_banner = 0
+"let g:netrw_liststyle = 3
+"let g:netrw_browse_split = 4
+"let g:netrw_altv = 1
+"let g:netrw_winsize = 25
+"augroup ProjectDrawer
+"  autocmd!
+"  autocmd VimEnter * :Vexplore
+"augroup END
+
 " Mapping NERD_Tree toggle command to F2
 "map <F2> :NERDTreeToggle<CR>
 
