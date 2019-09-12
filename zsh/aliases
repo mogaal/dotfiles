@@ -38,6 +38,7 @@ alias ls-my-funcions="cat ~/dotfiles/zsh/functions/* | grep function | cut -d' '
 
 # Alias to go to the workspace folder
 alias ws="cd ~/workspace"
+alias wsu="cd ~/workspace/ume"
 
 #######
 # k8s #
