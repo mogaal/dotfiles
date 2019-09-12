@@ -1,13 +1,13 @@
 
 # Which load balancer are healthy
 function aws-elb-health {
-  for i in $(aws elb describe-load-balancers --query 'LoadBalancerDescriptions[*].LoadBalancerName' --output json |  awk -F'"' '{print $2}'); do
+  for i in $(aws elb describe-load-balancers --query 'LoadBalancerDescriptions[*].LoadBalancerName' --output json --profile ume |  awk -F'"' '{print $2}'); do
     MATCH=$(echo $i | grep $1)
     if [ -n "${MATCH}" ]
     then
       echo "$MATCH"
       echo "+-------------------------------------------------------------------+"
-      aws elb describe-instance-health --load-balancer-name $MATCH
+      aws elb describe-instance-health --profile ume --load-balancer-name $MATCH
       echo "+-------------------------------------------------------------------+"
     else
       continue
@@ -19,7 +19,7 @@ function aws-elb-health {
 # Getting Snapshots
 function aws-snapshots {
   if [ -n "$1" ]; then
-    aws rds describe-db-snapshots --query "DBSnapshots[?starts_with(DBSnapshotIdentifier,'$1')].[DBSnapshotIdentifier,DBInstanceIdentifier,Status]" --output text | while IFS= read -r line ; do
+    aws rds describe-db-snapshots --query "DBSnapshots[?starts_with(DBSnapshotIdentifier,'$1')].[DBSnapshotIdentifier,DBInstanceIdentifier,Status]" --profile ume --output text | while IFS= read -r line ; do
       echo "https://eu-west-1.console.aws.amazon.com/rds/home?region=eu-west-1#snapshot:engine=mysql;id=""$line"
     done
   else
