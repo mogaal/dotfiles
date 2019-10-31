@@ -44,7 +44,7 @@ alias wsu="cd ~/workspace/ume"
 # k8s #
 #######
 
-alias kc='kubectl'
+alias k='kubectl'
 alias kclf='kubectl logs --tail=200  -f'
 
 # Dashboard
