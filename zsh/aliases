@@ -38,7 +38,7 @@ alias ls-my-funcions="cat ~/dotfiles/zsh/functions/* | grep function | cut -d' '
 
 # Alias to go to the workspace folder
 alias ws="cd ~/workspace"
-alias wsu="cd ~/workspace/ume"
+alias wsm="cd ~/workspace/github/ministryofjustice"
 
 #######
 # k8s #
@@ -51,10 +51,6 @@ alias kclf='kubectl logs --tail=200  -f'
 alias k8s_pf_dashboard='kubectl proxy --port=8080 --address='0.0.0.0' --disable-filter=true'
 alias k8s_externalIPs="kubectl get nodes -o template --template='{{range.items}}{{range.status.addresses}}{{if eq .type \"ExternalIP\"}}{{.address}}{{end}}{{end}} {{end}}'"
 
-# UME
-alias ume-eyaml="docker run -v ~/workspace/kevin-puppet/keys:/keys/ -it --rm --name eyaml halberom/hiera-eyaml "
-alias keys="cd /Users/mogaal/workspace/keys"
-alias kevin-puppet="cd /Users/mogaal/workspace/kevin-puppet"
 
 #######
 # MoJ #

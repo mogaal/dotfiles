@@ -1,7 +1,4 @@
 
-[workspace/github/ministryofjustice/cloud-platform]
-checkout = git clone 'git@github.com:ministryofjustice/cloud-platform.git' 'cloud-platform'
-
 [dotfiles]
 checkout = git clone 'git@github.com:mogaal/dotfiles.git' 'dotfiles'
 
@@ -10,3 +7,7 @@ checkout = git clone 'git@github.com:ministryofjustice/cloud-platform-environmen
 
 [workspace/github/ministryofjustice/cloud-platform-infrastructure]
 checkout = git clone 'git@github.com:ministryofjustice/cloud-platform-infrastructure.git' 'cloud-platform-infrastructure'
+
+[workspace/github/ministryofjustice/cloud-platform]
+checkout = git clone 'git@github.com:ministryofjustice/cloud-platform.git' 'cloud-platform'
+
