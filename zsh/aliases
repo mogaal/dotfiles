@@ -55,3 +55,10 @@ alias k8s_externalIPs="kubectl get nodes -o template --template='{{range.items}}
 alias ume-eyaml="docker run -v ~/workspace/kevin-puppet/keys:/keys/ -it --rm --name eyaml halberom/hiera-eyaml "
 alias keys="cd /Users/mogaal/workspace/keys"
 alias kevin-puppet="cd /Users/mogaal/workspace/kevin-puppet"
+
+#######
+# MoJ #
+#######
+
+alias tf='~/dotfiles/bin/terraform-0.11.14'
+alias tf12='~/dotfiles/bin/terraform-0.12.14'
