@@ -62,3 +62,4 @@ alias kevin-puppet="cd /Users/mogaal/workspace/kevin-puppet"
 
 alias tf='~/dotfiles/bin/terraform-0.11.14'
 alias tf12='~/dotfiles/bin/terraform-0.12.14'
+alias aws='/usr/local/bin/aws2'

@@ -57,7 +57,8 @@ function dotfiles {
 
   if [[ "$OSTYPE" == darwin* ]]; then
     lnFile gitconfig gitconfig 
-    lnFile vimrc vimrc 
+    lnFile vimrc vimrc
+    lnFile mrconfig mrconfig   
     
     # Tmux 
     lnFile tmux/tmux.conf tmux.conf
@@ -73,7 +74,7 @@ function dotfiles {
     lnFile zsh/zprofile zprofile
     lnFile zsh/zpreztorc zpreztorc
     lnFile zsh/zshrc zshrc
-    lnFile zsh/aliases aliases    
+    lnFile zsh/aliases aliases
   fi
   if [[ "$OSTYPE" == linux* ]]; then
     lnFile vim vim
