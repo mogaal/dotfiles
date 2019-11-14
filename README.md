@@ -33,7 +33,7 @@ For personal laptop:
     % chsh -s /bin/zsh 
 ```
 
-We also need to install/download (not in brew): CopyClip, Keybase, Notion, Authy
+We also need to install/download (not in brew): CopyClip, Keybase, Notion, Authy, Visual Studio Code (yes, hehehe)
  
 For work laptop:
 
