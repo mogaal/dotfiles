@@ -1,9 +1,9 @@
 
-[workspace/cloud-platform]
+[workspace/ministryofjustice/cloud-platform]
 checkout = git clone 'git@github.com:ministryofjustice/cloud-platform.git' 'cloud-platform'
 
 [dotfiles]
 checkout = git clone 'git@github.com:mogaal/dotfiles.git' 'dotfiles'
 
-[workspace/cloud-platform-infrastructure]
+[workspace/ministryofjustice/cloud-platform-environments]
 checkout = git clone 'git@github.com:ministryofjustice/cloud-platform-infrastructure.git' 'cloud-platform-infrastructure'
