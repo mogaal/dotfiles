@@ -121,7 +121,7 @@ function installBinaries {
   [[ -d "$DOTFILES/bin" ]] || mkdir "$DOTFILES/bin"
   
   if [[ "$OSTYPE" == darwin* ]]; then
-    echo "I am in OSX"
+    echo "Downloading binaries for OSX"
 
     curl -Os https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_darwin_amd64.zip
     unzip terraform_${TERRAFORM_VERSION}_darwin_amd64.zip -d "$DOTFILES/bin"
@@ -135,7 +135,7 @@ function installBinaries {
 
   fi
   if [[ "$OSTYPE" == linux* ]]; then
-    echo "I am in Linux"
+    echo "Downloading binaries for Linux"
     
     # TERRAFORM
     echo "Setting up terraform"
