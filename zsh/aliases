@@ -44,8 +44,7 @@ alias wsm="cd ~/workspace/github/ministryofjustice"
 # k8s #
 #######
 
-alias k='~/dotfiles/bin/kubectl'
-alias kubectl='~/dotfiles/bin/kubectl'
+alias k='kubectl'
 alias kclf='kubectl logs --tail=200  -f'
 
 # Dashboard

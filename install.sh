@@ -117,45 +117,7 @@ function BackupFile {
    mv $HOME/.$1 $BACKUP/$1
 }
 
-function installBinaries {
-  [[ -d "$DOTFILES/bin" ]] || mkdir "$DOTFILES/bin"
-  
-  if [[ "$OSTYPE" == darwin* ]]; then
-    echo "Downloading binaries for OSX"
-
-    curl -Os https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_darwin_amd64.zip
-    unzip terraform_${TERRAFORM_VERSION}_darwin_amd64.zip -d "$DOTFILES/bin"
-    mv "$DOTFILES/bin/terraform" "$DOTFILES/bin/terraform-${TERRAFORM_VERSION}"
-    rm -f terraform_${TERRAFORM_VERSION}_darwin_amd64.zip
-
-    curl -Os https://releases.hashicorp.com/terraform/${TERRAFORM_NEW_VERSION}/terraform_${TERRAFORM_NEW_VERSION}_darwin_amd64.zip
-    unzip terraform_${TERRAFORM_NEW_VERSION}_darwin_amd64.zip -d "$DOTFILES/bin"
-    mv "$DOTFILES/bin/terraform" "$DOTFILES/bin/terraform-${TERRAFORM_NEW_VERSION}"
-    rm -f terraform_${TERRAFORM_NEW_VERSION}_darwin_amd64.zip
-
-  fi
-  if [[ "$OSTYPE" == linux* ]]; then
-    echo "Downloading binaries for Linux"
-    
-    # TERRAFORM
-    echo "Setting up terraform"
-    curl -Os https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip
-    unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d "$DOTFILES/bin"
-    mv "$DOTFILES/bin/terraform" "$DOTFILES/bin/terraform-${TERRAFORM_VERSION}"
-    rm -f terraform_${TERRAFORM_VERSION}_linux_amd64.zip
-
-    curl -Os https://releases.hashicorp.com/terraform/${TERRAFORM_NEW_VERSION}/terraform_${TERRAFORM_NEW_VERSION}_linux_amd64.zip
-    unzip terraform_${TERRAFORM_NEW_VERSION}_linux_amd64.zip -d "$DOTFILES/bin"
-    mv "$DOTFILES/bin/terraform" "$DOTFILES/bin/terraform-${TERRAFORM_NEW_VERSION}"
-    rm -f terraform_${TERRAFORM_NEW_VERSION}_linux_amd64.zip
-  fi
-}
-
 case $1 in
-  -b|--install-binaries)
-    echo "Installing the binaries/ folder"
-    installBinaries
-  ;;
   -i|--install)
     echo "Installing the must apps"
     install
