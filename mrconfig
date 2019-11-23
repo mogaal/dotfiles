@@ -13,3 +13,18 @@ checkout = git clone 'git@github.com:ministryofjustice/cloud-platform.git' 'clou
 
 [work]
 checkout = git clone 'keybase://private/mogaal/work' 'work'
+
+[workspace/github/ministryofjustice/cloud-platform-terraform-bastion]
+checkout = git clone 'git@github.com:ministryofjustice/cloud-platform-terraform-bastion.git' 'cloud-platform-terraform-bastion'
+
+[workspace/github/ministryofjustice/cloud-platform-terraform-sqs]
+checkout = git clone 'git@github.com:ministryofjustice/cloud-platform-terraform-sqs.git' 'cloud-platform-terraform-sqs'
+
+[workspace/github/ministryofjustice/cloud-platform-terraform-sns-topic]
+checkout = git clone 'git@github.com:ministryofjustice/cloud-platform-terraform-sns-topic.git' 'cloud-platform-terraform-sns-topic'
+
+[workspace/github/ministryofjustice/cloud-platform-terraform-rds-instance]
+checkout = git clone 'git@github.com:ministryofjustice/cloud-platform-terraform-rds-instance.git' 'cloud-platform-terraform-rds-instance'
+
+[workspace/github/ministryofjustice/cloud-platform-concourse]
+checkout = git clone 'git@github.com:ministryofjustice/cloud-platform-concourse.git' 'cloud-platform-concourse'
