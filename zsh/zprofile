@@ -39,9 +39,9 @@ path=(
 )
 
 # If there's ~/bin then add it to the path
-if [[ -d $HOME/bin ]]; then
+if [[ -d $HOME/bin/$OS ]]; then
   path=(
-    $HOME/bin
+    $HOME/bin/$OS
     $path
   );
 fi

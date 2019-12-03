@@ -57,7 +57,7 @@ alias k8s_externalIPs="kubectl get nodes -o template --template='{{range.items}}
 #######
 
 if [[ $OS == "mac" ]]; then
-  alias terraform='~/bin/osx/terraform'
+  alias terraform='~/bin/mac/terraform'
 fi
 
 alias aws='/usr/local/bin/aws2'
