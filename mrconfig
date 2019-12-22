@@ -31,3 +31,6 @@ checkout = git clone 'git@github.com:ministryofjustice/cloud-platform-concourse.
 
 [bin]
 checkout = git clone 'git@github.com:mogaal/bin.git' 'bin'
+
+[workspace/github/ministryofjustice/cloud-platform-terraform-eks-components]
+checkout = git clone 'git@github.com:ministryofjustice/cloud-platform-terraform-eks-components.git' 'cloud-platform-terraform-eks-components'
