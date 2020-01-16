@@ -44,9 +44,13 @@ export HH_CONFIG=hicolor
 #source /usr/local/opt/powerlevel9k/powerlevel9k.zsh-theme
 #export POWERLEVEL9K_MODE='nerdfont-complete'
 
+# Golang
+export GO111MODULE=on 
+
 ###########
 ## Work ###
 ###########
 
 # k8s 
 export KUBECONFIG=~/workspace/k8s/admin.conf
+
