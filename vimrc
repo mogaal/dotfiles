@@ -53,16 +53,6 @@ filetype indent plugin on
 :let g:session_autosave = 'no'
 :let g:session_autoload = 'no'
 
-" Vim airline
-set laststatus=2
-:let g:airline#extensions#tabline#enabled = 1
-" Avoid print the status bar as well as the command bar
-:let g:bufferline_echo = 0
-" You have to configure powerline fonts
-:let g:airline_powerline_fonts = 1
-" Set default theme
-:let g:airline_theme='simple'
-
 " To remember the last line we were
 if has("autocmd")
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
