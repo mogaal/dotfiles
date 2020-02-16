@@ -39,11 +39,14 @@ set smarttab
 "  autocmd VimEnter * :Vexplore
 "augroup END
 
-" Mapping NERD_Tree toggle command to F2
-"map <F2> :NERDTreeToggle<CR>
+""""""""""""
+" NERDTREE "
+""""""""""""
 
-"call pathogen#infect()
-"call pathogen#helptags()
+" Mapping NERD_Tree toggle command to F2
+map <C-n> :NERDTreeToggle<CR>
+" Close vim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 syntax on
 
