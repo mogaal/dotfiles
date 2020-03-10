@@ -13,3 +13,17 @@ function tmux-live-1 {
   fi
 }
 
+# Load cloudsleep tmux session
+function tmux-cloudsleep {
+  MATCH=$(tmux ls | grep cloudsleep)
+  if [ -n "${MATCH}" ]; then
+    tmux attach -t 'cloudsleep'
+  else
+    tmux new-session -s 'cloudsleep' \; \
+    send-keys 'cd ~/workspace/gitlab/cloudsleep1' C-m \; \
+    split-window -v \; \
+    select-pane -t 1 \; \
+    send-keys 'cd ~/workspace/gitlab/cloudsleep1' C-m \;
+  fi
+}
+
