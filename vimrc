@@ -39,11 +39,14 @@ set smarttab
 "  autocmd VimEnter * :Vexplore
 "augroup END
 
-" Mapping NERD_Tree toggle command to F2
-"map <F2> :NERDTreeToggle<CR>
+""""""""""""
+" NERDTREE "
+""""""""""""
 
-"call pathogen#infect()
-"call pathogen#helptags()
+" Mapping NERD_Tree toggle command to F2
+map <C-n> :NERDTreeToggle<CR>
+" Close vim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 syntax on
 
@@ -52,16 +55,6 @@ filetype indent plugin on
 
 :let g:session_autosave = 'no'
 :let g:session_autoload = 'no'
-
-" Vim airline
-set laststatus=2
-:let g:airline#extensions#tabline#enabled = 1
-" Avoid print the status bar as well as the command bar
-:let g:bufferline_echo = 0
-" You have to configure powerline fonts
-:let g:airline_powerline_fonts = 1
-" Set default theme
-:let g:airline_theme='simple'
 
 " To remember the last line we were
 if has("autocmd")

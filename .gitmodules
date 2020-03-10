@@ -13,3 +13,9 @@
 [submodule "tmux/plugins/tpm"]
 	path = tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
+[submodule "vim/pack/dist/start/vim-airline"]
+	path = vim/pack/dist/start/vim-airline
+	url = https://github.com/vim-airline/vim-airline
+[submodule "vim/pack/vendor/start/nerdtree"]
+	path = vim/pack/vendor/start/nerdtree
+	url = https://github.com/preservim/nerdtree.git
