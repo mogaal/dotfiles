@@ -29,15 +29,16 @@ set encoding=utf-8
 " Insert tabs on the start of a line according to shiftwidth, not tabstop
 set smarttab
 
-"let g:netrw_banner = 0
-"let g:netrw_liststyle = 3
-"let g:netrw_browse_split = 4
-"let g:netrw_altv = 1
-"let g:netrw_winsize = 25
-"augroup ProjectDrawer
-"  autocmd!
-"  autocmd VimEnter * :Vexplore
-"augroup END
+" Always colors
+syntax on
+
+" Because of lightline.vim plugin. More info in https://github.com/itchyny/lightline.vim#introduction
+set laststatus=2
+
+" To remember the last line we were
+if has("autocmd")
+    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
 
 """"""""""""
 " NERDTREE "
@@ -47,16 +48,3 @@ set smarttab
 map <C-n> :NERDTreeToggle<CR>
 " Close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-syntax on
-
-filetype plugin on
-filetype indent plugin on
-
-:let g:session_autosave = 'no'
-:let g:session_autoload = 'no'
-
-" To remember the last line we were
-if has("autocmd")
-    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-endif
