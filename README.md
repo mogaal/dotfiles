@@ -4,23 +4,7 @@
 
 ### Linux
 
-The must 
-
-```
-    % apt install less mc vim htop wget git tmux tree zsh curl dnsutils git-crypt
-```
-
-Extras:
-
-```
-    % apt install cryptsetup vlc irssi texlive-latex-base libreoffice compton rofi 
-```
-
-For work:
-
-```
-    % apt install myrepos 
-```
+Everything is installed from `~/dotfiles/install.sh` script using `-i` option 
 
 ### OSX
 
@@ -43,7 +27,7 @@ For work laptop:
 
 ## How to use it
 
-First you need to clone the repository inside your home directory 
+Ensure you have at least `sudo` and `git` installed and then clone the repository inside your home directory 
 
 ```console
     % git clone --recursive https://github.com/mogaal/dotfiles.git
@@ -53,5 +37,6 @@ First you need to clone the repository inside your home directory
 Finally we execute the installer script
 
 ```console
-    % bash ~/dotfiles/install.sh
+    % bash ~/dotfiles/install.sh -i # To install the apps
+    % bash ~/dotfiles/install.sh -d # To install the dotfiles
 ```
