@@ -32,13 +32,20 @@ set smarttab
 " Always colors
 syntax on
 
-" Because of lightline.vim plugin. More info in https://github.com/itchyny/lightline.vim#introduction
-set laststatus=2
-
 " To remember the last line we were
 if has("autocmd")
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
+
+"""""""""""""""""
+" lightline.vim "
+"""""""""""""""""
+
+" More info in https://github.com/itchyny/lightline.vim#introduction
+set laststatus=2
+
+" lightline is already showing the mode
+set noshowmode
 
 """"""""""""
 " NERDTREE "
