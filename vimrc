@@ -7,6 +7,11 @@ set showcmd        " Show (partial) command in status line.
 set showmatch      " Show matching brackets.
 set autowrite      " Automatically save before commands like :next and :make
 set hidden         " Hide buffers when they are abandoned
+set autoread       " reload file if changed outside vim
+set cursorline     " highlight the line with the cursor
+
+" Set the <leader> key
+let mapleader = ","
 
 " Search related stuff
 set incsearch      " Searching starts after you enter the string.
@@ -51,8 +56,14 @@ set noshowmode
 " NERDTREE "
 """"""""""""
 
-" Mapping NERD_Tree toggle command to F2
-map <C-n> :NERDTreeToggle<CR>
+" use colors, cursorline and return/enter key
+let NERDTreeHijackNetrw = 0
+let NERDChristmasTree = 1
+let NERDTreeHighlightCursorline = 1
+
+" Plugin: NERDTree - keys to toggle NERDTree
+nnoremap <leader>d :NERDTreeToggle<CR>
+
 " Close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
