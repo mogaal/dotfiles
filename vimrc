@@ -29,6 +29,12 @@ set softtabstop=2
 set nobackup
 set noswapfile
 
+" Using cool display menu on the top, the simplest way to try it would be with :color <Tab>:
+set wildmenu
+
+" Very useful for searches
+set path=$PWD/**
+
 set encoding=utf-8
 
 " Insert tabs on the start of a line according to shiftwidth, not tabstop

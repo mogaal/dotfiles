@@ -37,3 +37,13 @@ if [ -f '/Users/mogaal/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/User
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/mogaal/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/mogaal/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Added by serverless binary installer
+export PATH="$HOME/.serverless/bin:$PATH"
+
+# tabtab source for packages
+# uninstall by removing these lines
+[[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
+
+# This is for direnv
+eval "$(direnv hook zsh)"
