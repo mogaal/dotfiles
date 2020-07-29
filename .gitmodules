@@ -16,3 +16,6 @@
 [submodule "vim/pack/plugins/start/vim-terraform"]
 	path = vim/pack/plugins/start/vim-terraform
 	url = https://github.com/hashivim/vim-terraform.git
+[submodule "vim/pack/plugins/start/splitjoin"]
+	path = vim/pack/plugins/start/splitjoin
+	url = https://github.com/AndrewRadev/splitjoin.vim
