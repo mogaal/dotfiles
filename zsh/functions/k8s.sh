@@ -17,6 +17,15 @@ function k8s-set-default-ns {
   fi
 }
 
+# Decode all base64 data[] from a secret. Required "jq"
+function k8s-secret-decode {
+  if [ -n "$1"  ] && [ -n "$2" ]; then
+    kubectl -n $1 get secrets $2 -o json | jq -r '.data[] | @base64d'
+  else
+    echo "Not enough arguments. Use: $funcstack[1] \$NameSpace \$SecretName"
+  fi
+}
+
 # EKS, get token for some cluster
 function k8s-get-token {
   if [ -n "$1" ]; then
