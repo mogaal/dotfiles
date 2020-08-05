@@ -15,16 +15,26 @@ if [ -e "$HOME/dotfiles/zsh/functions" ]; then
   done
 fi
 
+if [ "$(uname)" = "Darwin" ]; then
+  OS='mac'
+elif [ "$(expr substr $(uname -s) 1 5)" = "Linux" ]; then
+  OS='linux'
+fi
+
 setopt    appendhistory     #Append history to the history file (no overwriting)
 setopt    incappendhistory  #Immediately append to the history file, not 
 unsetopt  share_history
 
 export HISTFILE=~/.zsh_history  # ensure history file visibility
 export HH_CONFIG=hicolor        # get more colors
-bindkey -s "\C-r" "\eqhh\n"     # bind hh to Ctrl-r (for Vi mode check doc)
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin:$HOME/Library/Python/3.7/bin"
+if [ "$OS" = "linux" ]; then
+  bindkey -s "\C-r" "\eqhstr\n"     # bind hh to Ctrl-r (for Vi mode check doc)
+fi
+
+if [ "$OS" = "mac" ]; then
+  bindkey -s "\C-r" "\eqhh\n"     # bind hh to Ctrl-r (for Vi mode check doc)
+fi
 
 # Add auto-completion for Kubernetes
 if [ $commands[kubectl] ]; then source <(kubectl completion zsh); fi

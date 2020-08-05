@@ -33,7 +33,7 @@ function install {
   fi
   if [[ "$OSTYPE" == linux* ]]; then
     sudo apt update
-    sudo apt install less mc vim htop wget git tmux tree zsh curl dnsutils git-crypt
+    sudo apt install less mc vim htop wget git tmux tree zsh curl dnsutils git-crypt myrepos
   fi
 }
 
@@ -85,6 +85,7 @@ function dotfiles {
     lnFile i3 i3
     lnFile gnupg gnupg
     lnFile vimrc vimrc 
+    lnFile mrconfig mrconfig   
     lnFile irssi irssi 
     lnFile gitconfig gitconfig 
     lnFile gbp.conf gbp.conf
