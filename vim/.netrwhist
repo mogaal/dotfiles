@@ -1,12 +1,12 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =2
+let g:netrw_dirhistcnt =6
+let g:netrw_dirhist_6='/home/mogaal/workspace/github/ministryofjustice/cloud-platform-cli/pkg/prototype'
+let g:netrw_dirhist_5='/home/mogaal/workspace/github/ministryofjustice/cloud-platform-cli/pkg/terraform'
+let g:netrw_dirhist_4='/home/mogaal/workspace/github/ministryofjustice/cloud-platform-cli/pkg/prototype'
+let g:netrw_dirhist_3='/home/mogaal/workspace/github/ministryofjustice/cloud-platform-cli'
 let g:netrw_dirhist_2='/home/mogaal/.ssh'
 let g:netrw_dirhist_1='/home/mogaal/workspace/gitlab/podcast/episodios'
 let g:netrw_dirhist_0='/private/tmp/cloud-platform-cli/.github/workflows'
 let g:netrw_dirhist_9='/Users/mogaal/workspace/github/ministryofjustice/cloud-platform/runbooks/config'
 let g:netrw_dirhist_8='/Users/mogaal/workspace/github/ministryofjustice/cloud-platform/runbooks/compiled'
 let g:netrw_dirhist_7='/Users/mogaal/workspace/github/ministryofjustice/cloud-platform-tools/cmd/cp-tools'
-let g:netrw_dirhist_6='/Users/mogaal/workspace/gitlab/axiora/serverless/services'
-let g:netrw_dirhist_5='/Users/mogaal/workspace/gitlab/axiora/serverless/services/account'
-let g:netrw_dirhist_4='/Users/mogaal/workspace/github/ministryofjustice/cloud-platform-terraform-kops/templates'
-let g:netrw_dirhist_3='/Users/mogaal/workspace/gitlab/axiora/axiora/service/axiora-serverless/supplier/docker'

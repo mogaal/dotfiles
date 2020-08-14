@@ -26,14 +26,14 @@ display_help() {
 
 function install {
   if [[ "$OSTYPE" == darwin* ]]; then
-    brew install jq python htop tree mr wget reattach-to-user-namespace tmux hh gpg git-crypt bat zsh direnv git-lfs
+    brew install jq python htop tree mr wget reattach-to-user-namespace tmux hh gpg git-crypt bat zsh direnv git-lfs neovim
     brew cask install iterm2 docker google-chrome
     echo "Setting up zsh as a default shell: chsh -s /bin/zsh"
     chsh -s /bin/zsh
   fi
   if [[ "$OSTYPE" == linux* ]]; then
     sudo apt update
-    sudo apt install less mc vim htop wget git tmux tree zsh curl dnsutils git-crypt myrepos rar unrar
+    sudo apt install less mc vim htop wget git tmux tree zsh curl dnsutils git-crypt myrepos rar unrar neovim
   fi
 }
 
