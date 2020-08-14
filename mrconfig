@@ -46,3 +46,6 @@ checkout = git clone 'git@github.com:ministryofjustice/cloud-platform-tools.git'
 
 [workspace/github/mogaal/cloudhispano]
 checkout = git clone 'git@github.com:mogaal/cloudhispano.git' 'cloudhispano'
+
+[workspace/github/ministryofjustice/cloud-platform-cli]
+checkout = git clone 'git@github.com:ministryofjustice/cloud-platform-cli.git' 'cloud-platform-cli'
