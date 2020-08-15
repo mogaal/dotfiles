@@ -1,3 +1,7 @@
+""""""""""""""""""""
+" General settings "
+""""""""""""""""""""
+
 set sw=2
 set et
 set mouse=a
@@ -10,8 +14,7 @@ set hidden         " Hide buffers when they are abandoned
 set autoread       " reload file if changed outside vim
 set cursorline     " highlight the line with the cursor
 
-" Set the <leader> key
-let mapleader = ","
+let mapleader = "," " Set the <leader> key
 
 " Search related stuff
 set incsearch      " Searching starts after you enter the string.
@@ -29,83 +32,24 @@ set softtabstop=2
 set nobackup
 set noswapfile
 
-" Using cool display menu on the top, the simplest way to try it would be with :color <Tab>:
-set wildmenu
-
-" Very useful for searches
-set path=$PWD/**
-
+set wildmenu " Using cool display menu on the top, the simplest way to try it would be with :color <Tab>:
+set path=$PWD/** " Very useful for searches
 set encoding=utf-8
 
-" Insert tabs on the start of a line according to shiftwidth, not tabstop
-set smarttab
-
-" Always colors
-syntax on
+set smarttab " Insert tabs on the start of a line according to shiftwidth, not tabstop
+syntax on " I love colors, don't you?
 
 " To remember the last line we were
 if has("autocmd")
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
-"""""""""""""""""
-" lightline.vim "
-"""""""""""""""""
+" Colors of the Pmenu (used mainly for autocompletition)
+highlight Pmenu ctermbg=black ctermfg=white
 
-" More info in https://github.com/itchyny/lightline.vim#introduction
-set laststatus=2
-
-" lightline is already showing the mode
-set noshowmode
-
-""""""""""""
-" NERDTREE "
-""""""""""""
-
-" use colors, cursorline and return/enter key
-let NERDTreeHijackNetrw = 0
-let NERDChristmasTree = 1
-let NERDTreeHighlightCursorline = 1
-
-" Plugin: NERDTree - keys to toggle NERDTree
-nnoremap <leader>d :NERDTreeToggle<CR>
-
-" Close vim if the only window left open is a NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-"""""""""""""""""
-" vim-gitgutter "
-"""""""""""""""""
-
-" Making the diff markers appears quicker (default is 4 seconds)
-set updatetime=100
-
-""""""""""
-" vim-go "
-""""""""""
-
-filetype plugin indent on 
-map <C-n> :cnext<CR>
-map <C-m> :cprevious<CR>
-nnoremap <leader>a :cclose<CR>
-
-autocmd FileType go nmap <leader>r  <Plug>(go-run)
-autocmd FileType go nmap <leader>t  <Plug>(go-test)
-
-" Do goimport automatically on save
-let g:go_fmt_command = "goimports"
-
-" run :GoBuild or :GoTestCompile based on the go file
-function! s:build_go_files()
-  let l:file = expand('%')
-  if l:file =~# '^\f\+_test\.go$'
-    call go#test#Test(0, 1)
-  elseif l:file =~# '^\f\+\.go$'
-    call go#cmd#Build(0)
-  endif
-endfunction
-
-autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
-
-" Automatically handle the imports and format
-let g:go_fmt_command = "goimports"
+" Plugins configuration
+source ~/.vim/vim-gitgutter.vim
+source ~/.vim/lightline.vim 
+source ~/.vim/nerdtreee.vim
+source ~/.vim/vim-go.vim
+source ~/.vim/coc.vim
