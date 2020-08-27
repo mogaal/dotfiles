@@ -6,6 +6,7 @@ set sw=2
 set et
 set mouse=a
 set number
+set relativenumber " It is increasing my speed moving around
 
 set showcmd        " Show (partial) command in status line.
 set showmatch      " Show matching brackets.
