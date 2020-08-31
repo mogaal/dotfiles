@@ -61,6 +61,7 @@ endif
 highlight Pmenu ctermbg=black ctermfg=white
 
 " Plugins configuration
+source ~/.vim/gruvbox.vim
 source ~/.vim/vim-gitgutter.vim
 source ~/.vim/lightline.vim 
 source ~/.vim/nerdtreee.vim

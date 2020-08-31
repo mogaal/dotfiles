@@ -31,3 +31,6 @@
 [submodule "vim/pack/plugins/start/nerdtree-git-plugin"]
 	path = vim/pack/plugins/start/nerdtree-git-plugin
 	url = https://github.com/Xuyuanp/nerdtree-git-plugin
+[submodule "vim/pack/plugins/start/gruvbox"]
+	path = vim/pack/plugins/start/gruvbox
+	url = https://github.com/morhetz/gruvbox.git

@@ -5,6 +5,9 @@ nnoremap <leader>a :cclose<CR>
 
 autocmd FileType go nmap <leader>r  <Plug>(go-run)
 autocmd FileType go nmap <leader>t  <Plug>(go-test)
+autocmd FileType go nmap <Leader>ds <Plug>(go-def-split)
+autocmd FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+autocmd FileType go nmap <Leader>dt <Plug>(go-def-tab)
 
 " Do goimport automatically on save
 let g:go_fmt_command = "goimports"
