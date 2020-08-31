@@ -1,8 +1,4 @@
-""""""""""""
-" NERDTREE "
-""""""""""""
-
-" use colors, cursorline and return/enter key
+" Use colors, cursorline and return/enter key
 let NERDTreeHijackNetrw = 0
 let NERDChristmasTree = 1
 let NERDTreeHighlightCursorline = 1
