@@ -16,6 +16,7 @@ let g:coc_global_extensions = [
       \ 'coc-html',
       \ 'coc-json',
       \ 'coc-sql',
+      \ 'coc-snippets',
       \ 'coc-db',
       \ 'coc-yaml',
       \ 'coc-spell-checker',
