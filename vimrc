@@ -17,6 +17,12 @@ set cursorline     " highlight the line with the cursor
 
 let mapleader = "," " Set the <leader> key
 
+" Blink cursor on error instead of beeping (grr)
+set visualbell
+
+" Fast saving
+nmap <leader>w :w!<cr>
+
 " Search related stuff
 set incsearch      " Searching starts after you enter the string.
 set hlsearch       " Turns on search highlighting
@@ -29,16 +35,22 @@ set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 
-" Mas nunca archivos de backup, adios `.swp` files!
-set nobackup
-set noswapfile
+set nobackup   " Bye bye `.swp` files!
+set noswapfile 
 
-set wildmenu " Using cool display menu on the top, the simplest way to try it would be with :color <Tab>:
+set wildmenu     " Using cool display menu on the top, the simplest way to try it would be with :color <Tab>:
 set path=$PWD/** " Very useful for searches
 set encoding=utf-8
 
+" Spell
+map <leader>ss :setlocal spell!<cr>
+map <leader>sn ]s
+map <leader>sp [s
+map <leader>sa zg
+map <leader>s? z=
+
 set smarttab " Insert tabs on the start of a line according to shiftwidth, not tabstop
-syntax on " I love colors, don't you?
+syntax on    " I love colors, don't you?
 
 " To remember the last line we were
 if has("autocmd")

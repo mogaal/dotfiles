@@ -19,7 +19,6 @@ let g:coc_global_extensions = [
       \ 'coc-snippets',
       \ 'coc-db',
       \ 'coc-yaml',
-      \ 'coc-spell-checker',
       \ ]
 
 " Taken from https://github.com/kristijanhusak/neovim-config/blob/master/nvim/partials/coc.vim 

@@ -7,4 +7,3 @@ set laststatus=2
 
 " lightline is already showing the mode
 set noshowmode
-
