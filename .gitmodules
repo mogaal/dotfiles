@@ -34,3 +34,6 @@
 [submodule "vim/pack/plugins/start/gruvbox"]
 	path = vim/pack/plugins/start/gruvbox
 	url = https://github.com/morhetz/gruvbox.git
+[submodule "vim/pack/plugins/start/ctrlp.vim"]
+	path = vim/pack/plugins/start/ctrlp.vim
+	url = https://github.com/ctrlpvim/ctrlp.vim.git
