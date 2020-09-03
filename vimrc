@@ -68,3 +68,4 @@ source ~/.vim/lightline.vim
 source ~/.vim/nerdtreee.vim
 source ~/.vim/vim-go.vim
 source ~/.vim/coc.vim
+source ~/.vim/vim-prettier.vim

@@ -40,3 +40,7 @@
 [submodule "vim/pack/plugins/start/vim-css-color"]
 	path = vim/pack/plugins/start/vim-css-color
 	url = https://github.com/ap/vim-css-color.git
+[submodule "vim/pack/plugins/start/vim-prettier"]
+	path = vim/pack/plugins/start/vim-prettier
+	url = https://github.com/prettier/vim-prettier.git
+	branch = release/1.x
