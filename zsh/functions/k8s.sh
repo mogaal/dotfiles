@@ -32,7 +32,6 @@ function k8s-get-token {
     aws-iam-authenticator token -i $i | jq .status.token
   else
     echo "You need tell the cluster name in order to generate a token"
-
   fi
 }
 
