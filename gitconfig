@@ -5,6 +5,9 @@
 [alias]
   s = status -s
   c = clone --recursive
+  co = checkout
+  ci = commit
+  st = status
   ca = !git add -A && git commit -av
 [color]
 	diff = auto
