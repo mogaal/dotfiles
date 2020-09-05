@@ -44,3 +44,6 @@
 	path = vim/pack/plugins/start/vim-prettier
 	url = https://github.com/prettier/vim-prettier.git
 	branch = release/1.x
+[submodule "vim/pack/plugins/start/vim-vue"]
+	path = vim/pack/plugins/start/vim-vue
+	url = https://github.com/posva/vim-vue.git
