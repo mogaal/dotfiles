@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =3
+let g:netrw_dirhistcnt =4
+let g:netrw_dirhist_4='/home/mogaal/workspace/github/librefitness/librefitness/ui/src/store'
 let g:netrw_dirhist_3='/home/mogaal/workspace/github/librefitness/librefitness/ui/src/plugins'
 let g:netrw_dirhist_2='/home/mogaal/workspace/github/librefitness/librefitness/ui/src'
 let g:netrw_dirhist_1='/home/mogaal/workspace/github/librefitness/librefitness/ui'
@@ -9,4 +10,3 @@ let g:netrw_dirhist_8='/home/mogaal/workspace/github/ministryofjustice/cloud-pla
 let g:netrw_dirhist_7='/home/mogaal/dotfiles/vim'
 let g:netrw_dirhist_6='/home/mogaal/workspace/github/ministryofjustice/cloud-platform-cli/pkg/prototype'
 let g:netrw_dirhist_5='/home/mogaal/workspace/github/ministryofjustice/cloud-platform-cli/pkg/terraform'
-let g:netrw_dirhist_4='/home/mogaal/workspace/github/ministryofjustice/cloud-platform-cli/pkg/prototype'

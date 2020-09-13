@@ -62,6 +62,7 @@ function dotfiles {
 
   if [[ "$OSTYPE" == darwin* ]]; then
     lnFile gitconfig gitconfig 
+    lnFile gittemplates gittemplates
     lnFile vimrc vimrc
     lnFile mrconfig mrconfig   
     
@@ -89,6 +90,7 @@ function dotfiles {
     lnFile mrconfig mrconfig   
     lnFile irssi irssi 
     lnFile gitconfig gitconfig 
+    lnFile gittemplates gittemplates
     lnFile gbp.conf gbp.conf
     
     # Tmux 
