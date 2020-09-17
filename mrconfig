@@ -52,3 +52,9 @@ checkout = git clone 'git@github.com:ministryofjustice/cloud-platform-cli.git' '
 
 [workspace/github/ministryofjustice/cloud-platform-terraform-monitoring]
 checkout = git clone 'git@github.com:ministryofjustice/cloud-platform-terraform-monitoring.git' 'cloud-platform-terraform-monitoring'
+
+[workspace/github/ministryofjustice/cloud-platform-terraform-ingress-controller]
+checkout = git clone 'git@github.com:ministryofjustice/cloud-platform-terraform-ingress-controller.git' 'cloud-platform-terraform-ingress-controller'
+
+[workspace/github/ministryofjustice/cloud-platform-terraform-auth0]
+checkout = git clone 'git@github.com:ministryofjustice/cloud-platform-terraform-auth0.git' 'cloud-platform-terraform-auth0'
