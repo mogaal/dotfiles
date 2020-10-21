@@ -48,12 +48,3 @@ export GO111MODULE=on
 
 # KDE/Konsole Horrible bug: https://bugs.kde.org/show_bug.cgi?id=373232
 export QT_SCREEN_SCALE_FACTORS=$_QT_SCREEN_SCALE_FACTORS
-
-###########
-## Work ###
-###########
-
-# k8s 
-export KUBECONFIG=~/workspace/k8s/admin.conf
-
-
