@@ -1,0 +1,15 @@
+name: librefit
+root: ~/workspace/github/librefit/librefit
+
+windows:
+  - editor:
+      layout: dc4b,347x91,0,0[347x74,0,0,43,347x16,0,75{173x16,0,75,44,173x16,174,75,45}]
+      panes:
+        - vim
+        - 
+        -
+  - server: 
+      layout: main-horizontal
+      panes: 
+        - make run_frontend
+        - make run_backend
