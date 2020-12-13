@@ -42,6 +42,9 @@ set wildmenu     " Using cool display menu on the top, the simplest way to try i
 set path=$PWD/** " Very useful for searches
 set encoding=utf-8
 
+" Copy then paste multiple times in Vim
+xnoremap p pgvy
+
 " Spell
 map <leader>ss :setlocal spell!<cr>
 map <leader>sn ]s
