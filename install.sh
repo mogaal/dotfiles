@@ -33,7 +33,7 @@ function install {
   fi
   if [[ "$OSTYPE" == linux* ]]; then
     sudo apt update
-    sudo apt install less mc vim htop wget git tmux tree zsh curl dnsutils git-crypt myrepos rar unrar snapd direnv jq xclip
+    sudo apt install less mc vim htop wget git tmux tree zsh curl dnsutils git-crypt myrepos rar unrar snapd direnv jq xclip bat
     sudo usermod --shell /bin/zsh $(whoami)
     sudo snap install node --classic
   fi
