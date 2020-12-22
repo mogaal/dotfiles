@@ -36,6 +36,8 @@ function install {
     sudo apt install less mc vim htop wget git tmux tree zsh curl dnsutils git-crypt myrepos rar unrar snapd direnv jq xclip bat
     sudo usermod --shell /bin/zsh $(whoami)
     sudo snap install node --classic
+    sudo snap install telegram-desktop firefox postman snapd
+    sudo snap install authy prettier --beta
   fi
 }
 
