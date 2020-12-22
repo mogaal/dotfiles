@@ -37,7 +37,8 @@ function install {
     sudo usermod --shell /bin/zsh $(whoami)
     sudo snap install node --classic
     sudo snap install telegram-desktop firefox postman snapd
-    sudo snap install authy prettier --beta
+    sudo snap install authy --beta
+    sudo snap install prettier --beta
   fi
 }
 
