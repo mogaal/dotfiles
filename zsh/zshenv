@@ -50,4 +50,4 @@ export GO111MODULE=on
 export QT_SCREEN_SCALE_FACTORS=$_QT_SCREEN_SCALE_FACTORS
 
 # Install Ruby Gems to ~/gems
-export GEM_HOME="$HOME/gems
+export GEM_HOME="$HOME/gems"
