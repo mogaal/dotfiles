@@ -46,6 +46,14 @@ if [[ -d $HOME/bin/$OS ]]; then
   );
 fi
 
+# If there's ~/gems/bin then add it to the path
+if [[ -d $HOME/gems/bin ]]; then
+  path=(
+    $HOME/gems/bin
+    $path
+  );
+fi
+
 # If there's ~/bin then add it to the path
 if [[ -d $HOME/go/bin ]]; then
   path=(
