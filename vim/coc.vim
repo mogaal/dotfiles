@@ -28,6 +28,7 @@ let g:coc_global_extensions = [
       \ 'coc-snippets',
       \ 'coc-db',
       \ 'coc-snippets',
+      \ 'coc-rust-analyzer',
       \ 'coc-yaml',
       \ ]
 

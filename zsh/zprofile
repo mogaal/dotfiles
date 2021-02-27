@@ -74,3 +74,4 @@ fi
 TMPPREFIX="${TMPDIR%/}/zsh"
 
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="/home/mogaal/.local/share/solana/install/active_release/bin:$PATH"
