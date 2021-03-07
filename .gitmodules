@@ -47,3 +47,6 @@
 [submodule "vim/pack/plugins/start/vim-vue"]
 	path = vim/pack/plugins/start/vim-vue
 	url = https://github.com/posva/vim-vue.git
+[submodule "vim/pack/plugins/start/rainbow"]
+	path = vim/pack/plugins/start/rainbow
+	url = https://github.com/luochen1990/rainbow.git
