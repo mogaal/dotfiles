@@ -38,6 +38,9 @@ set softtabstop=2
 set nobackup   " Bye bye `.swp` files!
 set noswapfile 
 
+" Map jh to Esc
+imap jh <Esc>
+
 set wildmenu     " Using cool display menu on the top, the simplest way to try it would be with :color <Tab>:
 set path=$PWD/** " Very useful for searches
 set encoding=utf-8
@@ -72,3 +75,4 @@ source ~/.vim/nerdtreee.vim
 source ~/.vim/vim-go.vim
 source ~/.vim/coc.vim
 source ~/.vim/vim-prettier.vim
+source ~/.vim/rainbow.vim
