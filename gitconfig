@@ -12,6 +12,17 @@
   ci = commit
   st = status
   ca = !git add -A && git commit -av
+  ######
+  # Taken from https://stackoverflow.com/questions/28572293/can-i-delete-all-the-local-branches-except-the-current-one
+  ######
+  # Delete all local branches but master and the current one, only if they are fully merged with master.
+  br-delete-useless = "!f(){\
+      git branch | grep -v "master" | grep -v ^* | xargs git branch -d;\
+  }; f"
+  # Delete all local branches but master and the current one.
+  br-delete-useless-force = "!f(){\
+      git branch | grep -v "master" | grep -v ^* | xargs git branch -D;\
+  }; f"
 [color]
 	diff = auto
 	status = auto
