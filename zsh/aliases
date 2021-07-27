@@ -43,6 +43,9 @@ alias less='bat'
 alias ws="cd ~/workspace"
 alias wsm="cd ~/workspace/github/ministryofjustice"
 
+# Terraform
+alias tf="terraform"
+
 #######
 # k8s #
 #######
