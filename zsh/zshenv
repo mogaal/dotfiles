@@ -49,10 +49,6 @@ export GO111MODULE=on
 # KDE/Konsole Horrible bug: https://bugs.kde.org/show_bug.cgi?id=373232
 export QT_SCREEN_SCALE_FACTORS=$_QT_SCREEN_SCALE_FACTORS
 
-# Install Ruby Gems to ~/gems
-export GEM_HOME="$HOME/gems"
-source "$HOME/.cargo/env"
-
 ## pyenv configs
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
@@ -60,3 +56,6 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init --path)"
 fi
+
+# OSX
+

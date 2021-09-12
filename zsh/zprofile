@@ -1,4 +1,3 @@
-
 # Determine OS
 if [ "$(uname)" = "Darwin" ]; then
   OS='mac'
@@ -17,10 +16,9 @@ if [ "$OS" = "mac" ]; then
   # set PATH so it includes /usr/local before the regular
   # this will help in MacOS X to use brew's installed version isntead of the
   # outdated on MacOS
-  #
-  # On Mac we use Postgres.app
   path=(
     /usr/local/{bin/sbin}
+    /opt/homebrew/bin
     $path
   )
 
@@ -72,5 +70,3 @@ if [[ ! -d "$TMPPREFIX" ]]; then
   mkdir -p "$TMPPREFIX";
 fi
 TMPPREFIX="${TMPDIR%/}/zsh"
-
-export PATH="/home/mogaal/.local/share/solana/install/active_release/bin:$PATH"
