@@ -1,12 +1,12 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =6
+let g:netrw_dirhistcnt =0
+let g:netrw_dirhist_0='/Users/mogaal'
+let g:netrw_dirhist_9='/Users/mogaal/.vim'
+let g:netrw_dirhist_8='/Users/mogaal'
+let g:netrw_dirhist_7='/Users'
 let g:netrw_dirhist_6='/home/mogaal/workspace/github/mogaal/kusama-observer/chart/kusama-observer'
 let g:netrw_dirhist_5='/home/mogaal/workspace/github/ministryofjustice/cloud-platform-infrastructure/terraform/bootstrap'
 let g:netrw_dirhist_4='/home/mogaal/workspace/github/ministryofjustice/cloud-platform-terraform-monitoring/test/unit-test'
 let g:netrw_dirhist_3='/home/mogaal/workspace/github/cloudstaking/new-website/cloudstaking/content/privacy-policy'
 let g:netrw_dirhist_2='/home/mogaal/workspace/github/ministryofjustice/cloud-platform-terraform-opa/test'
 let g:netrw_dirhist_1='/home/mogaal/workspace/github/ministryofjustice/cloud-platform-infrastructure/terraform/aws-accounts/cloud-platform-ephemeral-test/cloud-platform-account/modules/automated-tests'
-let g:netrw_dirhist_0='/home/mogaal/workspace/github/ministryofjustice/cloud-platform-infrastructure/terraform/aws-accounts/cloud-platform-ephemeral-test/bootstrap'
-let g:netrw_dirhist_9='/home/mogaal/workspace/github/mogaal/polkadot-validators/cloud-init'
-let g:netrw_dirhist_8='/home/mogaal/workspace/github/mogaal/mining-bot/pkg/mining'
-let g:netrw_dirhist_7='/home/mogaal/workspace/github/librefit/librefit/frontend/pages/food'
