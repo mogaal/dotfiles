@@ -1,60 +1,8 @@
-
 [dotfiles]
 checkout = git clone 'git@github.com:mogaal/dotfiles.git' 'dotfiles'
-
-[workspace/github/ministryofjustice/cloud-platform-environments]
-checkout = git clone 'git@github.com:ministryofjustice/cloud-platform-environments.git' 'cloud-platform-environments'
-
-[workspace/github/ministryofjustice/cloud-platform-infrastructure]
-checkout = git clone 'git@github.com:ministryofjustice/cloud-platform-infrastructure.git' 'cloud-platform-infrastructure'
-
-[workspace/github/ministryofjustice/cloud-platform]
-checkout = git clone 'git@github.com:ministryofjustice/cloud-platform.git' 'cloud-platform'
 
 [work]
 checkout = git clone 'keybase://private/mogaal/work' 'work'
 
-[workspace/github/ministryofjustice/cloud-platform-terraform-bastion]
-checkout = git clone 'git@github.com:ministryofjustice/cloud-platform-terraform-bastion.git' 'cloud-platform-terraform-bastion'
-
-[workspace/github/ministryofjustice/cloud-platform-terraform-sqs]
-checkout = git clone 'git@github.com:ministryofjustice/cloud-platform-terraform-sqs.git' 'cloud-platform-terraform-sqs'
-
-[workspace/github/ministryofjustice/cloud-platform-terraform-sns-topic]
-checkout = git clone 'git@github.com:ministryofjustice/cloud-platform-terraform-sns-topic.git' 'cloud-platform-terraform-sns-topic'
-
-[workspace/github/ministryofjustice/cloud-platform-terraform-rds-instance]
-checkout = git clone 'git@github.com:ministryofjustice/cloud-platform-terraform-rds-instance.git' 'cloud-platform-terraform-rds-instance'
-
-[workspace/github/ministryofjustice/cloud-platform-concourse]
-checkout = git clone 'git@github.com:ministryofjustice/cloud-platform-concourse.git' 'cloud-platform-concourse'
-
 [bin]
 checkout = git clone 'git@github.com:mogaal/bin.git' 'bin'
-
-[workspace/github/ministryofjustice/cloud-platform-terraform-eks-components]
-checkout = git clone 'git@github.com:ministryofjustice/cloud-platform-terraform-eks-components.git' 'cloud-platform-terraform-eks-components'
-
-[workspace/github/ministryofjustice/cloud-platform-user-guide]
-checkout = git clone 'git@github.com:ministryofjustice/cloud-platform-user-guide.git' 'cloud-platform-user-guide'
-
-[workspace/github/ministryofjustice/cloud-platform-tools-image]
-checkout = git clone 'git@github.com:ministryofjustice/cloud-platform-tools-image.git' 'cloud-platform-tools-image'
-
-[workspace/github/ministryofjustice/cloud-platform-tools]
-checkout = git clone 'git@github.com:ministryofjustice/cloud-platform-tools.git' 'cloud-platform-tools'
-
-[workspace/github/mogaal/cloudhispano]
-checkout = git clone 'git@github.com:mogaal/cloudhispano.git' 'cloudhispano'
-
-[workspace/github/ministryofjustice/cloud-platform-cli]
-checkout = git clone 'git@github.com:ministryofjustice/cloud-platform-cli.git' 'cloud-platform-cli'
-
-[workspace/github/ministryofjustice/cloud-platform-terraform-monitoring]
-checkout = git clone 'git@github.com:ministryofjustice/cloud-platform-terraform-monitoring.git' 'cloud-platform-terraform-monitoring'
-
-[workspace/github/ministryofjustice/cloud-platform-terraform-ingress-controller]
-checkout = git clone 'git@github.com:ministryofjustice/cloud-platform-terraform-ingress-controller.git' 'cloud-platform-terraform-ingress-controller'
-
-[workspace/github/ministryofjustice/cloud-platform-terraform-auth0]
-checkout = git clone 'git@github.com:ministryofjustice/cloud-platform-terraform-auth0.git' 'cloud-platform-terraform-auth0'
