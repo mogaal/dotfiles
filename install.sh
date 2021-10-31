@@ -7,10 +7,6 @@
 DOTFILES=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 BACKUP="$(dirname "$DOTFILES")/dotfiles_old"
 
-# Binaries
-TERRAFORM_VERSION='0.11.14'
-TERRAFORM_NEW_VERSION='0.12.14'
-
 ##################
 #### FUNCTIONS ###
 ##################
@@ -33,16 +29,22 @@ function install {
   fi
   if [[ "$OSTYPE" == linux* ]]; then
     sudo apt update
-    sudo apt install less mc vim htop wget git tmux tree zsh curl dnsutils git-crypt myrepos rar unrar snapd direnv jq xclip bat
+    sudo apt install -y less fortune mc vim htop wget tmux tree zsh curl dnsutils git-crypt myrepos rar unrar snapd direnv jq xclip bat
     sudo usermod --shell /bin/zsh $(whoami)
-    sudo snap install node --classic
     sudo snap install telegram-desktop firefox postman snapd mqtt-explorer arduino
-    sudo snap install prettier --beta
+    
+    # Keybase
+    curl --remote-name https://prerelease.keybase.io/keybase_amd64.deb
+    sudo apt install -y ./keybase_amd64.deb
+    rm -f ./keybase_amd64.deb
+
+    # nodejs / NPM / yarn
+    sudo apt install -y nodejs npm
+    sudo npm install --global yarn
   fi
 }
 
 function dotfiles {
-
   if [[ -d "$DOTFILES" ]]; then
     echo "Symlinking dotfiles from $DOTFILES"
   else
@@ -127,10 +129,6 @@ function BackupFile {
 case $1 in
   -i|--install)
     echo "Installing the must apps"
-    install
-  ;;
-  -e|--install-extras)
-    echo "Installing the extra-apps"
     install
   ;;
   -d|--dotfiles)
