@@ -57,3 +57,4 @@ export PATH="$HOME/.serverless/bin:$PATH"
 
 # This is for direnv
 eval "$(direnv hook zsh)"
+
