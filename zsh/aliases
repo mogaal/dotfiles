@@ -1,9 +1,3 @@
-if [ "$(uname)" = "Darwin" ]; then
-  OS='mac'
-elif [ "$(expr substr $(uname -s) 1 5)" = "Linux" ]; then
-  OS='linux'
-fi
-
 if [ "$OS" = "linux" ]; then
   alias clonar_debian='gbp clone --verbose --all --pristine-tar'
   alias pc='lintian --color auto -i  --pedantic -I *.changes'

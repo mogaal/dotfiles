@@ -1,7 +1,3 @@
-if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprofile"
-fi
-
 # default editor
 export EDITOR=vim
 
@@ -32,7 +28,7 @@ export DEBSIGN_KEYID="F1C09EFB"
 # Set history configuration
 export HISTSIZE=1000
 export HISTFILESIZE=2000
-export HISTFILE=~/.zsh_history
+export HISTFILE=~/.zsh_history  # ensure history file visibility
 export HISTCONTROL=ignoredups:erasedups
 
 # Save and reload the history after each command finishes

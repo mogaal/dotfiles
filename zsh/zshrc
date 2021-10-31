@@ -15,18 +15,17 @@ if [ -e "$HOME/dotfiles/zsh/functions" ]; then
   done
 fi
 
-if [ "$(uname)" = "Darwin" ]; then
-  OS='mac'
-elif [ "$(expr substr $(uname -s) 1 5)" = "Linux" ]; then
-  OS='linux'
+# Print a random, hopefully interesting, adage.
+if (( $+commands[fortune] )); then
+  if [[ -t 0 || -t 1 ]]; then
+    fortune -s
+    print
+  fi
 fi
 
 setopt    appendhistory     #Append history to the history file (no overwriting)
 setopt    incappendhistory  #Immediately append to the history file, not 
 unsetopt  share_history
-
-export HISTFILE=~/.zsh_history  # ensure history file visibility
-export HH_CONFIG=hicolor        # get more colors
 
 if [ "$OS" = "linux" ]; then
   bindkey -s "\C-r" "\eqhstr\n"     # bind hh to Ctrl-r (for Vi mode check doc)
@@ -48,12 +47,8 @@ if [ -f '/Users/mogaal/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/User
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/mogaal/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/mogaal/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
-# Added by serverless binary installer
-export PATH="$HOME/.serverless/bin:$PATH"
-
-# tabtab source for packages
-# uninstall by removing these lines
-[[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
+# RVM
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 # This is for direnv
 eval "$(direnv hook zsh)"
