@@ -39,7 +39,8 @@ function install {
     rm -f ./keybase_amd64.deb
 
     # nodejs / NPM / yarn
-    sudo apt install -y nodejs npm
+    curl -fsSL https://deb.nodesource.com/setup_17.x | sudo -E bash -
+    sudo apt install -y nodejs
     sudo npm install --global yarn
   fi
 }
