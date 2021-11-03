@@ -80,7 +80,6 @@ function dotfiles {
     lnFile hh_blacklist hh_blacklist
 
     # zsh stuff
-    lnFile zsh/zlogin zlogin
     lnFile zsh/zlogout zlogout
     lnFile zsh/zshenv zshenv
     lnFile zsh/zprofile zprofile
@@ -105,7 +104,6 @@ function dotfiles {
     
     # zsh stuff
     lnFile zsh/aliases aliases 
-    lnFile zsh/zlogin zlogin
     lnFile zsh/zlogout zlogout
     lnFile zsh/zshenv zshenv
     lnFile zsh/zprofile zprofile
