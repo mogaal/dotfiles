@@ -5,6 +5,10 @@ elif [ "$(expr substr $(uname -s) 1 5)" = "Linux" ]; then
   OS='linux'
 fi
 
+# Architecture: my m1 uses arm and my desktop x86_64. Important because binaries are different
+[[ $(uname -m) == arm* ]] && ARCH='arm'
+[[ $(uname -m) == x86_64* ]] && ARCH='amd64'
+
 {
   # Compile the completion dump to increase startup speed.
   zcompdump="${ZDOTDIR:-$HOME}/.zcompdump"
@@ -45,9 +49,9 @@ path=(
 )
 
 # If there's ~/bin then add it to the path
-if [[ -d $HOME/bin/$OS ]]; then
+if [[ -d $HOME/bin/$OS/$ARCH ]]; then
   path=(
-    $HOME/bin/$OS
+    $HOME/bin/$OS/$ARCH
     $path
   );
 fi
