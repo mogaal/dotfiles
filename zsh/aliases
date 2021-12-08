@@ -30,8 +30,8 @@ alias prebuild="SECRETS_FILE=/Users/aga35/secret.tfvars ~/workspace/cd-devops-to
 # What are my custom functions?
 alias ls-my-funcions="cat ~/dotfiles/zsh/functions/* | grep function | cut -d' ' -f 2"
 
-# Now using bat 
-alias less='bat'
+# Now using bat (in ubuntu binary is 'batcat')
+alias less='batcat'
 
 # Alias to go to the workspace folder
 alias ws="cd ~/workspace"
@@ -58,8 +58,6 @@ alias k8s_externalIPs="kubectl get nodes -o template --template='{{range.items}}
 if [[ $OS == "mac" ]]; then
   alias terraform='~/bin/mac/terraform'
 fi
-
-alias aws='/usr/local/bin/aws2'
 
 # Loading fun stuff
 alias creds="source ~/envs/moj-alejandrogarrido-iam"
