@@ -64,6 +64,18 @@ if [[ -d $HOME/gems/bin ]]; then
   );
 fi
 
+##########
+# Golang #
+##########
+
+# Custom golang installation
+if [[ -d /usr/local/go/bin ]]; then
+  path=(
+    /usr/local/go/bin
+    $path
+  );
+fi
+
 # If there's ~/bin then add it to the path
 if [[ -d $HOME/go/bin ]]; then
   path=(
