@@ -15,6 +15,11 @@ if [ -e "$HOME/dotfiles/zsh/functions" ]; then
   done
 fi
 
+# Load my work envs
+if [[ -e "$HOME/work/dotfiles/env" ]]; then
+    source "$HOME/work/dotfiles/env";
+fi
+
 # Print a random, hopefully interesting, adage.
 if (( $+commands[fortune] )); then
   if [[ -t 0 || -t 1 ]]; then
