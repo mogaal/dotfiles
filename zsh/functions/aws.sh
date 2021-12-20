@@ -53,3 +53,21 @@ function aws-rds-restore-from-snapshot {
   # fi
   echo "Normal $1"
 }
+
+# Refresh STS
+function aws-reload-creds {
+  if [ -n "$1" ]; then
+    aws --profile $1 sso login
+  else
+    echo "Provide the profile, eg: aws-reload-creds prod"
+  fi
+}
+
+# Check creds
+function aws-check-creds {
+  if [ -n "$1" ]; then
+    aws --profile $1 sts get-caller-identity
+  else
+    echo "Provide the profile, eg: aws-check-creds prod"
+  fi
+}
