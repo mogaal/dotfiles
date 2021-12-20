@@ -2,9 +2,9 @@
 
 function k8s-toolbox() {
   if [[ -n $1 ]]; then
-    kubectl -n $1 run my-toolbox --generator=run-pod/v1 --rm -i --tty --image mogaal/toolbox
+    kubectl -n $1 run my-toolbox --rm -i --tty --image mogaal/toolbox
   else
-    kubectl run my-toolbox --generator=run-pod/v1 --rm -i --tty --image mogaal/toolbox
+    kubectl run my-toolbox --rm -i --tty --image mogaal/toolbox
   fi
 }
 
