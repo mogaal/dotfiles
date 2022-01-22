@@ -37,6 +37,9 @@ alias less='batcat'
 alias ws="cd ~/workspace"
 alias wsm="cd ~/workspace/github/ministryofjustice"
 
+# Kitty
+alias icat="kitty +kitten icat"
+
 # Terraform
 alias tf="terraform"
 
