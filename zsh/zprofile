@@ -65,6 +65,14 @@ if [[ -d $HOME/gems/bin ]]; then
   );
 fi
 
+# kitty
+if [[ -d $HOME/.local/kitty.app/bin ]]; then
+  path=(
+    $HOME/.local/kitty.app/bin
+    $path
+  );
+fi
+
 ##########
 # Golang #
 ##########

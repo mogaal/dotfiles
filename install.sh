@@ -30,7 +30,7 @@ function install {
   fi
   if [[ "$OSTYPE" == linux* ]]; then
     sudo apt update
-    sudo apt install -y less fortune mc vim htop wget tmux tree zsh curl dnsutils git-crypt myrepos rar unrar snapd direnv jq xclip bat kitty fonts-firacode
+    sudo apt install -y less fortune mc vim htop wget tmux tree zsh curl dnsutils git-crypt myrepos rar unrar snapd direnv jq xclip bat fonts-firacode
     sudo usermod --shell /bin/zsh $(whoami)
     sudo snap install telegram-desktop firefox postman snapd mqtt-explorer arduino
     
@@ -43,6 +43,12 @@ function install {
     curl -fsSL https://deb.nodesource.com/setup_17.x | sudo -E bash -
     sudo apt install -y nodejs
     sudo npm install --global yarn
+
+    # starship 
+    sh -c "$(curl -fsSL https://starship.rs/install.sh)"
+
+    # kitty 
+    curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
   fi
 }
 
