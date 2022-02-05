@@ -67,3 +67,8 @@ bin/
 *.lnk
 
 # End of https://www.gitignore.io/api/osx,linux,windows
+#
+
+# vim/nvim Plug pkg manager
+vim/autoload/
+vim/plugged/

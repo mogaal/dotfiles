@@ -81,20 +81,32 @@ endif
 
 call plug#begin()
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  Plug 'preservim/nerdtree'
-  Plug 'Xuyuanp/nerdtree-git-plugin'
   Plug 'morhetz/gruvbox'
   Plug 'itchyny/lightline.vim'
-  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-  Plug 'vim-scripts/vim-gitgutter'
-  Plug 'hashivim/vim-terraform'
+  Plug 'preservim/nerdtree'
+  Plug 'Xuyuanp/nerdtree-git-plugin'
   Plug 'tpope/vim-commentary'
+  Plug 'vim-scripts/vim-gitgutter'
+  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
   Plug 'prettier/vim-prettier', {'do': 'yarn install --frozen-lockfile --production', 'branch': 'release/0.x' }
+  Plug 'hashivim/vim-terraform'
+
+  " just nvim
+  Plug 'kyazdani42/nvim-web-devicons' " for file icons
+  Plug 'kyazdani42/nvim-tree.lua'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope.nvim'
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
+
+if has('nvim')
+  source ~/.vim/nvim-tree.nvim
+  source ~/.vim/telescope.nvim
+endif
+
 
 " Plugins configuration
 source ~/.vim/gruvbox.vim
-source ~/.vim/ctrlp.vim
 source ~/.vim/vim-gitgutter.vim
 source ~/.vim/lightline.vim 
 source ~/.vim/nerdtreee.vim

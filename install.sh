@@ -30,7 +30,7 @@ function install {
   fi
   if [[ "$OSTYPE" == linux* ]]; then
     sudo apt update
-    sudo apt install -y less fortune mc vim htop wget tmux tree zsh curl dnsutils git-crypt myrepos rar unrar snapd direnv jq xclip bat fonts-firacode
+    sudo apt install -y less fortune mc vim htop wget tmux tree zsh curl dnsutils git-crypt myrepos rar unrar snapd direnv jq xclip bat fonts-firacode ripgrep
     sudo usermod --shell /bin/zsh $(whoami)
     sudo snap install telegram-desktop firefox postman snapd mqtt-explorer arduino
     
