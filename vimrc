@@ -72,6 +72,26 @@ endif
 " Colors of the Pmenu (used mainly for autocompletition)
 highlight Pmenu ctermbg=black ctermfg=white
 
+" Plugin manager
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin()
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'preservim/nerdtree'
+  Plug 'Xuyuanp/nerdtree-git-plugin'
+  Plug 'morhetz/gruvbox'
+  Plug 'itchyny/lightline.vim'
+  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+  Plug 'vim-scripts/vim-gitgutter'
+  Plug 'hashivim/vim-terraform'
+  Plug 'tpope/vim-commentary'
+  Plug 'prettier/vim-prettier', {'do': 'yarn install --frozen-lockfile --production', 'branch': 'release/0.x' }
+call plug#end()
+
 " Plugins configuration
 source ~/.vim/gruvbox.vim
 source ~/.vim/ctrlp.vim
