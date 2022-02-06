@@ -29,14 +29,15 @@ function install {
     chsh -s /bin/zsh
   fi
   if [[ "$OSTYPE" == linux* ]]; then
-    # syncthing
-    sudo curl -s -o /usr/share/keyrings/syncthing-archive-keyring.gpg https://syncthing.net/release-key.gpg
-    echo "deb [signed-by=/usr/share/keyrings/syncthing-archive-keyring.gpg] https://apt.syncthing.net/ syncthing stable" | sudo tee /etc/apt/sources.list.d/syncthing.list
-
     sudo apt update
     sudo apt install -y less fortune mc vim htop wget tmux tree zsh curl dnsutils git-crypt myrepos rar unrar snapd direnv jq xclip bat fonts-firacode ripgrep python3-pynvim syncthing
     sudo usermod --shell /bin/zsh $(whoami)
     sudo snap install telegram-desktop firefox postman snapd mqtt-explorer arduino
+    
+    # syncthing
+    sudo curl -s -o /usr/share/keyrings/syncthing-archive-keyring.gpg https://syncthing.net/release-key.gpg
+    echo "deb [signed-by=/usr/share/keyrings/syncthing-archive-keyring.gpg] https://apt.syncthing.net/ syncthing stable" | sudo tee /etc/apt/sources.list.d/syncthing.list
+    sudo apt update && sudo apt install syncthing
     
     # Keybase
     curl --remote-name https://prerelease.keybase.io/keybase_amd64.deb
