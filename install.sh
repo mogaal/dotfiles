@@ -33,6 +33,8 @@ function install {
     sudo apt install -y less fortune mc vim htop wget tmux tree zsh curl dnsutils git-crypt myrepos rar unrar snapd direnv jq xclip bat fonts-firacode ripgrep
     sudo usermod --shell /bin/zsh $(whoami)
     sudo snap install telegram-desktop firefox postman snapd mqtt-explorer arduino
+    # For old OS type
+    sudo snap install nvim --classic
     
     # Keybase
     curl --remote-name https://prerelease.keybase.io/keybase_amd64.deb
@@ -49,6 +51,12 @@ function install {
 
     # kitty 
     curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+
+    # My own fonts
+    mkdir -p ~/.local/share/fonts
+    cd ~/.local/share/fonts && curl -fLo "JetBrains Mono Light Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/JetBrainsMono/Ligatures/Light/complete/JetBrains%20Mono%20Light%20Nerd%20Font%20Complete.ttf
+    fc-cache -fvq
+
   fi
 }
 
