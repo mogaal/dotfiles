@@ -86,6 +86,7 @@ call plug#begin()
   Plug 'preservim/nerdtree'
   Plug 'Xuyuanp/nerdtree-git-plugin'
   Plug 'tpope/vim-commentary'
+  Plug 'tpope/vim-fugitive'
   Plug 'vim-scripts/vim-gitgutter'
 
   if executable('go')
