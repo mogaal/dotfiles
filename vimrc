@@ -87,7 +87,11 @@ call plug#begin()
   Plug 'Xuyuanp/nerdtree-git-plugin'
   Plug 'tpope/vim-commentary'
   Plug 'vim-scripts/vim-gitgutter'
-  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
+  if executable('go')
+    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+  endif
+
   Plug 'prettier/vim-prettier', {'do': 'yarn install --frozen-lockfile --production', 'branch': 'release/0.x' }
   Plug 'hashivim/vim-terraform'
 
