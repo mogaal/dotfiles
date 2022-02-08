@@ -87,14 +87,13 @@ call plug#begin()
   Plug 'Xuyuanp/nerdtree-git-plugin'
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-fugitive'
-  Plug 'vim-scripts/vim-gitgutter'
+  Plug 'airblade/vim-gitgutter'
 
   if executable('go')
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
   endif
 
   Plug 'prettier/vim-prettier', {'do': 'yarn install --frozen-lockfile --production', 'branch': 'release/0.x' }
-  Plug 'hashivim/vim-terraform'
 
   " just nvim
   Plug 'kyazdani42/nvim-web-devicons' " for file icons
@@ -102,11 +101,17 @@ call plug#begin()
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'lukas-reineke/indent-blankline.nvim'
+  Plug 'akinsho/bufferline.nvim'
+  Plug 'lewis6991/gitsigns.nvim'
 call plug#end()
 
 if has('nvim')
   source ~/.vim/nvim-tree.nvim
   source ~/.vim/telescope.nvim
+  source ~/.vim/bufferline.nvim
+  source ~/.vim/gitsigns.nvim
+  source ~/.vim/treesitter.nvim
 endif
 
 
