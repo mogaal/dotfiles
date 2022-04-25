@@ -1,5 +1,5 @@
 # default editor
-export EDITOR=vim
+export EDITOR=nvim
 
 # Browser 
 export BROWSER=firefox

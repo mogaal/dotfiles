@@ -65,6 +65,14 @@ if [[ -d $HOME/gems/bin ]]; then
   );
 fi
 
+# If there's ~/.pyenv/bin then add it to the path
+if [[ -d $HOME/.pyenv/bin ]]; then
+  path=(
+    $HOME/.pyenv/bin
+    $path
+  );
+fi
+
 # kitty
 if [[ -d $HOME/.local/kitty.app/bin ]]; then
   path=(
