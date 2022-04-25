@@ -104,6 +104,7 @@ call plug#begin()
   Plug 'lukas-reineke/indent-blankline.nvim'
   Plug 'akinsho/bufferline.nvim'
   Plug 'lewis6991/gitsigns.nvim'
+  Plug 'towolf/vim-helm'
 call plug#end()
 
 if has('nvim')
