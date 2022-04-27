@@ -50,3 +50,6 @@
 [submodule "vim/pack/plugins/start/rainbow"]
 	path = vim/pack/plugins/start/rainbow
 	url = https://github.com/luochen1990/rainbow.git
+[submodule "vim/pack/plugins/start/fugitive"]
+	path = vim/pack/plugins/start/fugitive
+	url = https://tpope.io/vim/fugitive.git

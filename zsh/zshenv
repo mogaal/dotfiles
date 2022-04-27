@@ -48,8 +48,13 @@ export QT_SCREEN_SCALE_FACTORS=$_QT_SCREEN_SCALE_FACTORS
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
-# React Native
-export ANDROID_HOME=$HOME/Android/Sdk
+# Android Studio
+if [ "$OS" = "linux" ]; then
+  export ANDROID_HOME=$HOME/Android/Sdk
+else # OSX
+  export ANDROID_HOME=$HOME/Library/Android/sdk
+
+fi
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
