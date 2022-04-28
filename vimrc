@@ -83,11 +83,8 @@ call plug#begin()
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'morhetz/gruvbox'
   Plug 'itchyny/lightline.vim'
-  Plug 'preservim/nerdtree'
-  Plug 'Xuyuanp/nerdtree-git-plugin'
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-fugitive'
-  Plug 'airblade/vim-gitgutter'
 
   if executable('go')
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -118,9 +115,7 @@ endif
 
 " Plugins configuration
 source ~/.vim/gruvbox.vim
-source ~/.vim/vim-gitgutter.vim
 source ~/.vim/lightline.vim 
-source ~/.vim/nerdtreee.vim
 source ~/.vim/vim-go.vim
 source ~/.vim/coc.vim
 source ~/.vim/vim-prettier.vim
