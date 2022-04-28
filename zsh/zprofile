@@ -81,7 +81,7 @@ if [[ -d $HOME/.local/kitty.app/bin ]]; then
   );
 fi
 
-# Flutter
+# Flutter & flutter-firebase
 if [[ -d $HOME/development/flutter/bin ]]; then
   path=(
     $HOME/development/flutter/bin
@@ -89,6 +89,12 @@ if [[ -d $HOME/development/flutter/bin ]]; then
   );
 fi
 
+if [[ -d $HOME/.pub-cache/bin ]]; then
+  path=(
+    $HOME/.pub-cache/bin
+    $path
+  );
+fi
 
 ##########
 # Golang #
