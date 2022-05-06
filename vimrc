@@ -80,7 +80,7 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 call plug#begin()
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  " Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'morhetz/gruvbox'
   Plug 'itchyny/lightline.vim'
   Plug 'tpope/vim-commentary'
@@ -102,6 +102,10 @@ call plug#begin()
   Plug 'akinsho/bufferline.nvim'
   Plug 'lewis6991/gitsigns.nvim'
   Plug 'towolf/vim-helm'
+
+  " LSP
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'williamboman/nvim-lsp-installer'
 call plug#end()
 
 if has('nvim')
@@ -110,6 +114,7 @@ if has('nvim')
   source ~/.vim/bufferline.nvim
   source ~/.vim/gitsigns.nvim
   source ~/.vim/treesitter.nvim
+  source ~/.vim/nvim-lspconfig.nvim
 endif
 
 
@@ -117,5 +122,5 @@ endif
 source ~/.vim/gruvbox.vim
 source ~/.vim/lightline.vim 
 source ~/.vim/vim-go.vim
-source ~/.vim/coc.vim
+" source ~/.vim/coc.vim
 source ~/.vim/vim-prettier.vim
