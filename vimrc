@@ -61,8 +61,27 @@ map <leader>j :wincmd j<CR>
 map <leader>k :wincmd k<CR>
 map <leader>l :wincmd l<CR>
 
-set smarttab " Insert tabs on the start of a line according to shiftwidth, not tabstop
-syntax on    " I love colors, don't you?
+" Adding some LUA
+lua <<EOF
+local opts = { noremap = true, silent = true }
+
+local term_opts = { silent = true }
+
+-- Shorten function name
+local keymap = vim.api.nvim_set_keymap
+
+-- Move text up and down
+keymap("v", "<A-j>", ":m .+1<CR>==", opts)
+keymap("v", "<A-k>", ":m .-2<CR>==", opts)
+keymap("v", "p", '"_dP', opts)
+
+-- Visual Block --
+-- Move text up and down
+keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
+keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
+keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
+keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
+EOF
 
 " To remember the last line we were
 if has("autocmd")
@@ -80,8 +99,6 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 call plug#begin()
-  " Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  Plug 'morhetz/gruvbox'
   Plug 'itchyny/lightline.vim'
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-fugitive'
@@ -106,6 +123,20 @@ call plug#begin()
   " LSP
   Plug 'neovim/nvim-lspconfig'
   Plug 'williamboman/nvim-lsp-installer'
+
+  " nvim-cmp
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'hrsh7th/cmp-nvim-lsp'
+  Plug 'hrsh7th/cmp-buffer'
+  Plug 'hrsh7th/cmp-path'
+  Plug 'hrsh7th/cmp-cmdline'
+  Plug 'hrsh7th/nvim-cmp'
+  " For vsnip users.
+  Plug 'hrsh7th/cmp-vsnip'
+  Plug 'hrsh7th/vim-vsnip'
+  Plug 'onsails/lspkind.nvim'
+
+  Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 call plug#end()
 
 if has('nvim')
@@ -115,12 +146,15 @@ if has('nvim')
   source ~/.vim/gitsigns.nvim
   source ~/.vim/treesitter.nvim
   source ~/.vim/nvim-lspconfig.nvim
+  source ~/.vim/nvim-cmp.nvim
 endif
 
 
 " Plugins configuration
-source ~/.vim/gruvbox.vim
 source ~/.vim/lightline.vim 
 source ~/.vim/vim-go.vim
-" source ~/.vim/coc.vim
 source ~/.vim/vim-prettier.vim
+
+set smarttab " Insert tabs on the start of a line according to shiftwidth, not tabstop
+syntax on    " I love colors, don't you?
+colorscheme tokyonight
