@@ -20,9 +20,6 @@ let mapleader = "," " Set the <leader> key
 " Blink cursor on error instead of beeping (grr)
 set visualbell
 
-" Fast saving
-nmap <leader>w :w!<cr>
-
 " Search related stuff
 set incsearch      " Searching starts after you enter the string.
 set hlsearch       " Turns on search highlighting
@@ -60,6 +57,8 @@ map <leader>h :wincmd h<CR>
 map <leader>j :wincmd j<CR>
 map <leader>k :wincmd k<CR>
 map <leader>l :wincmd l<CR>
+
+nmap <leader>w :w!<cr>   " Fast saving
 
 " Adding some LUA
 lua <<EOF
@@ -103,9 +102,9 @@ call plug#begin()
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-fugitive'
 
-  if executable('go')
-    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-  endif
+  " if executable('go')
+  "   Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+  " endif
 
   Plug 'prettier/vim-prettier', {'do': 'yarn install --frozen-lockfile --production', 'branch': 'release/0.x' }
 
@@ -145,14 +144,13 @@ if has('nvim')
   source ~/.vim/bufferline.nvim
   source ~/.vim/gitsigns.nvim
   source ~/.vim/treesitter.nvim
-  source ~/.vim/nvim-lspconfig.nvim
-  source ~/.vim/nvim-cmp.nvim
+  source ~/.vim/nvim-lspconfig.vim
+  source ~/.vim/nvim-cmp.vim
 endif
 
 
 " Plugins configuration
 source ~/.vim/lightline.vim 
-source ~/.vim/vim-go.vim
 source ~/.vim/vim-prettier.vim
 
 set smarttab " Insert tabs on the start of a line according to shiftwidth, not tabstop
