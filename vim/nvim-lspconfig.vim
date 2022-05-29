@@ -37,8 +37,11 @@ local on_attach = function(client, bufnr)
   if vim.bo[bufnr].buftype ~= "" or vim.bo[bufnr].filetype == "helm" then
     vim.diagnostic.disable() 
   end
-
 end
+
+-- nvim-cmp supports additional completion capabilities
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
@@ -46,10 +49,7 @@ local servers = { 'jsonls', 'pyright', 'sqlls', 'tflint', 'zk', 'tsserver', 'bas
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
     on_attach = on_attach,
-    flags = {
-      -- This will be the default in neovim 0.7+
-      debounce_text_changes = 150,
-    }
+    capabilities = capabilities,
   }
 end
 
