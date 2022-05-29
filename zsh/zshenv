@@ -18,6 +18,17 @@ export NAME='Alejandro Garrido Mota'
 export MAIL='garridomota@gmail.com'
 export GPG_TTY=$(tty) # Because of GPG-agent
 
+# Determine OS
+if [ "$(uname)" = "Darwin" ]; then
+  OS='mac'
+elif [ "$(expr substr $(uname -s) 1 5)" = "Linux" ]; then
+  OS='linux'
+fi
+
+# Architecture: my m1 uses arm and my desktop x86_64. Important because binaries are different
+[[ $(uname -m) == arm* ]] && ARCH='arm'
+[[ $(uname -m) == x86_64* ]] && ARCH='amd64'
+
 # Debian packing
 export DEBEMAIL='alejandro@debian.org'
 export DEBFULLNAME='Alejandro Garrido Mota'
@@ -49,7 +60,7 @@ export QT_SCREEN_SCALE_FACTORS=$_QT_SCREEN_SCALE_FACTORS
 export PATH="$PATH:$HOME/.rvm/bin"
 
 # Android Studio
-if [ "$OS" = "linux" ]; then
+if [[ "$OS" == "linux" ]]; then
   export ANDROID_HOME=$HOME/Android/Sdk
 else # OSX
   export ANDROID_HOME=$HOME/Library/Android/sdk
