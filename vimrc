@@ -111,8 +111,11 @@ call plug#begin()
   " just nvim
   Plug 'kyazdani42/nvim-web-devicons' " for file icons
   Plug 'kyazdani42/nvim-tree.lua'
+
+  " Telescope
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
+
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'lukas-reineke/indent-blankline.nvim'
   Plug 'akinsho/bufferline.nvim'
@@ -140,8 +143,8 @@ call plug#end()
 
 if has('nvim')
   source ~/.vim/nvim-tree.nvim
-  source ~/.vim/telescope.nvim
-  source ~/.vim/bufferline.nvim
+  source ~/.vim/telescope.vim
+  source ~/.vim/bufferline.vim
   source ~/.vim/gitsigns.nvim
   source ~/.vim/treesitter.nvim
   source ~/.vim/nvim-lspconfig.vim
