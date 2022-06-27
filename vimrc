@@ -102,12 +102,6 @@ call plug#begin()
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-fugitive'
 
-  " if executable('go')
-  "   Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-  " endif
-
-  Plug 'prettier/vim-prettier', {'do': 'yarn install --frozen-lockfile --production', 'branch': 'release/0.x' }
-
   " just nvim
   Plug 'kyazdani42/nvim-web-devicons' " for file icons
   Plug 'kyazdani42/nvim-tree.lua'
@@ -139,6 +133,8 @@ call plug#begin()
   Plug 'onsails/lspkind.nvim'
 
   Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+
+  Plug 'akinsho/toggleterm.nvim'
 call plug#end()
 
 if has('nvim')
@@ -149,12 +145,12 @@ if has('nvim')
   source ~/.vim/treesitter.nvim
   source ~/.vim/nvim-lspconfig.vim
   source ~/.vim/nvim-cmp.vim
+  source ~/.vim/toggleterm.vim
 endif
 
 
 " Plugins configuration
 source ~/.vim/lightline.vim 
-source ~/.vim/vim-prettier.vim
 
 set smarttab " Insert tabs on the start of a line according to shiftwidth, not tabstop
 syntax on    " I love colors, don't you?
