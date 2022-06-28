@@ -22,16 +22,66 @@ display_help() {
 
 function install {
   if [[ "$OSTYPE" == darwin* ]]; then
-    brew install jq python htop tree mr wget reattach-to-user-namespace tmux hh gpg git-crypt bat zsh direnv git-lfs node rust pyenv-virtualenv starship coreutils
-    brew cask install iterm2 docker google-chrome
+    brew install \
+      jq \
+      python \
+      htop \
+      tree \
+      mr \
+      wget \
+      reattach-to-user-namespace \
+      tmux \ 
+      hh \
+      gpg \
+      git-crypt \
+      bat \
+      zsh \
+      direnv \
+      git-lfs \
+      node \
+      rust \
+      pyenv-virtualenv \
+      starship \
+      coreutils \
+      lazygit
+    brew cask install \
+      iterm2 \
+      docker \
+      google-chrome
     brew tap homebrew/cask-fonts && brew install --cask font-fira-code # For kitty
+
     echo "Setting up zsh as a default shell: chsh -s /bin/zsh"
     chsh -s /bin/zsh
   fi
+
   if [[ "$OSTYPE" == linux* ]]; then
     sudo apt update
-    sudo apt install -y less fortune mc vim htop wget tmux tree zsh curl dnsutils git-crypt myrepos rar unrar snapd direnv jq xclip bat fonts-firacode ripgrep python3-pynvim syncthing \
-      fd-find # because of nvim telescope
+    sudo apt install -y \
+      less \
+      fortune \
+      mc \
+      vim \
+      htop \
+      wget \
+      tmux \
+      tree \
+      zsh \
+      curl \
+      dnsutils \
+      git-crypt \
+      myrepos \
+      rar \
+      unrar \
+      snapd \
+      direnv \
+      jq \                 # parse json in command line
+      xclip \
+      bat \                # less with colors
+      fonts-firacode \     # kitty
+      ripgrep \            # telescope
+      python3-pynvim \     
+      syncthing \          # my binaries 
+      fd-find              # because of nvim telescope
     sudo usermod --shell /bin/zsh $(whoami)
     sudo snap install telegram-desktop firefox postman snapd mqtt-explorer arduino
     
