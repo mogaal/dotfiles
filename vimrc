@@ -100,7 +100,6 @@ endif
 call plug#begin()
   Plug 'itchyny/lightline.vim'
   Plug 'tpope/vim-commentary'
-  Plug 'tpope/vim-fugitive'
 
   " just nvim
   Plug 'kyazdani42/nvim-web-devicons' " for file icons
