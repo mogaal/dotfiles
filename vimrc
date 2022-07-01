@@ -87,9 +87,6 @@ if has("autocmd")
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
-" Colors of the Pmenu (used mainly for autocompletition)
-highlight Pmenu ctermbg=black ctermfg=white
-
 " Plugin manager
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
