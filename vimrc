@@ -131,6 +131,9 @@ call plug#begin()
   Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 
   Plug 'akinsho/toggleterm.nvim'
+
+  " diffView requires Telescope
+  Plug 'sindrets/diffview.nvim'
 call plug#end()
 
 if has('nvim')
