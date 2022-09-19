@@ -131,6 +131,7 @@ call plug#begin()
   Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 
   Plug 'akinsho/toggleterm.nvim'
+  Plug 'google/vim-jsonnet'
 
   " diffView requires Telescope
   Plug 'sindrets/diffview.nvim'
