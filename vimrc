@@ -128,7 +128,7 @@ call plug#begin()
   Plug 'hrsh7th/vim-vsnip'
   Plug 'onsails/lspkind.nvim'
 
-  Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+  Plug 'catppuccin/nvim', {'as': 'catppuccin'}
 
   Plug 'akinsho/toggleterm.nvim'
   Plug 'google/vim-jsonnet'
@@ -152,6 +152,14 @@ endif
 " Plugins configuration
 source ~/.vim/lightline.vim 
 
+" let g:catppuccin_flavour = "macchiato" " latte, frappe, macchiato, mocha
+let g:catppuccin_flavour = "mocha" " latte, frappe, macchiato, mocha
+
+lua << EOF
+require("catppuccin").setup()
+EOF
+
+
 set smarttab " Insert tabs on the start of a line according to shiftwidth, not tabstop
 syntax on    " I love colors, don't you?
-colorscheme tokyonight
+colorscheme catppuccin

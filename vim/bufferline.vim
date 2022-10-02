@@ -6,6 +6,7 @@ require("bufferline").setup{
       mode = "tabs",
       offsets = {{filetype = "NvimTree", text = "File Explorer", text_align = "center"}},
       show_tab_indicators = true
-   }
+   },
+   highlights = require("catppuccin.groups.integrations.bufferline").get()
 }
 EOF

@@ -4,4 +4,4 @@ set laststatus=2
 " lightline is already showing the mode
 set noshowmode
 
-let g:lightline = {'colorscheme': 'tokyonight'}
+let g:lightline = {'colorscheme': 'catppuccin'}
