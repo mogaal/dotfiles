@@ -31,7 +31,7 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.format()<CR>', opts)
 
   -- Because Helm != YAML (more info here: https://www.reddit.com/r/neovim/comments/rwoxne/nvimlspconfig_helm_chart_templates/)
   if vim.bo[bufnr].buftype ~= "" or vim.bo[bufnr].filetype == "helm" then
@@ -45,7 +45,7 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'jsonls', 'pyright', 'sqlls', 'tflint', 'zk', 'tsserver', 'bashls', 'gopls', 'terraformls', 'vimls', 'yamlls', 'rust_analyzer' }
+local servers = { 'html', 'jsonls', 'pyright', 'sqlls', 'tflint', 'zk', 'tsserver', 'bashls', 'gopls', 'terraformls', 'vimls', 'yamlls', 'rust_analyzer' }
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
     on_attach = on_attach,
