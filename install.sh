@@ -28,6 +28,7 @@ function install {
       htop \
       tree \
       mr \
+      redshift \ # This is because i3 and night light
       wget \
       reattach-to-user-namespace \
       tmux \ 
