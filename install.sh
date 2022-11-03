@@ -1,5 +1,33 @@
 #!/usr/bin/env bash
 
+set -Eeuo pipefail
+trap cleanup SIGINT SIGTERM ERR EXIT
+
+script_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd -P)
+
+####################
+# Basic functions #
+####################
+
+usage() {
+  cat <<EOF
+Usage: $(basename "${BASH_SOURCE[0]}") [-i] [-d]
+
+Minimal bash script to manage dotfiles.
+
+Available options:
+
+-i, --install-apps         Install the must apps"
+-d, --dotfiles             Install the dotfiles "
+EOF
+  exit
+}
+
+cleanup() {
+  trap - SIGINT SIGTERM ERR EXIT
+  # script cleanup here
+}
+
 ##############
 #### VARS ####
 ##############
@@ -10,15 +38,6 @@ BACKUP="$(dirname "$DOTFILES")/dotfiles_old"
 ##################
 #### FUNCTIONS ###
 ##################
-
-display_help() {
-    echo "Usage: $0 [option]" >&2
-    echo
-    echo "   -i, --install-apps         Install the must apps"
-    echo "   -d, --dotfiles             Install the dotfiles "
-    echo
-    exit 1
-}
 
 function install {
   if [[ "$OSTYPE" == darwin* ]]; then
@@ -205,6 +224,6 @@ case $1 in
     dotfiles
   ;;
   *)
-    display_help
+    usage
   ;;
 esac
