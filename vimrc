@@ -52,6 +52,8 @@ map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
 
+noremap <C-w> :bd<Cr>
+
 " Navigation
 map <leader>h :wincmd h<CR>
 map <leader>j :wincmd j<CR>
@@ -128,7 +130,7 @@ call plug#begin()
   Plug 'hrsh7th/vim-vsnip'
   Plug 'onsails/lspkind.nvim'
 
-  Plug 'catppuccin/nvim', {'as': 'catppuccin'}
+  Plug 'catppuccin/nvim', { 'as': 'catppuccin'}
 
   Plug 'akinsho/toggleterm.nvim'
   Plug 'google/vim-jsonnet'
