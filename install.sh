@@ -93,14 +93,15 @@ function install {
       unrar-free \
       snapd \
       direnv \
-      jq \                 # parse json in command line
+      jq \
       xclip \
-      bat \                # less with colors
-      fonts-firacode \     # kitty
-      ripgrep \            # telescope
-      python3-pynvim \     
-      syncthing \          # my binaries 
-      fd-find              # because of nvim telescope
+      bat \
+      fonts-firacode \
+      ripgrep \
+      python3-pynvim \
+      syncthing \
+      snapd \
+      fd-find
     sudo usermod --shell /bin/zsh $(whoami)
     sudo snap install telegram-desktop firefox postman snapd mqtt-explorer arduino
     
