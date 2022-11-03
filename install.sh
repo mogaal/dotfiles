@@ -90,8 +90,7 @@ function install {
       dnsutils \
       git-crypt \
       myrepos \
-      rar \
-      unrar \
+      unrar-free \
       snapd \
       direnv \
       jq \                 # parse json in command line
