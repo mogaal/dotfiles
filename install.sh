@@ -78,7 +78,7 @@ function install {
     sudo apt update
     sudo apt install -y \
       less \
-      fortune \
+      fortune-mod \
       mc \
       vim \
       htop \
