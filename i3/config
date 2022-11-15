@@ -172,12 +172,6 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
         bindsym j resize shrink width 10 px or 10 ppt
         bindsym k resize grow height 10 px or 10 ppt
         bindsym l resize shrink height 10 px or 10 ppt
@@ -249,9 +243,6 @@ bindsym $mod+c exec --no-startup-id zsh -c 'rofi -modi "clipboard:/home/mogaal/b
 # Polybar
 exec_always --no-startup-id $HOME/.config/i3/polybar/launch.sh
 
-
-
-
 for_window [class=".*"] border pixel 0
 
 gaps inner 10
@@ -267,3 +258,16 @@ smart_borders on
 
 # Set up screens as I want
 exec_always --no-startup-id $HOME/.config/i3/xrandr
+
+exec --no-startup-id setxkbmap -layout us -variant altgr-intl
+exec --no-startup-id blueman-manager
+exec --no-startup-id i3-msg 'workspace 1; exec /home/mogaal/bin/linux/amd64/kitty'
+exec --no-startup-id i3-msg 'workspace 8; exec telegram-desktop'
+exec --no-startup-id i3-msg 'workspace 2; exec firefox'
+
+assign [class="kitty"] $ws1
+assign [class="firefox"] $ws2
+assign [class="telegram-desktop"] $ws8
+
+## Screenshots
+bindsym Print exec --no-startup-id ksnip -r

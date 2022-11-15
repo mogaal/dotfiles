@@ -39,6 +39,14 @@ BACKUP="$(dirname "$DOTFILES")/dotfiles_old"
 #### FUNCTIONS ###
 ##################
 
+function i3_combo {
+  # main,xdotool -> screenshots
+  sudo apt install -y \
+       maim \
+       ksnip \
+       xdotool
+}
+
 function install {
   if [[ "$OSTYPE" == darwin* ]]; then
     brew install \
