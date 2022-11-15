@@ -44,6 +44,7 @@ function i3_combo {
   sudo apt install -y \
        maim \
        ksnip \
+       dunst \
        xdotool
 }
 
