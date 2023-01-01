@@ -1,8 +1,3 @@
-if [ "$OS" = "linux" ]; then
-  alias clonar_debian='gbp clone --verbose --all --pristine-tar'
-  alias pc='lintian --color auto -i  --pedantic -I *.changes'
-fi
-
 # Very useful aliases
 alias cps='ps aux | head -n1; ps aux | grep -i'
 alias ..='cd ..'
@@ -24,9 +19,6 @@ fi
 # Akamai 
 alias curl_ak='curl -H "Pragma: akamai-x-cache-on, akamai-x-cache-remote-on, akamai-x-check-cacheable, akamai-x-get-cache-key, akamai-x-get-extracted-values, akamai-x-get-nonces, akamai-x-get-ssl-client-session-id, akamai-x-get-true-cache-key, akamai-x-serial-no" -IXGET'
 
-# prebuild script
-alias prebuild="SECRETS_FILE=/Users/aga35/secret.tfvars ~/workspace/cd-devops-tools/prebuild.sh"
-
 # What are my custom functions?
 alias ls-my-funcions="cat ~/dotfiles/zsh/functions/* | grep function | cut -d' ' -f 2"
 
@@ -35,7 +27,6 @@ alias less='batcat'
 
 # Alias to go to the workspace folder
 alias ws="cd ~/workspace"
-alias wsm="cd ~/workspace/github/ministryofjustice"
 
 # Kitty
 alias icat="kitty +kitten icat"
