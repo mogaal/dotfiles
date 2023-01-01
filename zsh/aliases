@@ -39,7 +39,7 @@ alias tf="terraform"
 #######
 
 alias k='kubectl'
-alias kclf='kubectl logs --tail=200  -f'
+alias kclf='kubectl logs --tail=200 -f'
 
 # Dashboard
 alias k8s_pf_dashboard='kubectl proxy --port=8080 --address='0.0.0.0' --disable-filter=true'
