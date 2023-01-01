@@ -1,7 +1,7 @@
 [user]
-	name = Alejandro Garrido Mota
-	email = garridomota@gmail.com
-	signingkey = 71396D61F1C09EFB
+  name = Alejandro Garrido Mota
+  email = garridomota@gmail.com
+  signingkey = 71396D61F1C09EFB
 [commit]
   verbose = true
   template = ~/.gittemplates/commit
