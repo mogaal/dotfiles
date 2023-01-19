@@ -1,7 +1,14 @@
 lua <<EOF
-require("nvim-lsp-installer").setup {
-  ensure_installed = { 'jsonls', 'pyright', 'sqlls', 'tflint', 'zk', 'tsserver', 'bashls', 'gopls', 'terraformls', 'vimls', 'yamlls' }, -- ensure these servers are always installed
+--- require("nvim-lsp-installer").setup {
+---  ensure_installed = { 'jsonls', 'pyright', 'sqlls', 'tflint', 'zk', 'tsserver', 'bashls', 'gopls', 'terraformls', 'vimls', 'yamlls' }, -- ensure these servers are always installed
+--- }
+
+require("mason").setup()
+require("mason-lspconfig").setup {
+ ensure_installed = { 'gopls', 'rust_analyzer', 'pyright', 'vimls'},
 }
+
+
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions

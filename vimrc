@@ -116,7 +116,8 @@ call plug#begin()
 
   " LSP
   Plug 'neovim/nvim-lspconfig'
-  Plug 'williamboman/nvim-lsp-installer'
+  Plug 'williamboman/mason.nvim'
+  Plug 'williamboman/mason-lspconfig.nvim'
 
   " nvim-cmp
   Plug 'neovim/nvim-lspconfig'
