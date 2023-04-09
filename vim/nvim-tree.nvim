@@ -1,8 +1,0 @@
-nnoremap <leader>t :NvimTreeToggle<CR>
-
-" Autoclose
-autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
-
-lua << EOF
-require'nvim-tree'.setup {}
-EOF
