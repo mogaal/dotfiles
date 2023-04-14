@@ -21,6 +21,7 @@ if [ "$OS" = "mac" ]; then
     /usr/local/{bin/sbin}
     /opt/homebrew/bin
     /opt/homebrew/opt/coreutils/libexec/gnubin # coreutils needs to be installed
+    /Users/mogaal/development/flutter/bin
     $path
   )
 
