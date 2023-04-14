@@ -29,6 +29,20 @@ require('lazy').setup({
   -- Add indentation guides even on blank lines
   { 'lukas-reineke/indent-blankline.nvim', opts = {} },
 
+  -- Highlighting other uses of the word under the cursor
+  -- default <a-n> and <a-p> to move between references
+  { 'RRethy/vim-illuminate' },
+
+  -- Move around easily
+  {
+    'ggandor/leap.nvim',
+    config = function()
+      local leap = require("leap")
+      leap.add_default_mappings(true)
+    end,
+    opts = {},
+  },
+
   -- Useless plugin to have fun
   -- {
   --   'eandrju/cellular-automaton.nvim',
@@ -37,7 +51,7 @@ require('lazy').setup({
   -- },
 
   -- Terminal, used for lazygit
-  { 'akinsho/toggleterm.nvim',             version = "*" },
+  { 'akinsho/toggleterm.nvim', version = "*" },
 
   -- Statusline
   {
