@@ -133,6 +133,7 @@ require('lazy').setup({
   -- buferline
   {
     'akinsho/bufferline.nvim',
+    lazy = false,
     version = "v3.*",
     dependencies = 'nvim-tree/nvim-web-devicons',
     config = function()
@@ -141,7 +142,11 @@ require('lazy').setup({
           offsets = { { filetype = "NvimTree", text = "File Explorer", text_align = "center" } },
         }
       }
-    end
+    end,
+    keys = {
+      { "<leader>bs", ":BufferLinePick<cr>",      desc = "Select buffer (from bufferline)" },
+      { "<leader>bc", ":BufferLinePickClose<cr>", desc = "Close buffer (from bufferline)" },
+    }
   },
 
   -- Fuzzy Finder (files, lsp, etc)
