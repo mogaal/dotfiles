@@ -321,6 +321,8 @@ require("toggleterm").setup {
 }
 
 local Terminal = require('toggleterm.terminal').Terminal
+
+-- Lazygit
 local lazygit  = Terminal:new({ cmd = "lazygit", hidden = true })
 
 function _lazygit_toggle()
@@ -328,6 +330,15 @@ function _lazygit_toggle()
 end
 
 vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
+
+-- nnn
+local nnn  = Terminal:new({ cmd = "nnn", hidden = true })
+
+function _nnn_toggle()
+  nnn:toggle()
+end
+
+vim.api.nvim_set_keymap("n", "<leader>n", "<cmd>lua _nnn_toggle()<CR>", { noremap = true, silent = true })
 
 -----------------------------------------------------------
 -- nvim-tree
