@@ -27,7 +27,7 @@ require('lazy').setup({
   { 'folke/which-key.nvim',                opts = {} },
 
   -- Add indentation guides even on blank lines
-  { 'lukas-reineke/indent-blankline.nvim', opts = {} },
+  { 'lukas-reineke/indent-blankline.nvim', main = "ibl", opts = {} },
 
   -- Highlighting other uses of the word under the cursor
   -- default <a-n> and <a-p> to move between references
