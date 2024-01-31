@@ -20,6 +20,7 @@ if [ "$OS" = "mac" ]; then
   path=(
     /usr/local/{bin/sbin}
     /opt/homebrew/bin
+    /Users/mogaal/.local/share/solana/install/active_release/bin
     /opt/homebrew/opt/coreutils/libexec/gnubin # coreutils needs to be installed
     /Users/mogaal/development/flutter/bin
     $HOME/.local/bin
@@ -102,3 +103,5 @@ if [[ ! -d "$TMPPREFIX" ]]; then
   mkdir -p "$TMPPREFIX";
 fi
 TMPPREFIX="${TMPDIR%/}/zsh"
+
+export PATH="/Users/mogaal/.local/share/solana/install/active_release/bin:$PATH"
