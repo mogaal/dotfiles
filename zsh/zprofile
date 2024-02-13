@@ -49,6 +49,14 @@ if [[ -d $HOME/bin/$OS/$ARCH ]]; then
   );
 fi
 
+# If there's ~/.local/bin then add it to the path
+if [[ -d $HOME/.local/bin ]]; then
+  path=(
+    $HOME/.local/bin
+    $path
+  );
+fi
+
 # If there's ~/gems/bin then add it to the path
 if [[ -d $HOME/gems/bin ]]; then
   path=(
