@@ -134,7 +134,7 @@ require('lazy').setup({
   {
     'akinsho/bufferline.nvim',
     lazy = false,
-    version = "v3.*",
+    version = "*",
     dependencies = 'nvim-tree/nvim-web-devicons',
     config = function()
       require('bufferline').setup {
@@ -146,6 +146,7 @@ require('lazy').setup({
     keys = {
       { "<leader>bs", ":BufferLinePick<cr>",      desc = "Select buffer (from bufferline)" },
       { "<leader>bc", ":BufferLinePickClose<cr>", desc = "Close buffer (from bufferline)" },
+      { "<leader>bp", ":BufferLineTogglePin<cr>", desc = "Pin a buffer (from bufferline)" },
     }
   },
 
@@ -332,7 +333,7 @@ end
 vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
 
 -- nnn
-local nnn  = Terminal:new({ cmd = "nnn", hidden = true })
+local nnn = Terminal:new({ cmd = "nnn", hidden = true })
 
 function _nnn_toggle()
   nnn:toggle()
