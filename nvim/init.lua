@@ -94,7 +94,14 @@ require('lazy').setup({
     },
     config = function()
       require('gitsigns').setup {
-        current_line_blame = true
+        current_line_blame = true,
+        signs = {
+          add = { text = '+' },
+          change = { text = '~' },
+          delete = { text = '_' },
+          topdelete = { text = '‾' },
+          changedelete = { text = '~' },
+        },
       }
     end
   },
@@ -205,6 +212,15 @@ require('lazy').setup({
   },
 })
 
+-- Sets how neovim will display certain whitespace characters in the editor.
+--  See `:help 'list'`
+--  and `:help 'listchars'`
+vim.opt.list = true
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+
+-- Show which line your cursor is on
+vim.opt.cursorline = true
+
 -- Make line numbers default
 vim.wo.number = true
 
@@ -226,7 +242,8 @@ vim.o.breakindent = true
 vim.o.undofile = true
 
 -- Set highlight on search
-vim.o.hlsearch = false
+vim.o.hlsearch = true
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Case insensitive searching UNLESS /C or capital in search
 vim.o.ignorecase = true
@@ -249,11 +266,11 @@ vim.keymap.set('n', '<leader>r', ':so %<CR>', { desc = "Reload configuration" })
 -- Close all windows and exit
 vim.keymap.set('n', '<leader>q', ':qa!<CR>', { desc = "Close all windows and exit" })
 
--- Navigation
-vim.keymap.set('n', '<leader>h', ':wincmd h<CR>', { desc = "Move to left win" })
-vim.keymap.set('n', '<leader>l', ':wincmd l<CR>', { desc = "Move to right win" })
-vim.keymap.set('n', '<leader>j', ':wincmd j<CR>', { desc = "Move to down win" })
-vim.keymap.set('n', '<leader>k', ':wincmd k<CR>', { desc = "Move to up win" })
+-- Navigation with Ctrl
+vim.keymap.set('n', '<C-h>', ':wincmd h<CR>', { desc = "Move to left window" })
+vim.keymap.set('n', '<C-l>', ':wincmd l<CR>', { desc = "Move to right window" })
+vim.keymap.set('n', '<C-j>', ':wincmd j<CR>', { desc = "Move to down window" })
+vim.keymap.set('n', '<C-k>', ':wincmd k<CR>', { desc = "Move to up window" })
 
 -- Spelling
 vim.keymap.set('n', '<leader>ss', ':setlocal spell!<cr>', { desc = "Enable spelling" })
@@ -280,7 +297,6 @@ vim.o.expandtab = true   -- Use spaces instead of tabs
 vim.o.shiftwidth = 2     -- Shift 2 spaces when tab
 vim.o.tabstop = 2        -- 1 tab == 2 spaces
 vim.o.smartindent = true -- Autoindent new lines
-
 
 
 -- Highlight on yank
