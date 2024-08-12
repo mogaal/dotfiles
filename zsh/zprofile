@@ -113,3 +113,15 @@ fi
 TMPPREFIX="${TMPDIR%/}/zsh"
 
 export PATH="/Users/mogaal/.local/share/solana/install/active_release/bin:$PATH"
+
+
+#########
+# atuin #
+#########
+
+if [[ -d $HOME/.atuin/bin ]]; then
+  path=(
+    $HOME/.atuin/bin
+    $path
+  );
+fi
