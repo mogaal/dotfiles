@@ -16,8 +16,8 @@ if [ -e "$HOME/dotfiles/zsh/functions" ]; then
 fi
 
 # Load my work envs
-if [[ -e "$HOME/work/dotfiles/env" ]]; then
-    source "$HOME/work/dotfiles/env";
+if [[ -e "$HOME/work-dotfiles/env" ]]; then
+    source "$HOME/work-dotfiles/env";
 fi
 
 # Print a random, hopefully interesting, adage.
