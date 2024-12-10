@@ -76,3 +76,7 @@ if [ -f '/Users/mogaal/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/User
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/mogaal/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/mogaal/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+if [ -f ~/.local/bin/mise ]; then
+  eval "$(~/.local/bin/mise activate zsh)"
+fi
