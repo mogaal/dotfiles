@@ -5,16 +5,19 @@ vim.g.maplocalleader = ','
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
-local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system {
-    'git',
-    'clone',
-    '--filter=blob:none',
-    'https://github.com/folke/lazy.nvim.git',
-    '--branch=stable', -- latest stable release
-    lazypath,
-  }
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out, "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
+  end
 end
 vim.opt.rtp:prepend(lazypath)
 
@@ -210,6 +213,16 @@ require('lazy').setup({
       vim.cmd.colorscheme 'catppuccin'
     end
   },
+
+  {
+      'MeanderingProgrammer/render-markdown.nvim',
+      dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
+      -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
+      -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+      ---@module 'render-markdown'
+      ---@type render.md.UserConfig
+      opts = {},
+  },
 })
 
 -- Sets how neovim will display certain whitespace characters in the editor.
@@ -242,8 +255,7 @@ vim.o.breakindent = true
 vim.o.undofile = true
 
 -- Set highlight on search
-vim.o.hlsearch = true
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+vim.o.hlsearch = false
 
 -- Case insensitive searching UNLESS /C or capital in search
 vim.o.ignorecase = true
@@ -444,9 +456,6 @@ local servers = {
     Lua = {
       workspace = { checkThirdParty = false },
       telemetry = { enable = false },
-      diagnostics = {
-        globals = { 'vim' }
-      },
     },
   },
 }
