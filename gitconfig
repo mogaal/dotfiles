@@ -12,6 +12,7 @@
   ci = commit
   st = status
   ca = !git add -A && git commit -av
+  out = "log @{u}.."
   ######
   # Taken from https://stackoverflow.com/questions/28572293/can-i-delete-all-the-local-branches-except-the-current-one
   ######
@@ -27,12 +28,19 @@
 	diff = auto
 	status = auto
 	branch = auto
+[diff]
+	algorithm = histogram
+	colorMoved = plain
+	mnemonicPrefix = true
+	renames = true
 [core]
 	editor = vim
 [github]
 	user = mogaal
 [push]
-	default = matching
+	default = simple
+	autoSetupRemote = true
+	followTags = true
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
@@ -40,9 +48,19 @@
 	required = true
 [pull]
 	ff = only
+	rebase = true
+[fetch]
+	prune = true
+	pruneTags = true
+	all = true
+[tag]
+	sort = version:refname
 [init]
 	defaultBranch = main
 [column]
 	ui = auto
 [branch]
 	sort = -committerdate
+[safe]
+	directory = /tmp/
+	directory = /private/tmp
