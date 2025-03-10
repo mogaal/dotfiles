@@ -81,6 +81,14 @@ if [[ -d $HOME/.local/kitty.app/bin ]]; then
   );
 fi
 
+# Homebrew for Linux
+if [[ -d /home/linuxbrew/.linuxbrew/bin ]]; then
+  path=(
+    /home/linuxbrew/.linuxbrew/bin
+    $path
+  );
+fi
+
 ##########
 # Golang #
 ##########
