@@ -46,11 +46,11 @@ require('lazy').setup({
     opts = {},
   },
 
-  -- Useless plugin to have fun
   -- {
-  --   'eandrju/cellular-automaton.nvim',
-  --   opts = {},
-  --   keys = { "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>", desc = "Rainny code" },
+  --    "m4xshen/hardtime.nvim",
+  --    lazy = false,
+  --    dependencies = { "MunifTanjim/nui.nvim" },
+  --    opts = {},
   -- },
 
   -- Terminal, used for lazygit
@@ -111,23 +111,12 @@ require('lazy').setup({
 
   -- LSP Configuration & Plugins
   {
-    'neovim/nvim-lspconfig',
-    dependencies = {
-      -- Automatically install LSPs to stdpath for neovim
-      {
-        'williamboman/mason.nvim',
-        build = ":MasonUpdate",
-        opts = {},
+      "mason-org/mason-lspconfig.nvim",
+      opts = {},
+      dependencies = {
+          { "mason-org/mason.nvim", opts = {} },
+          "neovim/nvim-lspconfig",
       },
-      'williamboman/mason-lspconfig.nvim',
-
-      -- Useful status updates for LSP
-      -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', opts = {}, tag = "legacy" },
-
-      -- Additional lua configuration, makes nvim stuff amazing!
-      'folke/neodev.nvim',
-    },
   },
 
   -- Autocompletion
@@ -458,27 +447,6 @@ local servers = {
       telemetry = { enable = false },
     },
   },
-}
-
--- Setup neovim lua configuration
-require('neodev').setup()
-
--- nvim-cmp supports additional completion capabilities, so broadcast that to servers
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
-
--- Ensure the servers above are installed
-require("mason-lspconfig").setup {
-  ensure_installed = vim.tbl_keys(servers),
-}
-
-require("mason-lspconfig").setup_handlers {
-  function(server_name)
-    require('lspconfig')[server_name].setup {
-      capabilities = capabilities,
-      settings = servers[server_name],
-    }
-  end,
 }
 
 local cmp = require 'cmp'
