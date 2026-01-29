@@ -39,12 +39,44 @@ require('lazy').setup({
   -- Move around easily
   {
     'ggandor/leap.nvim',
-    config = function()
+    enabled = true,
+    keys = {
+      { "s", mode = { "n", "x", "o" }, desc = "Leap Forward to" },
+      { "S", mode = { "n", "x", "o" }, desc = "Leap Backward to" },
+      { "gs", mode = { "n", "x", "o" }, desc = "Leap from Windows" },
+    },
+    config = function(_, opts)
       local leap = require("leap")
+      for k, v in pairs(opts) do
+        leap.opts[k] = v
+      end
       leap.add_default_mappings(true)
+      vim.keymap.del({ "x", "o" }, "x")
+      vim.keymap.del({ "x", "o" }, "X")
     end,
-    opts = {},
   },
+
+  {
+      "kylechui/nvim-surround",
+      version = "^3.0.0",
+      event = "VeryLazy",
+      config = function()
+          require("nvim-surround").setup({})
+      end
+  },
+
+  {
+    'nvimdev/lspsaga.nvim',
+    config = function()
+        require('lspsaga').setup({})
+    end,
+    dependencies = {
+        'nvim-treesitter/nvim-treesitter', -- optional
+        'nvim-tree/nvim-web-devicons',     -- optional
+    }
+  },
+
+  { "serhez/bento.nvim", opts = {} },
 
   -- {
   --    "m4xshen/hardtime.nvim",
@@ -212,6 +244,9 @@ require('lazy').setup({
       ---@type render.md.UserConfig
       opts = {},
   },
+
+  { "nvzone/volt" , lazy = true },
+  { "nvzone/menu" , lazy = true }
 })
 
 -- Sets how neovim will display certain whitespace characters in the editor.
@@ -493,6 +528,24 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
+
+-- Keyboard users
+vim.keymap.set("n", "<C-t>", function()
+  require("menu").open("default")
+end, {})
+
+-- mouse users + nvimtree users!
+vim.keymap.set({ "n", "v" }, "<RightMouse>", function()
+  require('menu.utils').delete_old_menus()
+
+  vim.cmd.exec '"normal! \\<RightMouse>"'
+
+  -- clicked buf
+  local buf = vim.api.nvim_win_get_buf(vim.fn.getmousepos().winid)
+  local options = vim.bo[buf].ft == "NvimTree" and "nvimtree" or "default"
+
+  require("menu").open(options, { mouse = true })
+end, {})
 
 -----------------------------------------------------------
 -- alpha-vim
