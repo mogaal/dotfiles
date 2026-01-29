@@ -1,4 +1,4 @@
--- Set <space> as the leader key
+-- Set comma as the leader key
 vim.g.mapleader = ','
 vim.g.maplocalleader = ','
 
@@ -26,7 +26,6 @@ require('lazy').setup({
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim',               opts = {} },
 
-  -- TODO: Configure
   { 'folke/which-key.nvim',                opts = {} },
 
   -- Add indentation guides even on blank lines
@@ -54,6 +53,29 @@ require('lazy').setup({
       vim.keymap.del({ "x", "o" }, "x")
       vim.keymap.del({ "x", "o" }, "X")
     end,
+  },
+  
+  {
+    "greggh/claude-code.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim", -- Required for git operations
+    },
+    config = function()
+      require("claude-code").setup({
+        keymaps = {
+          toggle = {
+            normal = "<C-,>",        -- Toggle Claude Code in normal mode
+            terminal = "<C-,>",      -- Toggle Claude Code in terminal mode
+            variants = {
+              continue = "<leader>cc", -- Open Claude Code and continue previous session
+              verbose = "<leader>cv",  -- Open Claude Code with verbose output
+            },
+          },
+          window_navigation = false, -- Disabled (using custom window navigation at lines 327-331)
+          scrolling = true,          -- Enable scrolling keymaps (<C-f/b>) for page up/down
+        }
+      })
+     end
   },
 
   {
@@ -454,7 +476,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+    vim.keymap.set('n', '<leader>k', vim.lsp.buf.signature_help, opts)
     vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
     vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
     vim.keymap.set('n', '<space>wl', function()
@@ -473,7 +495,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 local servers = {
   terraformls = {},
   tflint = {},
-  -- markdownlint = {},
   docker_compose_language_service = {},
   dockerls = {},
   lua_ls = {
@@ -482,7 +503,25 @@ local servers = {
       telemetry = { enable = false },
     },
   },
+  ts_ls = {},
+  gopls = {},
+  pyright = {},
+  rust_analyzer = {},
 }
+
+-- Setup Mason-LSPConfig integration
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+require('mason-lspconfig').setup({
+  ensure_installed = vim.tbl_keys(servers),
+  handlers = {
+    function(server_name)
+      require('lspconfig')[server_name].setup({
+        capabilities = capabilities,
+        settings = servers[server_name],
+      })
+    end,
+  },
+})
 
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
