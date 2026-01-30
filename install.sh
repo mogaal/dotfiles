@@ -138,10 +138,8 @@ function install {
     # kitty
     try_install "kitty" bash -c "curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin"
 
-    # My own fonts
-    mkdir -p ~/.local/share/fonts
-    cd ~/.local/share/fonts && curl -fLo "JetBrainsMonoNerdFont-Light.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/JetBrainsMono/Ligatures/Light/JetBrainsMonoNerdFont-Light.ttf
-    fc-cache -f -v
+    # Nerd fonts
+    try_install "nerd fonts" bash "$script_dir/install_nerdfonts.sh"
 
   fi
 }
