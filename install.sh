@@ -45,7 +45,7 @@ try_install() {
 #### VARS ####
 ##############
 
-DOTFILES=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+DOTFILES="$script_dir"
 BACKUP="$(dirname "$DOTFILES")/dotfiles_old"
 
 ##################
