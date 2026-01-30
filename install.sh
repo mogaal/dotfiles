@@ -28,6 +28,19 @@ cleanup() {
   # script cleanup here
 }
 
+# Helper function to run commands and continue on failure
+try_install() {
+  local description="$1"
+  shift
+  echo "Installing $description..."
+  if "$@"; then
+    echo "✓ $description installed successfully"
+  else
+    echo "✗ Failed to install $description (continuing anyway)"
+    return 0  # Return success to allow script to continue
+  fi
+}
+
 ##############
 #### VARS ####
 ##############
@@ -56,10 +69,10 @@ function install {
       htop \
       tree \
       mr \
-      redshift \ # This is because i3 and night light
+      redshift \
       wget \
       reattach-to-user-namespace \
-      tmux \ 
+      tmux \
       hh \
       gpg \
       git-crypt \
@@ -107,37 +120,27 @@ function install {
       bat \
       fonts-firacode \
       ripgrep \
-      python3-pynvim \
-      syncthing \
-      snapd \
       fd-find
     sudo usermod --shell /bin/zsh $(whoami)
-    sudo snap install telegram-desktop firefox postman snapd mqtt-explorer arduino
-    
-    # syncthing
-    sudo curl -s -o /usr/share/keyrings/syncthing-archive-keyring.gpg https://syncthing.net/release-key.gpg
-    echo "deb [signed-by=/usr/share/keyrings/syncthing-archive-keyring.gpg] https://apt.syncthing.net/ syncthing stable" | sudo tee /etc/apt/sources.list.d/syncthing.list
-    sudo apt update && sudo apt install syncthing
-    
-    # Keybase
-    curl --remote-name https://prerelease.keybase.io/keybase_amd64.deb
-    sudo apt install -y ./keybase_amd64.deb
-    rm -f ./keybase_amd64.deb
+    sudo snap install telegram-desktop firefox postman mqtt-explorer arduino
 
     # nodejs / NPM / yarn
-    curl -fsSL https://deb.nodesource.com/setup_17.x | sudo -E bash -
+    curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
     sudo apt install -y nodejs
     sudo npm install --global yarn
 
-    # starship 
+    # starship
     sh -c "$(curl -fsSL https://starship.rs/install.sh)"
 
-    # kitty 
-    curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+    # atuin
+    try_install "atuin" bash -c "curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh"
+
+    # kitty
+    try_install "kitty" bash -c "curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin"
 
     # My own fonts
     mkdir -p ~/.local/share/fonts
-    cd ~/.local/share/fonts && curl -fLo "JetBrains Mono Light Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/JetBrainsMono/Ligatures/Light/complete/JetBrains%20Mono%20Light%20Nerd%20Font%20Complete.ttf
+    cd ~/.local/share/fonts && curl -fLo "JetBrainsMonoNerdFont-Light.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/JetBrainsMono/Ligatures/Light/JetBrainsMonoNerdFont-Light.ttf
     fc-cache -f -v
 
   fi
@@ -153,15 +156,15 @@ function dotfiles {
 
   if [ ! -d "$BACKUP" ]; then
     echo "Creating the backup dotfiles dir: $BACKUP ... "
-    mkdir $BACKUP
+    mkdir -p "$BACKUP"
     echo "Done"
   fi
 
-  if [ -d "~/bin" ]; then
-    echo "~/bin already exists. Skipping creation"
+  if [ -d "$HOME/bin" ]; then
+    echo "$HOME/bin already exists. Skipping creation"
   else
-    echo "Creating ~/bin"
-    mkdir ~/bin
+    echo "Creating $HOME/bin"
+    mkdir -p "$HOME/bin"
   fi
 
   if [[ "$OSTYPE" == darwin* ]]; then
@@ -214,13 +217,13 @@ function lnFile {
   if [ -f "$HOME/.$2" ]; then
      BackupFile "$1"
   fi
-  echo "Linking '$DOTFILES/$1' to '$HOME/.$2"
-  ln -s $DOTFILES/$1 $HOME/."$2"
+  echo "Linking '$DOTFILES/$1' to '$HOME/.$2'"
+  ln -s "$DOTFILES/$1" "$HOME/.$2"
   echo -e '\E[0;32m'"Done\033[0m"
 }
 
 function BackupFile {
-   mv $HOME/.$1 $BACKUP/$1
+   mv "$HOME/.$1" "$BACKUP/$1"
 }
 
 case $1 in

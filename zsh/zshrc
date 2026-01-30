@@ -28,9 +28,20 @@ if (( $+commands[fortune] )); then
   fi
 fi
 
-setopt    appendhistory     #Append history to the history file (no overwriting)
-setopt    incappendhistory  #Immediately append to the history file, not 
-unsetopt  share_history
+# History configuration
+export HISTSIZE=10000
+export SAVEHIST=10000
+export HISTFILE=~/.zsh_history
+
+setopt    appendhistory        # Append history to the history file (no overwriting)
+setopt    incappendhistory     # Immediately append to the history file
+unsetopt  share_history        # Don't share history between sessions
+setopt    hist_ignore_dups     # Don't record duplicate consecutive commands
+setopt    hist_ignore_space    # Don't record commands starting with a space
+setopt    hist_reduce_blanks   # Remove superfluous blanks from history
+
+# hstr configuration
+export HH_CONFIG=hicolor
 
 if [ "$OS" = "linux" ]; then
   bindkey -s "\C-r" "\eqhstr\n"     # bind hh to Ctrl-r (for Vi mode check doc)
@@ -80,12 +91,11 @@ if [ -f '/Users/mogaal/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/User
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/mogaal/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/mogaal/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
+if [ -f ~/.local/bin/mise ]; then
+  eval "$(~/.local/bin/mise activate zsh)"
+fi
 
-# Herd injected PHP 8.3 configuration.
-export HERD_PHP_83_INI_SCAN_DIR="/Users/mogaal/Library/Application Support/Herd/config/php/83/"
 
-
-# Herd injected PHP binary.
-export PATH="/Users/mogaal/Library/Application Support/Herd/bin/":$PATH
-
-. "$HOME/.grit/bin/env"
+# This alias runs the Cursor Setup Wizard, simplifying installation and configuration.
+# For more details, visit: https://github.com/jorcelinojunior/cursor-setup-wizard
+alias cursor-setup="/home/user/cursor-setup-wizard/cursor_setup.sh"
