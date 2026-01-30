@@ -28,6 +28,19 @@ cleanup() {
   # script cleanup here
 }
 
+# Helper function to run commands and continue on failure
+try_install() {
+  local description="$1"
+  shift
+  echo "Installing $description..."
+  if "$@"; then
+    echo "✓ $description installed successfully"
+  else
+    echo "✗ Failed to install $description (continuing anyway)"
+    return 0  # Return success to allow script to continue
+  fi
+}
+
 ##############
 #### VARS ####
 ##############
@@ -116,15 +129,18 @@ function install {
     sudo apt install -y nodejs
     sudo npm install --global yarn
 
-    # starship 
+    # starship
     sh -c "$(curl -fsSL https://starship.rs/install.sh)"
 
-    # kitty 
-    curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+    # atuin
+    try_install "atuin" bash -c "curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh"
+
+    # kitty
+    try_install "kitty" bash -c "curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin"
 
     # My own fonts
     mkdir -p ~/.local/share/fonts
-    cd ~/.local/share/fonts && curl -fLo "JetBrains Mono Light Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/JetBrainsMono/Ligatures/Light/complete/JetBrains%20Mono%20Light%20Nerd%20Font%20Complete.ttf
+    cd ~/.local/share/fonts && curl -fLo "JetBrainsMonoNerdFont-Light.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/JetBrainsMono/Ligatures/Light/JetBrainsMonoNerdFont-Light.ttf
     fc-cache -f -v
 
   fi
