@@ -30,19 +30,19 @@ For work laptop:
 Ensure you have at least `sudo` and `git` installed and then clone the repository inside your home directory 
 
 ```console
-   git clone --recursive https://github.com/mogaal/dotfiles.git
+git clone --recursive https://github.com/mogaal/dotfiles.git
 ```
 
 ```console
-   git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 ```
 
 Finally we execute the installer script
 
 ```console
-   bash ~/dotfiles/install.sh -i # To install the apps
+bash ~/dotfiles/install.sh -i # To install the apps
 ```
 
 ```console
-   bash ~/dotfiles/install.sh -d # To install the dotfiles
+bash ~/dotfiles/install.sh -d # To install the dotfiles
 ```
