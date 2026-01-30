@@ -54,30 +54,34 @@ require('lazy').setup({
       vim.keymap.del({ "x", "o" }, "X")
     end,
   },
-  
+
+  -- AI assistant integration with Claude Code
   {
-    "greggh/claude-code.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim", -- Required for git operations
+    "coder/claudecode.nvim",
+    dependencies = { "folke/snacks.nvim" },
+    config = true,
+    keys = {
+      { "<leader>a", nil, desc = "AI/Claude Code" },
+      { "<leader>ac", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
+      { "<leader>af", "<cmd>ClaudeCodeFocus<cr>", desc = "Focus Claude" },
+      { "<leader>ar", "<cmd>ClaudeCode --resume<cr>", desc = "Resume Claude" },
+      { "<leader>aC", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
+      { "<leader>am", "<cmd>ClaudeCodeSelectModel<cr>", desc = "Select Claude model" },
+      { "<leader>ab", "<cmd>ClaudeCodeAdd %<cr>", desc = "Add current buffer" },
+      { "<leader>as", "<cmd>ClaudeCodeSend<cr>", mode = "v", desc = "Send to Claude" },
+      {
+        "<leader>as",
+        "<cmd>ClaudeCodeTreeAdd<cr>",
+        desc = "Add file",
+        ft = { "NvimTree", "neo-tree", "oil", "minifiles", "netrw" },
+      },
+      -- Diff management
+      { "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
+      { "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Deny diff" },
     },
-    config = function()
-      require("claude-code").setup({
-        keymaps = {
-          toggle = {
-            normal = "<C-,>",        -- Toggle Claude Code in normal mode
-            terminal = "<C-,>",      -- Toggle Claude Code in terminal mode
-            variants = {
-              continue = "<leader>cc", -- Open Claude Code and continue previous session
-              verbose = "<leader>cv",  -- Open Claude Code with verbose output
-            },
-          },
-          window_navigation = false, -- Disabled (using custom window navigation at lines 327-331)
-          scrolling = true,          -- Enable scrolling keymaps (<C-f/b>) for page up/down
-        }
-      })
-     end
   },
 
+  -- Easily add, change, and delete surrounding characters (quotes, brackets, parentheses, etc.)
   {
       "kylechui/nvim-surround",
       version = "^3.0.0",
@@ -98,6 +102,7 @@ require('lazy').setup({
     }
   },
 
+  -- Bento-style layout manager for a clean and organized UI
   { "serhez/bento.nvim", opts = {} },
 
   -- {
