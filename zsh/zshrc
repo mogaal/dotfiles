@@ -96,6 +96,10 @@ if [ -f ~/.local/bin/mise ]; then
 fi
 
 
-# This alias runs the Cursor Setup Wizard, simplifying installation and configuration.
-# For more details, visit: https://github.com/jorcelinojunior/cursor-setup-wizard
-alias cursor-setup="/home/user/cursor-setup-wizard/cursor_setup.sh"
+# Herd injected PHP binary.
+export PATH="/Users/mogaal/Library/Application Support/Herd/bin/":$PATH
+
+. "$HOME/.grit/bin/env"
+
+# OpenClaw Completion
+source <(openclaw completion --shell zsh)
