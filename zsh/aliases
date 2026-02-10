@@ -23,10 +23,14 @@ fi
 alias curl_ak='curl -H "Pragma: akamai-x-cache-on, akamai-x-cache-remote-on, akamai-x-check-cacheable, akamai-x-get-cache-key, akamai-x-get-extracted-values, akamai-x-get-nonces, akamai-x-get-ssl-client-session-id, akamai-x-get-true-cache-key, akamai-x-serial-no" -IXGET'
 
 # What are my custom functions?
-alias ls-my-funcions="cat ~/dotfiles/zsh/functions/* | grep function | cut -d' ' -f 2"
+alias ls-my-functions="grep -h '^function' ~/dotfiles/zsh/functions/* | cut -d' ' -f 2 | sort"
 
 # Now using bat (in ubuntu binary is 'batcat')
-alias less='batcat'
+if command -v batcat &>/dev/null; then
+  alias less='batcat'
+elif command -v bat &>/dev/null; then
+  alias less='bat'
+fi
 
 # Alias to go to the workspace folder
 alias ws="cd ~/workspace"
