@@ -248,6 +248,23 @@ require('lazy').setup({
     },
     config = function()
       pcall(require('nvim-treesitter.install').update { with_sync = true })
+
+      require('nvim-treesitter.configs').setup {
+        ensure_installed = { 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'vim' },
+        auto_install = true,
+
+        highlight = { enable = true },
+        indent = { enable = true, disable = { 'python' } },
+        incremental_selection = {
+          enable = true,
+          keymaps = {
+            init_selection = '<c-space>',
+            node_incremental = '<c-space>',
+            scope_incremental = '<c-s>',
+            node_decremental = '<M-space>',
+          },
+        },
+      }
     end,
   },
 
@@ -433,27 +450,6 @@ vim.api.nvim_create_autocmd("BufEnter", {
     end
   end
 })
-
------------------------------------------------------------
--- Treesitter
------------------------------------------------------------
-
-require('nvim-treesitter.configs').setup {
-  ensure_installed = { 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'vim' },
-  auto_install = true,
-
-  highlight = { enable = true },
-  indent = { enable = true, disable = { 'python' } },
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = '<c-space>',
-      node_incremental = '<c-space>',
-      scope_incremental = '<c-s>',
-      node_decremental = '<M-space>',
-    },
-  },
-}
 
 -----------------------------------------------------------
 -- Configuration related to LSP
