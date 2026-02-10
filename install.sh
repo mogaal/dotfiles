@@ -166,17 +166,27 @@ function dotfiles {
   fi
 
   if [[ "$OSTYPE" == darwin* ]]; then
-    lnFile gitconfig gitconfig 
+    lnFile gitconfig gitconfig
     lnFile gittemplates gittemplates
     lnFile vimrc vimrc
-    lnFile mrconfig mrconfig   
-    
-    # Tmux 
+    lnFile mrconfig mrconfig
+
+    # Tmux
     lnFile tmux/tmux.conf tmux.conf
     lnFile tmux/tmux.osx.conf tmux.osx.conf
 
     # hh/hstr
     lnFile hh_blacklist hh_blacklist
+
+    # Neovim (special case for .config directory)
+    if [ -d "$HOME/.config/nvim" ] || [ -L "$HOME/.config/nvim" ]; then
+      echo "Backing up existing nvim config to $BACKUP/nvim"
+      mv "$HOME/.config/nvim" "$BACKUP/nvim"
+    fi
+    mkdir -p "$HOME/.config"
+    echo "Linking '$DOTFILES/nvim' to '$HOME/.config/nvim'"
+    ln -s "$DOTFILES/nvim" "$HOME/.config/nvim"
+    echo -e '\E[0;32m'"Done\033[0m"
 
     # zsh stuff
     lnFile zsh/zlogout zlogout
@@ -190,19 +200,29 @@ function dotfiles {
     lnFile vim vim
     lnFile i3 i3
     lnFile gnupg gnupg
-    lnFile vimrc vimrc 
-    lnFile mrconfig mrconfig   
-    lnFile irssi irssi 
-    lnFile gitconfig gitconfig 
+    lnFile vimrc vimrc
+    lnFile mrconfig mrconfig
+    lnFile irssi irssi
+    lnFile gitconfig gitconfig
     lnFile gittemplates gittemplates
     lnFile gbp.conf gbp.conf
-    
-    # Tmux 
+
+    # Tmux
     lnFile tmux/tmux.conf tmux.conf
     lnFile tmux/tmux.linux.conf tmux.linux.conf
-    
+
+    # Neovim (special case for .config directory)
+    if [ -d "$HOME/.config/nvim" ] || [ -L "$HOME/.config/nvim" ]; then
+      echo "Backing up existing nvim config to $BACKUP/nvim"
+      mv "$HOME/.config/nvim" "$BACKUP/nvim"
+    fi
+    mkdir -p "$HOME/.config"
+    echo "Linking '$DOTFILES/nvim' to '$HOME/.config/nvim'"
+    ln -s "$DOTFILES/nvim" "$HOME/.config/nvim"
+    echo -e '\E[0;32m'"Done\033[0m"
+
     # zsh stuff
-    lnFile zsh/aliases aliases 
+    lnFile zsh/aliases aliases
     lnFile zsh/zlogout zlogout
     lnFile zsh/zshenv zshenv
     lnFile zsh/zprofile zprofile
