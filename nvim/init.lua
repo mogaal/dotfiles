@@ -37,22 +37,17 @@ require('lazy').setup({
 
   -- Move around easily
   {
-    'ggandor/leap.nvim',
-    enabled = true,
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    ---@type Flash.Config
+    opts = {},
     keys = {
-      { "s", mode = { "n", "x", "o" }, desc = "Leap Forward to" },
-      { "S", mode = { "n", "x", "o" }, desc = "Leap Backward to" },
-      { "gs", mode = { "n", "x", "o" }, desc = "Leap from Windows" },
+      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+      { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+      { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
+      { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+      { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
     },
-    config = function(_, opts)
-      local leap = require("leap")
-      for k, v in pairs(opts) do
-        leap.opts[k] = v
-      end
-      leap.add_default_mappings(true)
-      vim.keymap.del({ "x", "o" }, "x")
-      vim.keymap.del({ "x", "o" }, "X")
-    end,
   },
 
   -- AI assistant integration with Claude Code
@@ -369,14 +364,14 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- Remember the line when close
 vim.api.nvim_create_autocmd("BufReadPost", {
-  pattern = { "*" },
   callback = function()
-    if vim.fn.line("'\"") > 1 and vim.fn.line("'\"") <= vim.fn.line("$") then
-      vim.api.nvim_exec("normal! g'\"", false)
+    local mark = vim.api.nvim_buf_get_mark(0, '"')
+    local lcount = vim.api.nvim_buf_line_count(0)
+    if mark[1] > 1 and mark[1] <= lcount then
+      vim.cmd([[normal! g`"]])
     end
-  end
+  end,
 })
-
 
 -----------------------------------------------------------
 -- toggleterm
@@ -405,7 +400,7 @@ function _lazygit_toggle()
   lazygit:toggle()
 end
 
-vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>g", function() _lazygit_toggle() end, { silent = true, desc = "Lazygit" })
 
 -- nnn
 local nnn = Terminal:new({ cmd = "nnn", hidden = true })
@@ -414,7 +409,7 @@ function _nnn_toggle()
   nnn:toggle()
 end
 
-vim.api.nvim_set_keymap("n", "<leader>n", "<cmd>lua _nnn_toggle()<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>n", function() _nnn_toggle() end, { silent = true, desc = "nnn" })
 
 -----------------------------------------------------------
 -- nvim-tree
@@ -547,6 +542,10 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
+
+------------------------
+-- nvzone/menu plugin --
+------------------------
 
 -- Keyboard users
 vim.keymap.set("n", "<C-t>", function()
