@@ -26,7 +26,19 @@ require('lazy').setup({
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim',               opts = {} },
 
-  { 'folke/which-key.nvim',                opts = {} },
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    keys = {
+      {
+        "<leader>?",
+        function()
+          require("which-key").show({ global = false })
+        end,
+        desc = "Buffer Local Keymaps (which-key)",
+      },
+    },
+  },
 
   -- Add indentation guides even on blank lines
   { 'lukas-reineke/indent-blankline.nvim', main = "ibl", opts = {} },
@@ -84,17 +96,6 @@ require('lazy').setup({
       config = function()
           require("nvim-surround").setup({})
       end
-  },
-
-  {
-    'nvimdev/lspsaga.nvim',
-    config = function()
-        require('lspsaga').setup({})
-    end,
-    dependencies = {
-        'nvim-treesitter/nvim-treesitter', -- optional
-        'nvim-tree/nvim-web-devicons',     -- optional
-    }
   },
 
   -- Bento-style layout manager for a clean and organized UI
@@ -429,41 +430,54 @@ vim.api.nvim_create_autocmd("BufEnter", {
 -- Configuration related to LSP
 -----------------------------------------------------------
 
--- Global mappings.
--- See `:help vim.diagnostic.*` for documentation on any of the below functions
-vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
-vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
+-- Diagnostics UI (set once)
+vim.diagnostic.config({
+  virtual_text = false,     -- you already prefer float + navigation
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = true,
+})
 
--- Use LspAttach autocommand to only map the following keys
--- after the language server attaches to the current buffer
+-- Global diagnostic navigation (not LSP-specific)
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = "Diagnostics: prev" })
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = "Diagnostics: next" })
+
+local capabilities = require('cmp_nvim_lsp').default_capabilities() -- :contentReference[oaicite:2]{index=2}
+
+-- Buffer-local LSP maps created only when a server attaches
 vim.api.nvim_create_autocmd('LspAttach', {
-  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  group = vim.api.nvim_create_augroup('LspKeymaps', { clear = true }),
   callback = function(ev)
-    -- Enable completion triggered by <c-x><c-o>
-    vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+    local opts = { buffer = ev.buf, silent = true }
 
-    -- Buffer local mappings.
-    -- See `:help vim.lsp.*` for documentation on any of the below functions
-    local opts = { buffer = ev.buf }
-    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-    vim.keymap.set('n', '<leader>k', vim.lsp.buf.signature_help, opts)
-    vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
-    vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
-    vim.keymap.set('n', '<space>wl', function()
+    -- Keep the classics
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, vim.tbl_extend("force", opts, { desc = "LSP: goto definition" }))
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, vim.tbl_extend("force", opts, { desc = "LSP: goto declaration" }))
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, vim.tbl_extend("force", opts, { desc = "LSP: goto implementation" }))
+    vim.keymap.set('n', 'K',  vim.lsp.buf.hover, vim.tbl_extend("force", opts, { desc = "LSP: hover" }))
+    -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, vim.tbl_extend("force", opts, { desc = "LSP: references" }))
+    vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references,
+      vim.tbl_extend("force", opts, { desc = "Telescope: LSP references", nowait = true })
+    )
+
+    -- One namespace: <leader>l = LSP
+    vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename, vim.tbl_extend("force", opts, { desc = "LSP: rename" }))
+    vim.keymap.set({ 'n', 'v' }, '<leader>la', vim.lsp.buf.code_action, vim.tbl_extend("force", opts, { desc = "LSP: code action" }))
+    vim.keymap.set('n', '<leader>ls', vim.lsp.buf.signature_help, vim.tbl_extend("force", opts, { desc = "LSP: signature help" }))
+    vim.keymap.set('n', '<leader>lD', vim.lsp.buf.type_definition, vim.tbl_extend("force", opts, { desc = "LSP: type definition" }))
+    vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format, vim.tbl_extend("force", opts, { desc = "LSP: format" }))
+
+    -- Diagnostics namespace: <leader>d
+    vim.keymap.set('n', '<leader>dd', vim.diagnostic.open_float, vim.tbl_extend("force", opts, { desc = "Diagnostics: line float" }))
+    vim.keymap.set('n', '<leader>dl', vim.diagnostic.setloclist, vim.tbl_extend("force", opts, { desc = "Diagnostics: loclist" }))
+
+    -- Workspace actions under <leader>lw
+    vim.keymap.set('n', '<leader>lwa', vim.lsp.buf.add_workspace_folder, vim.tbl_extend("force", opts, { desc = "LSP: workspace add" }))
+    vim.keymap.set('n', '<leader>lwr', vim.lsp.buf.remove_workspace_folder, vim.tbl_extend("force", opts, { desc = "LSP: workspace remove" }))
+    vim.keymap.set('n', '<leader>lwl', function()
       print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    end, opts)
-    vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
-    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
-    vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, opts)
-    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-    vim.keymap.set('n', '<space>f', function()
-      vim.lsp.buf.format { async = true }
-    end, opts)
+    end, vim.tbl_extend("force", opts, { desc = "LSP: workspace list" }))
   end,
 })
 
@@ -484,8 +498,6 @@ local servers = {
   rust_analyzer = {},
 }
 
--- Setup Mason-LSPConfig integration
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
 require('mason-lspconfig').setup({
   ensure_installed = vim.tbl_keys(servers),
   handlers = {
@@ -564,6 +576,20 @@ vim.keymap.set({ "n", "v" }, "<RightMouse>", function()
 
   require("menu").open(options, { mouse = true })
 end, {})
+
+---------------
+-- which-key --
+--------------
+
+local wk = require("which-key")
+wk.add({
+  { "<leader>l", group = "LSP" },
+  { "<leader>lw", group = "LSP Workspace" },
+  { "<leader>d", group = "Diagnostics" },
+  { "<leader>b", group = "Bufferline" },
+  { "<leader>f", group = "Telescope" },
+  { "<leader>s", group = "Spelling" },
+})
 
 -----------------------------------------------------------
 -- alpha-vim
