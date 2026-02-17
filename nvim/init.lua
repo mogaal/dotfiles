@@ -450,27 +450,31 @@ vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('LspKeymaps', { clear = true }),
   callback = function(ev)
     local opts = { buffer = ev.buf, silent = true }
+    local tb = require('telescope.builtin')
 
-    -- Keep the classics
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, vim.tbl_extend("force", opts, { desc = "LSP: goto definition" }))
+    -- Navigation — Telescope gives preview + multi-result picking
+    vim.keymap.set('n', 'gd', tb.lsp_definitions, vim.tbl_extend("force", opts, { desc = "LSP: goto definition (Telescope)" }))
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, vim.tbl_extend("force", opts, { desc = "LSP: goto declaration" }))
-    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, vim.tbl_extend("force", opts, { desc = "LSP: goto implementation" }))
+    vim.keymap.set('n', 'gi', tb.lsp_implementations, vim.tbl_extend("force", opts, { desc = "LSP: goto implementation (Telescope)" }))
+    vim.keymap.set('n', 'gr', tb.lsp_references, vim.tbl_extend("force", opts, { desc = "LSP: references (Telescope)", nowait = true }))
     vim.keymap.set('n', 'K',  vim.lsp.buf.hover, vim.tbl_extend("force", opts, { desc = "LSP: hover" }))
-    -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, vim.tbl_extend("force", opts, { desc = "LSP: references" }))
-    vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references,
-      vim.tbl_extend("force", opts, { desc = "Telescope: LSP references", nowait = true })
-    )
 
     -- One namespace: <leader>l = LSP
     vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename, vim.tbl_extend("force", opts, { desc = "LSP: rename" }))
     vim.keymap.set({ 'n', 'v' }, '<leader>la', vim.lsp.buf.code_action, vim.tbl_extend("force", opts, { desc = "LSP: code action" }))
     vim.keymap.set('n', '<leader>ls', vim.lsp.buf.signature_help, vim.tbl_extend("force", opts, { desc = "LSP: signature help" }))
-    vim.keymap.set('n', '<leader>lD', vim.lsp.buf.type_definition, vim.tbl_extend("force", opts, { desc = "LSP: type definition" }))
+    vim.keymap.set('n', '<leader>lD', tb.lsp_type_definitions, vim.tbl_extend("force", opts, { desc = "LSP: type definition (Telescope)" }))
+    vim.keymap.set('n', '<leader>ld', tb.lsp_document_symbols, vim.tbl_extend("force", opts, { desc = "LSP: document symbols (Telescope)" }))
+    vim.keymap.set('n', '<leader>lS', tb.lsp_dynamic_workspace_symbols, vim.tbl_extend("force", opts, { desc = "LSP: workspace symbols (Telescope)" }))
+    vim.keymap.set('n', '<leader>li', tb.lsp_incoming_calls, vim.tbl_extend("force", opts, { desc = "LSP: incoming calls (Telescope)" }))
+    vim.keymap.set('n', '<leader>lo', tb.lsp_outgoing_calls, vim.tbl_extend("force", opts, { desc = "LSP: outgoing calls (Telescope)" }))
     vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format, vim.tbl_extend("force", opts, { desc = "LSP: format" }))
 
     -- Diagnostics namespace: <leader>d
     vim.keymap.set('n', '<leader>dd', vim.diagnostic.open_float, vim.tbl_extend("force", opts, { desc = "Diagnostics: line float" }))
     vim.keymap.set('n', '<leader>dl', vim.diagnostic.setloclist, vim.tbl_extend("force", opts, { desc = "Diagnostics: loclist" }))
+    vim.keymap.set('n', '<leader>dw', tb.diagnostics, vim.tbl_extend("force", opts, { desc = "Diagnostics: workspace (Telescope)" }))
+    vim.keymap.set('n', '<leader>db', function() tb.diagnostics({ bufnr = 0 }) end, vim.tbl_extend("force", opts, { desc = "Diagnostics: buffer (Telescope)" }))
 
     -- Workspace actions under <leader>lw
     vim.keymap.set('n', '<leader>lwa', vim.lsp.buf.add_workspace_folder, vim.tbl_extend("force", opts, { desc = "LSP: workspace add" }))
