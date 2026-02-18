@@ -29,6 +29,15 @@ require('lazy').setup({
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
+    opts = {
+      spec = {
+        { "<leader>g", group = "git" },
+        { "<leader>s", group = "search" },
+        { "<leader>b", group = "buffer" },
+        { "<leader>c", group = "code" },
+        { "<leader>u", group = "ui" },
+      },
+    },
     keys = {
       {
         "<leader>?",
@@ -154,8 +163,6 @@ require('lazy').setup({
     }
   },
 
-  { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-
   -- AI assistant integration with Claude Code
   {
     "coder/claudecode.nvim",
@@ -259,56 +266,6 @@ require('lazy').setup({
     },
   },
 
-  -- buferline
-  {
-    'akinsho/bufferline.nvim',
-    lazy = false,
-    version = "*",
-    dependencies = 'nvim-tree/nvim-web-devicons',
-    config = function()
-      require('bufferline').setup {
-        options = {
-          offsets = { { filetype = "NvimTree", text = "File Explorer", text_align = "center" } },
-        }
-      }
-    end,
-    keys = {
-      { "<leader>bs", ":BufferLinePick<cr>",      desc = "Select buffer (from bufferline)" },
-      { "<leader>bc", ":BufferLinePickClose<cr>", desc = "Close buffer (from bufferline)" },
-      { "<leader>bp", ":BufferLineTogglePin<cr>", desc = "Pin a buffer (from bufferline)" },
-    }
-  },
-
-  -- Fuzzy Finder (files, lsp, etc)
-  {
-    'nvim-telescope/telescope.nvim',
-    lazy = false,
-    dependencies = { 'nvim-lua/plenary.nvim' },
-    version = '*',
-    keys = {
-      { "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>",      desc = "Find files" },
-      { "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep() <cr>",      desc = "Grep files" },
-      { "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>",         desc = "Buffers" },
-      { "<leader>fh", "<cmd>lua require('telescope.builtin').command_history()<cr>", desc = "Command History" },
-      { "<leader>fc", "<cmd>lua require('telescope.builtin').commands()<cr>",        desc = "Available commands" },
-      { "<leader>fs", "<cmd>lua require('telescope.builtin').spell_suggest()<cr>",   desc = "Spelling suggest" }
-    },
-    config = function()
-      require('telescope').setup {
-        defaults = {},
-        extensions = {
-          fzf = {
-            fuzzy = true,                    -- false will only do exact matching
-            override_generic_sorter = true,  -- override the generic sorter
-            override_file_sorter = true,     -- override the file sorter
-            case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
-                           -- the default case_mode is "smart_case"
-          }
-        }
-      }
-    end
-  },
-
   -- Highlight, edit, and navigate code
   {
     'nvim-treesitter/nvim-treesitter',
@@ -329,11 +286,7 @@ require('lazy').setup({
 
   {
       'MeanderingProgrammer/render-markdown.nvim',
-      dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
-      -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
-      -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
-      ---@module 'render-markdown'
-      ---@type render.md.UserConfig
+      dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' },
       opts = {},
   },
 
@@ -463,8 +416,6 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities() -- :contentR
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('LspKeymaps', { clear = true }),
   callback = function(ev)
-    local opts = { buffer = ev.buf, silent = true }
-    local tb = require('telescope.builtin')
   end,
 })
 
@@ -563,16 +514,3 @@ vim.keymap.set({ "n", "v" }, "<RightMouse>", function()
 
   require("menu").open(options, { mouse = true })
 end, {})
-
----------------
--- which-key --
---------------
-
-local wk = require("which-key")
-wk.add({
-  { "<leader>l", group = "LSP" },
-  { "<leader>lw", group = "LSP Workspace" },
-  { "<leader>d", group = "Diagnostics" },
-  { "<leader>b", group = "Bufferline" },
-  { "<leader>f", group = "Telescope" }
-})
