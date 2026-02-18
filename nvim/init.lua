@@ -62,6 +62,100 @@ require('lazy').setup({
     },
   },
 
+  {
+    "folke/snacks.nvim",
+    priority = 1000,
+    lazy = false,
+    ---@type snacks.Config
+    opts = {
+      dashboard = { 
+        enabled = true,
+        example = "files"
+      },
+      explorer = { enabled = true },
+      indent = { enabled = true },
+      input = { enabled = true },
+      picker = { enabled = true },
+      notifier = { enabled = true },
+      quickfile = { enabled = true },
+      scope = { enabled = true },
+      scroll = { enabled = true },
+      statuscolumn = { enabled = true },
+      words = { enabled = true },
+    },
+    keys = {
+      -- Top Pickers & Explorer
+      { "<leader><space>", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
+      { "<leader>,", function() Snacks.picker.buffers() end, desc = "Buffers" },
+      { "<leader>/", function() Snacks.picker.grep() end, desc = "Grep" },
+      { "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
+      { "<leader>n", function() Snacks.picker.notifications() end, desc = "Notification History" },
+      { "<leader>e", function() Snacks.explorer() end, desc = "File Explorer" },
+      -- git
+      { "<leader>gb", function() Snacks.picker.git_branches() end, desc = "Git Branches" },
+      { "<leader>gl", function() Snacks.picker.git_log() end, desc = "Git Log" },
+      { "<leader>gL", function() Snacks.picker.git_log_line() end, desc = "Git Log Line" },
+      { "<leader>gs", function() Snacks.picker.git_status() end, desc = "Git Status" },
+      { "<leader>gS", function() Snacks.picker.git_stash() end, desc = "Git Stash" },
+      { "<leader>gd", function() Snacks.picker.git_diff() end, desc = "Git Diff (Hunks)" },
+      { "<leader>gf", function() Snacks.picker.git_log_file() end, desc = "Git Log File" },
+      { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
+      { "<leader>gB", function() Snacks.gitbrowse() end, desc = "Git Browse", mode = { "n", "v" } },
+      -- Grep
+      { "<leader>sb", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
+      { "<leader>sB", function() Snacks.picker.grep_buffers() end, desc = "Grep Open Buffers" },
+      { "<leader>sg", function() Snacks.picker.grep() end, desc = "Grep" },
+      { "<leader>sw", function() Snacks.picker.grep_word() end, desc = "Visual selection or word", mode = { "n", "x" } },
+      -- search
+      { '<leader>s"', function() Snacks.picker.registers() end, desc = "Registers" },
+      { '<leader>s/', function() Snacks.picker.search_history() end, desc = "Search History" },
+      { "<leader>sa", function() Snacks.picker.autocmds() end, desc = "Autocmds" },
+      { "<leader>sb", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
+      { "<leader>sc", function() Snacks.picker.command_history() end, desc = "Command History" },
+      { "<leader>sC", function() Snacks.picker.commands() end, desc = "Commands" },
+      { "<leader>sd", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
+      { "<leader>sD", function() Snacks.picker.diagnostics_buffer() end, desc = "Buffer Diagnostics" },
+      { "<leader>sh", function() Snacks.picker.help() end, desc = "Help Pages" },
+      { "<leader>sH", function() Snacks.picker.highlights() end, desc = "Highlights" },
+      { "<leader>si", function() Snacks.picker.icons() end, desc = "Icons" },
+      { "<leader>sj", function() Snacks.picker.jumps() end, desc = "Jumps" },
+      { "<leader>sk", function() Snacks.picker.keymaps() end, desc = "Keymaps" },
+      { "<leader>sl", function() Snacks.picker.loclist() end, desc = "Location List" },
+      { "<leader>sm", function() Snacks.picker.marks() end, desc = "Marks" },
+      { "<leader>sM", function() Snacks.picker.man() end, desc = "Man Pages" },
+      { "<leader>sp", function() Snacks.picker.lazy() end, desc = "Search for Plugin Spec" },
+      { "<leader>sq", function() Snacks.picker.qflist() end, desc = "Quickfix List" },
+      { "<leader>sR", function() Snacks.picker.resume() end, desc = "Resume" },
+      { "<leader>su", function() Snacks.picker.undo() end, desc = "Undo History" },
+      { "<leader>uC", function() Snacks.picker.colorschemes() end, desc = "Colorschemes" },
+      -- LSP
+      { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition" },
+      { "gD", function() Snacks.picker.lsp_declarations() end, desc = "Goto Declaration" },
+      { "gr", function() Snacks.picker.lsp_references() end, nowait = true, desc = "References" },
+      { "gI", function() Snacks.picker.lsp_implementations() end, desc = "Goto Implementation" },
+      { "gy", function() Snacks.picker.lsp_type_definitions() end, desc = "Goto T[y]pe Definition" },
+      { "gai", function() Snacks.picker.lsp_incoming_calls() end, desc = "C[a]lls Incoming" },
+      { "gao", function() Snacks.picker.lsp_outgoing_calls() end, desc = "C[a]lls Outgoing" },
+      { "<leader>ss", function() Snacks.picker.lsp_symbols() end, desc = "LSP Symbols" },
+      { "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
+      -- Other
+      { "<leader>z",  function() Snacks.zen() end, desc = "Toggle Zen Mode" },
+      { "<leader>Z",  function() Snacks.zen.zoom() end, desc = "Toggle Zoom" },
+      { "<leader>.",  function() Snacks.scratch() end, desc = "Toggle Scratch Buffer" },
+      { "<leader>S",  function() Snacks.scratch.select() end, desc = "Select Scratch Buffer" },
+      { "<leader>n",  function() Snacks.notifier.show_history() end, desc = "Notification History" },
+      { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
+      { "<leader>cR", function() Snacks.rename.rename_file() end, desc = "Rename File" },
+      { "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
+      { "<c-/>",      function() Snacks.terminal() end, desc = "Toggle Terminal" },
+      { "<c-_>",      function() Snacks.terminal() end, desc = "which_key_ignore" },
+      { "]]",         function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n", "t" } },
+      { "[[",         function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "t" } },
+    }
+  },
+
+  { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+
   -- AI assistant integration with Claude Code
   {
     "coder/claudecode.nvim",
@@ -122,25 +216,6 @@ require('lazy').setup({
         options = { theme = 'everforest' },
       }
     end
-  },
-
-  -- Dashboard (start screen)
-  {
-    'goolord/alpha-nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-    event = "VimEnter",
-  },
-
-  -- File explorer
-  {
-    'nvim-tree/nvim-tree.lua',
-    dependencies = {
-      'nvim-tree/nvim-web-devicons',
-    },
-    keys = {
-      { "<leader>t", "<cmd>NvimTreeToggle<CR>", desc = "nvim-tree (file explorer)" },
-    },
-    opts = {},
   },
 
   -- Git labels
@@ -216,22 +291,20 @@ require('lazy').setup({
       { "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>",         desc = "Buffers" },
       { "<leader>fh", "<cmd>lua require('telescope.builtin').command_history()<cr>", desc = "Command History" },
       { "<leader>fc", "<cmd>lua require('telescope.builtin').commands()<cr>",        desc = "Available commands" },
-      { "<leader>fs", "<cmd>lua require('telescope.builtin').spell_suggest()<cr>",   desc = "Spelling suggest" },
-      {
-        "<leader>/",
-        function()
-          -- You can pass additional configuration to telescope to change theme, layout, etc.
-          require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-            winblend = 10,
-            previewer = false,
-          })
-        end,
-        desc = "Spelling suggest"
-      },
+      { "<leader>fs", "<cmd>lua require('telescope.builtin').spell_suggest()<cr>",   desc = "Spelling suggest" }
     },
     config = function()
       require('telescope').setup {
-        defaults = {}
+        defaults = {},
+        extensions = {
+          fzf = {
+            fuzzy = true,                    -- false will only do exact matching
+            override_generic_sorter = true,  -- override the generic sorter
+            override_file_sorter = true,     -- override the file sorter
+            case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+                           -- the default case_mode is "smart_case"
+          }
+        }
       }
     end
   },
@@ -327,13 +400,6 @@ vim.keymap.set('n', '<C-l>', ':wincmd l<CR>', { desc = "Move to right window" })
 vim.keymap.set('n', '<C-j>', ':wincmd j<CR>', { desc = "Move to down window" })
 vim.keymap.set('n', '<C-k>', ':wincmd k<CR>', { desc = "Move to up window" })
 
--- Spelling
-vim.keymap.set('n', '<leader>ss', ':setlocal spell!<cr>', { desc = "Enable spelling" })
-vim.keymap.set('n', '<leader>sn', ']s', { desc = "Next word" })
-vim.keymap.set('n', '<leader>sp', '[s', { desc = "Previous word" })
-vim.keymap.set('n', '<leader>sa', 'zg', { desc = "Move down" })
-vim.keymap.set('n', '<leader>s?', 'z=', { desc = "Suggestion?" })
-
 -- Moving lines around
 --   either Alt-j/Alt-k or Shift-J/K
 vim.keymap.set('x', 'J', ":move '>+1<CR>gv-gv", { desc = "Move line down (Select-mode)" })
@@ -375,58 +441,6 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 })
 
 -----------------------------------------------------------
--- toggleterm
------------------------------------------------------------
-
-require("toggleterm").setup {
-  size = 20,
-  open_mapping = [[<c-\>]],
-  direction = "float",
-  float_opts = {
-    border = "curved",
-    winblend = 3,
-    highlights = {
-      border = "Normal",
-      background = "Normal",
-    },
-  },
-}
-
-local Terminal = require('toggleterm.terminal').Terminal
-
--- Lazygit
-local lazygit  = Terminal:new({ cmd = "lazygit", hidden = true })
-
-function _lazygit_toggle()
-  lazygit:toggle()
-end
-
-vim.keymap.set("n", "<leader>g", function() _lazygit_toggle() end, { silent = true, desc = "Lazygit" })
-
--- nnn
-local nnn = Terminal:new({ cmd = "nnn", hidden = true })
-
-function _nnn_toggle()
-  nnn:toggle()
-end
-
-vim.keymap.set("n", "<leader>n", function() _nnn_toggle() end, { silent = true, desc = "nnn" })
-
------------------------------------------------------------
--- nvim-tree
------------------------------------------------------------
-
--- When nvim-tree is the only window opened, automatically close it.
-vim.api.nvim_create_autocmd("BufEnter", {
-  nested = true,
-  callback = function()
-    if #vim.api.nvim_list_wins() == 1 and vim.api.nvim_buf_get_name(0):match("NvimTree_") ~= nil then
-      vim.cmd "quit"
-    end
-  end
-})
-
------------------------------------------------------------
 -- Configuration related to LSP
 -----------------------------------------------------------
 
@@ -451,37 +465,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(ev)
     local opts = { buffer = ev.buf, silent = true }
     local tb = require('telescope.builtin')
-
-    -- Navigation — Telescope gives preview + multi-result picking
-    vim.keymap.set('n', 'gd', tb.lsp_definitions, vim.tbl_extend("force", opts, { desc = "LSP: goto definition (Telescope)" }))
-    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, vim.tbl_extend("force", opts, { desc = "LSP: goto declaration" }))
-    vim.keymap.set('n', 'gi', tb.lsp_implementations, vim.tbl_extend("force", opts, { desc = "LSP: goto implementation (Telescope)" }))
-    vim.keymap.set('n', 'gr', tb.lsp_references, vim.tbl_extend("force", opts, { desc = "LSP: references (Telescope)", nowait = true }))
-    vim.keymap.set('n', 'K',  vim.lsp.buf.hover, vim.tbl_extend("force", opts, { desc = "LSP: hover" }))
-
-    -- One namespace: <leader>l = LSP
-    vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename, vim.tbl_extend("force", opts, { desc = "LSP: rename" }))
-    vim.keymap.set({ 'n', 'v' }, '<leader>la', vim.lsp.buf.code_action, vim.tbl_extend("force", opts, { desc = "LSP: code action" }))
-    vim.keymap.set('n', '<leader>ls', vim.lsp.buf.signature_help, vim.tbl_extend("force", opts, { desc = "LSP: signature help" }))
-    vim.keymap.set('n', '<leader>lD', tb.lsp_type_definitions, vim.tbl_extend("force", opts, { desc = "LSP: type definition (Telescope)" }))
-    vim.keymap.set('n', '<leader>ld', tb.lsp_document_symbols, vim.tbl_extend("force", opts, { desc = "LSP: document symbols (Telescope)" }))
-    vim.keymap.set('n', '<leader>lS', tb.lsp_dynamic_workspace_symbols, vim.tbl_extend("force", opts, { desc = "LSP: workspace symbols (Telescope)" }))
-    vim.keymap.set('n', '<leader>li', tb.lsp_incoming_calls, vim.tbl_extend("force", opts, { desc = "LSP: incoming calls (Telescope)" }))
-    vim.keymap.set('n', '<leader>lo', tb.lsp_outgoing_calls, vim.tbl_extend("force", opts, { desc = "LSP: outgoing calls (Telescope)" }))
-    vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format, vim.tbl_extend("force", opts, { desc = "LSP: format" }))
-
-    -- Diagnostics namespace: <leader>d
-    vim.keymap.set('n', '<leader>dd', vim.diagnostic.open_float, vim.tbl_extend("force", opts, { desc = "Diagnostics: line float" }))
-    vim.keymap.set('n', '<leader>dl', vim.diagnostic.setloclist, vim.tbl_extend("force", opts, { desc = "Diagnostics: loclist" }))
-    vim.keymap.set('n', '<leader>dw', tb.diagnostics, vim.tbl_extend("force", opts, { desc = "Diagnostics: workspace (Telescope)" }))
-    vim.keymap.set('n', '<leader>db', function() tb.diagnostics({ bufnr = 0 }) end, vim.tbl_extend("force", opts, { desc = "Diagnostics: buffer (Telescope)" }))
-
-    -- Workspace actions under <leader>lw
-    vim.keymap.set('n', '<leader>lwa', vim.lsp.buf.add_workspace_folder, vim.tbl_extend("force", opts, { desc = "LSP: workspace add" }))
-    vim.keymap.set('n', '<leader>lwr', vim.lsp.buf.remove_workspace_folder, vim.tbl_extend("force", opts, { desc = "LSP: workspace remove" }))
-    vim.keymap.set('n', '<leader>lwl', function()
-      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    end, vim.tbl_extend("force", opts, { desc = "LSP: workspace list" }))
   end,
 })
 
@@ -591,58 +574,5 @@ wk.add({
   { "<leader>lw", group = "LSP Workspace" },
   { "<leader>d", group = "Diagnostics" },
   { "<leader>b", group = "Bufferline" },
-  { "<leader>f", group = "Telescope" },
-  { "<leader>s", group = "Spelling" },
+  { "<leader>f", group = "Telescope" }
 })
-
------------------------------------------------------------
--- alpha-vim
------------------------------------------------------------
-
-local alpha = require("alpha")
-local dashboard = require("alpha.themes.dashboard")
-
--- Set header
-dashboard.section.header.val = {
-  "                                                     ",
-  "  ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ",
-  "  ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ",
-  "  ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ",
-  "  ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ",
-  "  ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ",
-  "  ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ",
-  "                                                     ",
-}
-
--- Set menu
-dashboard.section.buttons.val = {
-  dashboard.button("e", "  > New file", ":ene <BAR> startinsert <CR>"),
-  dashboard.button("f", "  > Find file", ":cd $HOME/Workspace | Telescope find_files<CR>"),
-  dashboard.button("r", "  > Recent", ":Telescope oldfiles<CR>"),
-  dashboard.button("s", "  > Settings", ":e $MYVIMRC | :cd %:p:h | split . | wincmd k | pwd<CR>"),
-  dashboard.button("q", "  > Quit NVIM", ":qa<CR>"),
-}
-
--- Set footer
---   NOTE: This is currently a feature in my fork of alpha-nvim (opened PR #21, will update snippet if added to main)
---   To see test this yourself, add the function as a dependecy in packer and uncomment the footer lines
---   ```init.lua
---   return require('packer').startup(function()
---       use 'wbthomason/packer.nvim'
---       use {
---           'goolord/alpha-nvim', branch = 'feature/startify-fortune',
---           requires = {'BlakeJC94/alpha-nvim-fortune'},
---           config = function() require("config.alpha") end
---       }
---   end)
---   ```
--- local fortune = require("alpha.fortune")
--- dashboard.section.footer.val = fortune()
-
--- Send config to alpha
-alpha.setup(dashboard.opts)
-
--- Disable folding on alpha buffer
-vim.cmd([[
-    autocmd FileType alpha setlocal nofoldenable
-]])
