@@ -36,6 +36,7 @@ require('lazy').setup({
         { "<leader>b", group = "buffer" },
         { "<leader>c", group = "code" },
         { "<leader>u", group = "ui" },
+        { "<leader>a", group = "Claude" },
       },
     },
     keys = {
@@ -168,6 +169,9 @@ require('lazy').setup({
     "coder/claudecode.nvim",
     dependencies = { "folke/snacks.nvim" },
     config = true,
+    opts = {
+      open_in_current_tab = false, -- Don't create new tabs
+    },
     keys = {
       { "<leader>a", nil, desc = "AI/Claude Code" },
       { "<leader>ac", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
@@ -352,6 +356,12 @@ vim.keymap.set('n', '<C-h>', ':wincmd h<CR>', { desc = "Move to left window" })
 vim.keymap.set('n', '<C-l>', ':wincmd l<CR>', { desc = "Move to right window" })
 vim.keymap.set('n', '<C-j>', ':wincmd j<CR>', { desc = "Move to down window" })
 vim.keymap.set('n', '<C-k>', ':wincmd k<CR>', { desc = "Move to up window" })
+
+-- Same navigation from terminal mode (e.g. Claude Code window)
+vim.keymap.set('t', '<C-h>', '<C-\\><C-n><C-w>h', { desc = "Move to left window (terminal)" })
+vim.keymap.set('t', '<C-l>', '<C-\\><C-n><C-w>l', { desc = "Move to right window (terminal)" })
+vim.keymap.set('t', '<C-j>', '<C-\\><C-n><C-w>j', { desc = "Move to down window (terminal)" })
+vim.keymap.set('t', '<C-k>', '<C-\\><C-n><C-w>k', { desc = "Move to up window (terminal)" })
 
 -- Moving lines around
 --   either Alt-j/Alt-k or Shift-J/K
