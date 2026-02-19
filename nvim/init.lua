@@ -1,6 +1,6 @@
--- Set comma as the leader key
-vim.g.mapleader = ','
-vim.g.maplocalleader = ','
+-- Set space as the leader key
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
@@ -50,9 +50,6 @@ require('lazy').setup({
     },
   },
 
-  -- Add indentation guides even on blank lines
-  { 'lukas-reineke/indent-blankline.nvim', main = "ibl", opts = {} },
-
   -- Highlighting other uses of the word under the cursor
   -- default <a-n> and <a-p> to move between references
   { 'RRethy/vim-illuminate' },
@@ -78,7 +75,7 @@ require('lazy').setup({
     lazy = false,
     ---@type snacks.Config
     opts = {
-      dashboard = { 
+      dashboard = {
         enabled = true,
         example = "files"
       },
@@ -101,6 +98,13 @@ require('lazy').setup({
       { "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
       { "<leader>n", function() Snacks.picker.notifications() end, desc = "Notification History" },
       { "<leader>e", function() Snacks.explorer() end, desc = "File Explorer" },
+      -- find
+      { "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
+      { "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Config File" },
+      { "<leader>ff", function() Snacks.picker.files() end, desc = "Find Files" },
+      { "<leader>fg", function() Snacks.picker.git_files() end, desc = "Find Git Files" },
+      { "<leader>fp", function() Snacks.picker.projects() end, desc = "Projects" },
+      { "<leader>fr", function() Snacks.picker.recent() end, desc = "Recent" },
       -- git
       { "<leader>gb", function() Snacks.picker.git_branches() end, desc = "Git Branches" },
       { "<leader>gl", function() Snacks.picker.git_log() end, desc = "Git Log" },
