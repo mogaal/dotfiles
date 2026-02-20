@@ -51,6 +51,12 @@ require('lazy').setup({
     },
   },
 
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {},
+  },
+
   -- Move around easily
   {
     "folke/flash.nvim",
@@ -92,11 +98,11 @@ require('lazy').setup({
   },
 
   {
-      'windwp/nvim-autopairs',
-      event = "InsertEnter",
-      config = true
-      -- use opts = {} for passing setup options
-      -- this is equivalent to setup({}) function
+    'windwp/nvim-autopairs',
+    event = "InsertEnter",
+    config = true
+    -- use opts = {} for passing setup options
+    -- this is equivalent to setup({}) function
   },
 
   {
@@ -237,12 +243,12 @@ require('lazy').setup({
   -- Bento-style layout manager for a clean and organized UI
   { "serhez/bento.nvim",     opts = {} },
 
-  -- {
-  --    "m4xshen/hardtime.nvim",
-  --    lazy = false,
-  --    dependencies = { "MunifTanjim/nui.nvim" },
-  --    opts = {},
-  -- },
+  {
+     "m4xshen/hardtime.nvim",
+     lazy = false,
+     dependencies = { "MunifTanjim/nui.nvim" },
+     opts = {},
+  },
 
   -- Statusline
   {
@@ -322,8 +328,8 @@ require('lazy').setup({
     opts = {},
   },
 
-  { "nvzone/volt",  lazy = true },
-  { "nvzone/menu",  lazy = true }
+  { "nvzone/volt", lazy = true },
+  { "nvzone/menu", lazy = true }
 })
 
 -- Sets how neovim will display certain whitespace characters in the editor.
