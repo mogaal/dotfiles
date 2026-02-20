@@ -50,10 +50,6 @@ require('lazy').setup({
     },
   },
 
-  -- Highlighting other uses of the word under the cursor
-  -- default <a-n> and <a-p> to move between references
-  { 'RRethy/vim-illuminate' },
-
   -- Move around easily
   {
     "folke/flash.nvim",
@@ -124,7 +120,6 @@ require('lazy').setup({
       { '<leader>s"', function() Snacks.picker.registers() end, desc = "Registers" },
       { '<leader>s/', function() Snacks.picker.search_history() end, desc = "Search History" },
       { "<leader>sa", function() Snacks.picker.autocmds() end, desc = "Autocmds" },
-      { "<leader>sb", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
       { "<leader>sc", function() Snacks.picker.command_history() end, desc = "Command History" },
       { "<leader>sC", function() Snacks.picker.commands() end, desc = "Commands" },
       { "<leader>sd", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
@@ -157,7 +152,6 @@ require('lazy').setup({
       { "<leader>Z",  function() Snacks.zen.zoom() end, desc = "Toggle Zoom" },
       { "<leader>.",  function() Snacks.scratch() end, desc = "Toggle Scratch Buffer" },
       { "<leader>S",  function() Snacks.scratch.select() end, desc = "Select Scratch Buffer" },
-      { "<leader>n",  function() Snacks.notifier.show_history() end, desc = "Notification History" },
       { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
       { "<leader>cR", function() Snacks.rename.rename_file() end, desc = "Rename File" },
       { "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
@@ -216,9 +210,6 @@ require('lazy').setup({
   --    dependencies = { "MunifTanjim/nui.nvim" },
   --    opts = {},
   -- },
-
-  -- Terminal, used for lazygit
-  { 'akinsho/toggleterm.nvim', version = "*" },
 
   -- Statusline
   {
