@@ -35,6 +35,7 @@ require('lazy').setup({
         { "<leader>s", group = "search" },
         { "<leader>b", group = "buffer" },
         { "<leader>c", group = "code" },
+        { "<leader>f", group = "find" },
         { "<leader>u", group = "ui" },
         { "<leader>a", group = "Claude" },
       },
@@ -305,51 +306,50 @@ vim.opt.cursorline = true
 vim.opt.number = true
 
 -- Enable mouse mode
-vim.o.mouse = 'a'
+vim.opt.mouse = 'a'
 
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
-vim.o.clipboard = 'unnamedplus'
+vim.opt.clipboard = 'unnamedplus'
 
 -- This increases my speed moving around
-vim.o.relativenumber = true
+vim.opt.relativenumber = true
 
 -- Enable break indent
-vim.o.breakindent = true
+vim.opt.breakindent = true
 
 -- Save undo history
-vim.o.undofile = true
+vim.opt.undofile = true
 
 -- Set highlight on search
-vim.o.hlsearch = false
+vim.opt.hlsearch = false
 
 -- Case insensitive searching UNLESS /C or capital in search
-vim.o.ignorecase = true
-vim.o.smartcase = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
 -- NOTE: You should make sure your terminal supports this. Specially for bufferline
-vim.o.termguicolors = true
+vim.opt.termguicolors = true
 
 -- Keep cursor away from screen edges when scrolling
-vim.o.scrolloff = 8
+vim.opt.scrolloff = 8
 
 -- Always show the sign column to prevent layout shifts from diagnostics
-vim.o.signcolumn = 'yes'
+vim.opt.signcolumn = 'yes'
 
 -- Faster which-key popup and key sequence timeout
-vim.o.timeoutlen = 300
+vim.opt.timeoutlen = 300
 
 -- Open splits in a more natural direction
-vim.o.splitright = true
-vim.o.splitbelow = true
+vim.opt.splitright = true
+vim.opt.splitbelow = true
 
 -- Replace a word with yanked text (replace text in one or more other locations)
 --   See here: https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text
 vim.keymap.set('v', 'p', '"_dP', { desc = "Paste (in one or more other locations" })
 
 -- Map jh to Esc
--- imap jh <Esc>
 vim.keymap.set('i', 'jh', '<Esc>', { desc = "Map jh to <Esc>" })
 
 -- Reload configuration without restart nvim
@@ -384,10 +384,10 @@ vim.keymap.set('x', '<A-k>', ":move '<-2<CR>gv-gv", { desc = "Move line up (Sele
 vim.keymap.set('n', '<leader>w', ':w!<cr>', { desc = "Fast saving" })
 
 -- Tabs & indent
-vim.o.expandtab = true   -- Use spaces instead of tabs
-vim.o.shiftwidth = 2     -- Shift 2 spaces when tab
-vim.o.tabstop = 2        -- 1 tab == 2 spaces
-vim.o.smartindent = true -- Autoindent new lines
+vim.opt.expandtab = true   -- Use spaces instead of tabs
+vim.opt.shiftwidth = 2     -- Shift 2 spaces when tab
+vim.opt.tabstop = 2        -- 1 tab == 2 spaces
+vim.opt.smartindent = true -- Autoindent new lines
 
 
 -- Highlight on yank
