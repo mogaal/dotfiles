@@ -95,7 +95,6 @@ require('lazy').setup({
       { "<leader>n", function() Snacks.picker.notifications() end, desc = "Notification History" },
       { "<leader>e", function() Snacks.explorer() end, desc = "File Explorer" },
       -- find
-      { "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
       { "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Config File" },
       { "<leader>ff", function() Snacks.picker.files() end, desc = "Find Files" },
       { "<leader>fg", function() Snacks.picker.git_files() end, desc = "Find Git Files" },
@@ -180,9 +179,9 @@ require('lazy').setup({
       { "<leader>ab", "<cmd>ClaudeCodeAdd %<cr>", desc = "Add current buffer" },
       { "<leader>as", "<cmd>ClaudeCodeSend<cr>", mode = "v", desc = "Send to Claude" },
       {
-        "<leader>as",
+        "<leader>aT",
         "<cmd>ClaudeCodeTreeAdd<cr>",
-        desc = "Add file",
+        desc = "Add file (tree)",
         ft = { "NvimTree", "neo-tree", "oil", "minifiles", "netrw" },
       },
       -- Diff management
@@ -219,7 +218,7 @@ require('lazy').setup({
     },
     config = function()
       require('lualine').setup {
-        options = { theme = 'everforest' },
+        options = { theme = 'catppuccin' },
       }
     end
   },
@@ -303,7 +302,7 @@ vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 vim.opt.cursorline = true
 
 -- Make line numbers default
-vim.wo.number = true
+vim.opt.number = true
 
 -- Enable mouse mode
 vim.o.mouse = 'a'
@@ -331,6 +330,19 @@ vim.o.smartcase = true
 
 -- NOTE: You should make sure your terminal supports this. Specially for bufferline
 vim.o.termguicolors = true
+
+-- Keep cursor away from screen edges when scrolling
+vim.o.scrolloff = 8
+
+-- Always show the sign column to prevent layout shifts from diagnostics
+vim.o.signcolumn = 'yes'
+
+-- Faster which-key popup and key sequence timeout
+vim.o.timeoutlen = 300
+
+-- Open splits in a more natural direction
+vim.o.splitright = true
+vim.o.splitbelow = true
 
 -- Replace a word with yanked text (replace text in one or more other locations)
 --   See here: https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text
@@ -383,7 +395,7 @@ vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
   group = 'YankHighlight',
   callback = function()
-    vim.highlight.on_yank({ higroup = 'IncSearch', timeout = '1000' })
+    vim.highlight.on_yank({ higroup = 'IncSearch', timeout = 1000 })
   end
 })
 
@@ -415,15 +427,6 @@ vim.diagnostic.config({
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = "Diagnostics: prev" })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = "Diagnostics: next" })
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities() -- :contentReference[oaicite:2]{index=2}
-
--- Buffer-local LSP maps created only when a server attaches
-vim.api.nvim_create_autocmd('LspAttach', {
-  group = vim.api.nvim_create_augroup('LspKeymaps', { clear = true }),
-  callback = function(ev)
-  end,
-})
-
 local servers = {
   terraformls = {},
   tflint = {},
@@ -433,6 +436,7 @@ local servers = {
     Lua = {
       workspace = { checkThirdParty = false },
       telemetry = { enable = false },
+      diagnostics = { globals = { 'vim' } },
     },
   },
   ts_ls = {},
@@ -446,7 +450,7 @@ require('mason-lspconfig').setup({
   handlers = {
     function(server_name)
       require('lspconfig')[server_name].setup({
-        capabilities = capabilities,
+        capabilities = require('cmp_nvim_lsp').default_capabilities(),
         settings = servers[server_name],
       })
     end,
@@ -507,15 +511,9 @@ vim.keymap.set("n", "<C-t>", function()
   require("menu").open("default")
 end, {})
 
--- mouse users + nvimtree users!
+-- mouse users
 vim.keymap.set({ "n", "v" }, "<RightMouse>", function()
   require('menu.utils').delete_old_menus()
-
   vim.cmd.exec '"normal! \\<RightMouse>"'
-
-  -- clicked buf
-  local buf = vim.api.nvim_win_get_buf(vim.fn.getmousepos().winid)
-  local options = vim.bo[buf].ft == "NvimTree" and "nvimtree" or "default"
-
-  require("menu").open(options, { mouse = true })
+  require("menu").open("default", { mouse = true })
 end, {})
