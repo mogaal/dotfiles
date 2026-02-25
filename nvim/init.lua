@@ -125,6 +125,11 @@ require('lazy').setup({
       scroll = { enabled = true },
       statuscolumn = { enabled = true },
       words = { enabled = true },
+      gitbrowse = (function()
+        local path = vim.fn.expand("~") .. "/work-dotfiles/nvim/snacks-gitbrowse.lua"
+        local ok, patterns = pcall(dofile, path)
+        return { url_patterns = ok and patterns or {} }
+      end)(),
     },
     keys = {
       -- Top Pickers & Explorer
@@ -296,11 +301,11 @@ require('lazy').setup({
 
   -- Autocompletion
   {
-    'hrsh7th/nvim-cmp',
-    dependencies = {
-      'hrsh7th/cmp-nvim-lsp',
-      'L3MON4D3/LuaSnip',
-      'saadparwaiz1/cmp_luasnip'
+    'saghen/blink.cmp',
+    version = '1.*',
+    opts = {
+      keymap = { preset = 'default' },
+      sources = { default = { 'lsp', 'path', 'snippets', 'buffer' } },
     },
   },
 
@@ -467,10 +472,6 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = "Diagnostics: prev"
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = "Diagnostics: next" })
 
 local servers = {
-  terraformls = {},
-  tflint = {},
-  docker_compose_language_service = {},
-  dockerls = {},
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
@@ -478,10 +479,6 @@ local servers = {
       diagnostics = { globals = { 'vim' } },
     },
   },
-  ts_ls = {},
-  gopls = {},
-  pyright = {},
-  rust_analyzer = {},
 }
 
 require('mason-lspconfig').setup({
@@ -489,57 +486,13 @@ require('mason-lspconfig').setup({
   handlers = {
     function(server_name)
       require('lspconfig')[server_name].setup({
-        capabilities = require('cmp_nvim_lsp').default_capabilities(),
+        capabilities = require('blink.cmp').get_lsp_capabilities(),
         settings = servers[server_name],
       })
     end,
   },
 })
 
-local cmp = require 'cmp'
-local luasnip = require 'luasnip'
-
-luasnip.config.setup {}
-
-cmp.setup {
-  snippet = {
-    expand = function(args)
-      luasnip.lsp_expand(args.body)
-    end,
-  },
-  mapping = cmp.mapping.preset.insert {
-    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.abort(),
-    ['<CR>'] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
-    },
-    ['<Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
-      else
-        fallback()
-      end
-    end, { 'i', 's' }),
-    ['<S-Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
-      else
-        fallback()
-      end
-    end, { 'i', 's' }),
-  },
-  sources = {
-    { name = 'nvim_lsp' },
-    { name = 'luasnip' },
-  },
-}
 
 ------------------------
 -- nvzone/menu plugin --
