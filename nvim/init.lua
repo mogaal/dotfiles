@@ -334,7 +334,14 @@ require('lazy').setup({
   },
 
   { "nvzone/volt", lazy = true },
-  { "nvzone/menu", lazy = true }
+  { "nvzone/menu", lazy = true },
+
+  {
+    "nxhung2304/lastplace.nvim",
+    config = function()
+      require("lastplace").setup({})
+    end,
+  }
 })
 
 -- Sets how neovim will display certain whitespace characters in the editor.
@@ -435,23 +442,11 @@ vim.opt.smartindent = true -- Autoindent new lines
 
 
 -- Highlight on yank
-vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
-  group = 'YankHighlight',
+  group = vim.api.nvim_create_augroup('YankHighlight', { clear = true }),
   callback = function()
-    vim.highlight.on_yank({ higroup = 'IncSearch', timeout = 1000 })
+    vim.highlight.on_yank({ timeout = 750 })
   end
-})
-
--- Remember the line when close
-vim.api.nvim_create_autocmd("BufReadPost", {
-  callback = function()
-    local mark = vim.api.nvim_buf_get_mark(0, '"')
-    local lcount = vim.api.nvim_buf_line_count(0)
-    if mark[1] > 1 and mark[1] <= lcount then
-      vim.cmd([[normal! g`"]])
-    end
-  end,
 })
 
 -----------------------------------------------------------
