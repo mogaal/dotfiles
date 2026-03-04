@@ -1,7 +1,7 @@
 [user]
   name = Alejandro Garrido Mota
-  email = garridomota@gmail.com
   signingkey = 71396D61F1C09EFB
+	email = 134855+mogaal@users.noreply.github.com
 [commit]
   verbose = true
   template = ~/.gittemplates/commit
