@@ -330,7 +330,12 @@ require('lazy').setup({
   {
     'MeanderingProgrammer/render-markdown.nvim',
     dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' },
-    opts = {},
+    opts = {
+      enabled = false,
+    },
+    keys = {
+      { '<leader>mr', '<cmd>RenderMarkdown toggle<cr>', desc = 'Toggle Markdown Rendering' },
+    },
   },
 
   { "nvzone/volt", lazy = true },
