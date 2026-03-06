@@ -1,6 +1,6 @@
 # Build:  podman build -t dev-toolbox /path/to/this/dir/ (or ".")
 # Create: toolbox create --image dev-toolbox dev
-# Enter:  toolbox enter dev
+# Enter:  toolbox run -c dev zsh
 FROM registry.fedoraproject.org/fedora-toolbox:43
 
 # Base system + locale
