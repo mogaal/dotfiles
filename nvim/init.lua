@@ -212,7 +212,12 @@ require('lazy').setup({
     dependencies = { "folke/snacks.nvim" },
     config = true,
     opts = {
-      open_in_current_tab = false, -- Don't create new tabs
+      diff_opts = {
+        auto_close_on_accept = true, -- Close diff windows after accepting
+        vertical_split = true,       -- Use vertical splits for diffs
+        open_in_current_tab = false, -- Don't create new tabs
+        keep_terminal_focus = true,  -- Keep focus on Claude terminal
+      },
     },
     keys = {
       { "<leader>a",  nil,                              desc = "AI/Claude Code" },
@@ -249,10 +254,10 @@ require('lazy').setup({
   { "serhez/bento.nvim",     opts = {} },
 
   {
-     "m4xshen/hardtime.nvim",
-     lazy = false,
-     dependencies = { "MunifTanjim/nui.nvim" },
-     opts = {},
+    "m4xshen/hardtime.nvim",
+    lazy = false,
+    dependencies = { "MunifTanjim/nui.nvim" },
+    opts = {},
   },
 
   -- Statusline
