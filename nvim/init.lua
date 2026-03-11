@@ -234,6 +234,8 @@ require('lazy').setup({
         desc = "Add file (tree)",
         ft = { "NvimTree", "neo-tree", "oil", "minifiles", "netrw" },
       },
+      -- Permission modes
+      { "<leader>ap", "<cmd>ClaudeCode --permission-mode bypassPermissions<cr>", desc = "Claude (accept edits)" },
       -- Diff management
       { "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
       { "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>",   desc = "Deny diff" },
@@ -398,6 +400,18 @@ vim.opt.scrolloff = 8
 
 -- Always show the sign column to prevent layout shifts from diagnostics
 vim.opt.signcolumn = 'yes'
+
+-- Auto-reload files changed outside of Neovim (e.g. by Claude Code)
+vim.opt.autoread = true
+vim.opt.updatetime = 250
+vim.api.nvim_create_autocmd({ 'FocusGained', 'BufEnter', 'CursorHold', 'CursorHoldI' }, {
+  group = vim.api.nvim_create_augroup('AutoReload', { clear = true }),
+  callback = function()
+    if vim.fn.getcmdwintype() == '' then
+      vim.cmd('checktime')
+    end
+  end,
+})
 
 -- Faster which-key popup and key sequence timeout
 vim.opt.timeoutlen = 300
