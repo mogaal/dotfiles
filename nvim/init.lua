@@ -403,15 +403,18 @@ vim.opt.signcolumn = 'yes'
 
 -- Auto-reload files changed outside of Neovim (e.g. by Claude Code)
 vim.opt.autoread = true
-vim.opt.updatetime = 250
-vim.api.nvim_create_autocmd({ 'FocusGained', 'BufEnter', 'CursorHold', 'CursorHoldI' }, {
-  group = vim.api.nvim_create_augroup('AutoReload', { clear = true }),
-  callback = function()
-    if vim.fn.getcmdwintype() == '' then
-      vim.cmd('checktime')
+
+local reload_timer = vim.uv.new_timer()
+reload_timer:start(0, 1000, vim.schedule_wrap(function()
+  if vim.fn.getcmdwintype() ~= '' then return end
+  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+    if vim.api.nvim_buf_is_loaded(buf) and vim.bo[buf].buftype == '' then
+      vim.api.nvim_buf_call(buf, function()
+        vim.cmd('checktime')
+      end)
     end
-  end,
-})
+  end
+end))
 
 -- Faster which-key popup and key sequence timeout
 vim.opt.timeoutlen = 300
