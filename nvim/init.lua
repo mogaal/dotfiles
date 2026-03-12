@@ -118,7 +118,13 @@ require('lazy').setup({
       explorer = { enabled = true },
       indent = { enabled = true },
       input = { enabled = true },
-      picker = { enabled = true },
+      picker = {
+        enabled = true,
+        sources = {
+          grep = { hidden = true },
+          files = { hidden = true },
+        },
+      },
       notifier = { enabled = true },
       quickfile = { enabled = true },
       scope = { enabled = true },
