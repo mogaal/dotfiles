@@ -38,6 +38,7 @@ require('lazy').setup({
         { "<leader>f", group = "find" },
         { "<leader>u", group = "ui" },
         { "<leader>a", group = "Claude" },
+        { "<leader>o", group = "OpenCode" },
       },
     },
     keys = {
@@ -243,9 +244,35 @@ require('lazy').setup({
       -- Permission modes
       { "<leader>ap", "<cmd>ClaudeCode --permission-mode bypassPermissions<cr>", desc = "Claude (accept edits)" },
       -- Diff management
-      { "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
-      { "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>",   desc = "Deny diff" },
+      { "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>",                           desc = "Accept diff" },
+      { "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>",                             desc = "Deny diff" },
     },
+  },
+
+  {
+    "nickjvandyke/opencode.nvim",
+    version = "*",
+    config = function()
+      ---@type opencode.Opts
+      vim.g.opencode_opts = {}
+
+      vim.keymap.set({ "n", "x" }, "<leader>oa", function() require("opencode").ask("@this: ", { submit = true }) end,
+        { desc = "Ask opencode…" })
+      vim.keymap.set({ "n", "x" }, "<leader>ox", function() require("opencode").select() end,
+        { desc = "Execute opencode action…" })
+      vim.keymap.set({ "n", "t" }, "<leader>ot", function() require("opencode").toggle() end,
+        { desc = "Toggle opencode" })
+
+      vim.keymap.set({ "n", "x" }, "<leader>or", function() return require("opencode").operator("@this ") end,
+        { desc = "Add range to opencode", expr = true })
+      vim.keymap.set("n", "<leader>ol", function() return require("opencode").operator("@this ") .. "_" end,
+        { desc = "Add line to opencode", expr = true })
+
+      vim.keymap.set("n", "<S-C-u>", function() require("opencode").command("session.half.page.up") end,
+        { desc = "Scroll opencode up" })
+      vim.keymap.set("n", "<S-C-d>", function() require("opencode").command("session.half.page.down") end,
+        { desc = "Scroll opencode down" })
+    end,
   },
 
   -- Easily add, change, and delete surrounding characters (quotes, brackets, parentheses, etc.)
@@ -276,7 +303,7 @@ require('lazy').setup({
     },
     config = function()
       require('lualine').setup {
-        options = { theme = 'catppuccin' },
+        options = { theme = 'auto' },
       }
     end
   },
