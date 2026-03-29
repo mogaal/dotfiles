@@ -9,6 +9,8 @@ RUN apt-get update && \
       wget \
       unzip \
       lsof \
+      git \
+      openssh-client \
       htop \
       less \
       tmux \
