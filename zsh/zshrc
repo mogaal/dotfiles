@@ -96,3 +96,8 @@ fi
 if [ -f ~/.local/bin/mise ]; then
   eval "$(~/.local/bin/mise activate zsh)"
 fi
+
+# opencode
+if [ -d "$HOME/.opencode/bin" ]; then
+  export PATH="$HOME/.opencode/bin:$PATH"
+fi
