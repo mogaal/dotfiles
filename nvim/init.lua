@@ -228,7 +228,7 @@ require('lazy').setup({
     },
     keys = {
       { "<leader>a",  nil,                              desc = "AI/Claude Code" },
-      { "<leader>ac", "<cmd>ClaudeCode<cr>",            desc = "Toggle Claude" },
+      { "<leader>at", "<cmd>ClaudeCode<cr>",            desc = "Toggle Claude" },
       { "<leader>af", "<cmd>ClaudeCodeFocus<cr>",       desc = "Focus Claude" },
       { "<leader>ar", "<cmd>ClaudeCode --resume<cr>",   desc = "Resume Claude" },
       { "<leader>aC", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
@@ -256,8 +256,8 @@ require('lazy').setup({
       ---@type opencode.Opts
       vim.g.opencode_opts = {}
 
-      vim.keymap.set({ "n", "x" }, "<leader>oa", function() require("opencode").ask("@this: ", { submit = true }) end,
-        { desc = "Ask opencode…" })
+      vim.keymap.set({ "n", "x" }, "<leader>os", function() require("opencode").ask("@this: ", { submit = true }) end,
+        { desc = "Send to opencode" })
       vim.keymap.set({ "n", "x" }, "<leader>ox", function() require("opencode").select() end,
         { desc = "Execute opencode action…" })
       vim.keymap.set({ "n", "t" }, "<leader>ot", function() require("opencode").toggle() end,
