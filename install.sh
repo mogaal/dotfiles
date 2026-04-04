@@ -102,7 +102,6 @@ function install {
       less \
       fortune-mod \
       mc \
-      vim \
       htop \
       wget \
       tmux \
@@ -168,7 +167,6 @@ function dotfiles {
   if [[ "$OSTYPE" == darwin* ]]; then
     lnFile gitconfig gitconfig
     lnFile gittemplates gittemplates
-    lnFile vimrc vimrc
     lnFile mrconfig mrconfig
 
     # Tmux
@@ -197,10 +195,8 @@ function dotfiles {
     lnFile zsh/aliases aliases
   fi
   if [[ "$OSTYPE" == linux* ]]; then
-    lnFile vim vim
     lnFile i3 i3
     lnFile gnupg gnupg
-    lnFile vimrc vimrc
     lnFile mrconfig mrconfig
     lnFile irssi irssi
     lnFile gitconfig gitconfig
