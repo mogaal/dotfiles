@@ -177,14 +177,18 @@ function dotfiles {
     lnFile hh_blacklist hh_blacklist
 
     # Neovim (special case for .config directory)
-    if [ -d "$HOME/.config/nvim" ] || [ -L "$HOME/.config/nvim" ]; then
-      echo "Backing up existing nvim config to $BACKUP/nvim"
-      mv "$HOME/.config/nvim" "$BACKUP/nvim"
+    if [ -L "$HOME/.config/nvim" ] && [ "$(readlink "$HOME/.config/nvim")" = "$DOTFILES/nvim" ]; then
+      echo "'$HOME/.config/nvim' already linked correctly. Skipping"
+    else
+      if [ -d "$HOME/.config/nvim" ] || [ -L "$HOME/.config/nvim" ]; then
+        echo "Backing up existing nvim config to $BACKUP/nvim"
+        mv "$HOME/.config/nvim" "$BACKUP/nvim"
+      fi
+      mkdir -p "$HOME/.config"
+      echo "Linking '$DOTFILES/nvim' to '$HOME/.config/nvim'"
+      ln -s "$DOTFILES/nvim" "$HOME/.config/nvim"
+      echo -e '\E[0;32m'"Done\033[0m"
     fi
-    mkdir -p "$HOME/.config"
-    echo "Linking '$DOTFILES/nvim' to '$HOME/.config/nvim'"
-    ln -s "$DOTFILES/nvim" "$HOME/.config/nvim"
-    echo -e '\E[0;32m'"Done\033[0m"
 
     # zsh stuff
     lnFile zsh/zlogout zlogout
@@ -208,14 +212,18 @@ function dotfiles {
     lnFile tmux/tmux.linux.conf tmux.linux.conf
 
     # Neovim (special case for .config directory)
-    if [ -d "$HOME/.config/nvim" ] || [ -L "$HOME/.config/nvim" ]; then
-      echo "Backing up existing nvim config to $BACKUP/nvim"
-      mv "$HOME/.config/nvim" "$BACKUP/nvim"
+    if [ -L "$HOME/.config/nvim" ] && [ "$(readlink "$HOME/.config/nvim")" = "$DOTFILES/nvim" ]; then
+      echo "'$HOME/.config/nvim' already linked correctly. Skipping"
+    else
+      if [ -d "$HOME/.config/nvim" ] || [ -L "$HOME/.config/nvim" ]; then
+        echo "Backing up existing nvim config to $BACKUP/nvim"
+        mv "$HOME/.config/nvim" "$BACKUP/nvim"
+      fi
+      mkdir -p "$HOME/.config"
+      echo "Linking '$DOTFILES/nvim' to '$HOME/.config/nvim'"
+      ln -s "$DOTFILES/nvim" "$HOME/.config/nvim"
+      echo -e '\E[0;32m'"Done\033[0m"
     fi
-    mkdir -p "$HOME/.config"
-    echo "Linking '$DOTFILES/nvim' to '$HOME/.config/nvim'"
-    ln -s "$DOTFILES/nvim" "$HOME/.config/nvim"
-    echo -e '\E[0;32m'"Done\033[0m"
 
     # zsh stuff
     lnFile zsh/aliases aliases
@@ -228,11 +236,16 @@ function dotfiles {
 }
 
 function lnFile {
-  if [ -f "$HOME/.$2" ]; then
-     BackupFile "$1"
+  local target="$HOME/.$2"
+  if [ -L "$target" ] && [ "$(readlink "$target")" = "$DOTFILES/$1" ]; then
+    echo "'$target' already linked correctly. Skipping"
+    return
   fi
-  echo "Linking '$DOTFILES/$1' to '$HOME/.$2'"
-  ln -s "$DOTFILES/$1" "$HOME/.$2"
+  if [ -e "$target" ] || [ -L "$target" ]; then
+    BackupFile "$2"
+  fi
+  echo "Linking '$DOTFILES/$1' to '$target'"
+  ln -s "$DOTFILES/$1" "$target"
   echo -e '\E[0;32m'"Done\033[0m"
 }
 
