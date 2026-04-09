@@ -355,7 +355,12 @@ require('lazy').setup({
   {
     'nvim-treesitter/nvim-treesitter',
     lazy = false,
-    build = ':TSUpdate'
+    build = ':TSUpdate',
+    opts = {
+      ensure_installed = { 'lua', 'go', 'python', 'javascript', 'typescript', 'rust', 'terraform', 'markdown', 'bash' },
+      highlight = { enable = true },
+      indent = { enable = true },
+    },
   },
 
   -- Theme
@@ -390,6 +395,20 @@ require('lazy').setup({
     end,
   }
 })
+
+-- Check for external tools used by Snacks picker/explorer
+if vim.fn.executable("fd") == 0 and vim.fn.executable("fdfind") == 0 then
+  vim.notify(
+    "fd/fdfind not found: Snacks explorer file finder won't work.\nInstall: https://github.com/sharkdp/fd",
+    vim.log.levels.WARN
+  )
+end
+if vim.fn.executable("rg") == 0 then
+  vim.notify(
+    "rg (ripgrep) not found: Snacks grep/search won't work.\nInstall: https://github.com/BurntSushi/ripgrep",
+    vim.log.levels.WARN
+  )
+end
 
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
@@ -460,22 +479,22 @@ vim.opt.splitbelow = true
 
 -- Replace a word with yanked text (replace text in one or more other locations)
 --   See here: https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text
-vim.keymap.set('v', 'p', '"_dP', { desc = "Paste (in one or more other locations" })
+vim.keymap.set('v', 'p', '"_dP', { desc = "Paste (replace without yanking)" })
 
 -- Map jh to Esc
 vim.keymap.set('i', 'jh', '<Esc>', { desc = "Map jh to <Esc>" })
 
 -- Reload configuration without restart nvim
-vim.keymap.set('n', '<leader>r', ':so %<CR>', { desc = "Reload configuration" })
+vim.keymap.set('n', '<leader>r', '<cmd>so %<CR>', { desc = "Reload configuration" })
 
 -- Close all windows and exit
 vim.keymap.set('n', '<leader>q', ':qa!<CR>', { desc = "Close all windows and exit" })
 
 -- Navigation with Ctrl
-vim.keymap.set('n', '<C-h>', ':wincmd h<CR>', { desc = "Move to left window" })
-vim.keymap.set('n', '<C-l>', ':wincmd l<CR>', { desc = "Move to right window" })
-vim.keymap.set('n', '<C-j>', ':wincmd j<CR>', { desc = "Move to down window" })
-vim.keymap.set('n', '<C-k>', ':wincmd k<CR>', { desc = "Move to up window" })
+vim.keymap.set('n', '<C-h>', '<cmd>wincmd h<CR>', { desc = "Move to left window" })
+vim.keymap.set('n', '<C-l>', '<cmd>wincmd l<CR>', { desc = "Move to right window" })
+vim.keymap.set('n', '<C-j>', '<cmd>wincmd j<CR>', { desc = "Move to down window" })
+vim.keymap.set('n', '<C-k>', '<cmd>wincmd k<CR>', { desc = "Move to up window" })
 
 -- Same navigation from terminal mode (e.g. Claude Code window)
 vim.keymap.set('t', '<C-h>', '<C-\\><C-n><C-w>h', { desc = "Move to left window (terminal)" })
@@ -494,13 +513,12 @@ vim.keymap.set('x', '<A-k>', ":move '<-2<CR>gv-gv", { desc = "Move line up (Sele
 -- vim.keymap.set('v', 'K', ":m .-2<CR>==", { desc = "Move line up (Visual-mode)" })
 
 -- Fast saving
-vim.keymap.set('n', '<leader>w', ':w!<cr>', { desc = "Fast saving" })
+vim.keymap.set('n', '<leader>w', '<cmd>w!<cr>', { desc = "Fast saving" })
 
 -- Tabs & indent
 vim.opt.expandtab = true   -- Use spaces instead of tabs
 vim.opt.shiftwidth = 2     -- Shift 2 spaces when tab
 vim.opt.tabstop = 2        -- 1 tab == 2 spaces
-vim.opt.smartindent = true -- Autoindent new lines
 
 
 -- Highlight on yank
