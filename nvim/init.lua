@@ -543,29 +543,32 @@ vim.diagnostic.config({
 })
 
 -- Global diagnostic navigation (not LSP-specific)
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = "Diagnostics: prev" })
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = "Diagnostics: next" })
+vim.keymap.set('n', '[d', function() vim.diagnostic.jump({ count = -1 }) end, { desc = "Diagnostics: prev" })
+vim.keymap.set('n', ']d', function() vim.diagnostic.jump({ count = 1 }) end, { desc = "Diagnostics: next" })
 
 local servers = {
   lua_ls = {
-    Lua = {
-      workspace = { checkThirdParty = false },
-      telemetry = { enable = false },
-      diagnostics = { globals = { 'vim' } },
+    settings = {
+      Lua = {
+        workspace = { checkThirdParty = false },
+        telemetry = { enable = false },
+        diagnostics = { globals = { 'vim' } },
+      },
     },
   },
 }
 
+local capabilities = require('blink.cmp').get_lsp_capabilities()
+
+for server_name, config in pairs(servers) do
+  vim.lsp.config(server_name, vim.tbl_deep_extend('force', {
+    capabilities = capabilities,
+  }, config))
+  vim.lsp.enable(server_name)
+end
+
 require('mason-lspconfig').setup({
   ensure_installed = vim.tbl_keys(servers),
-  handlers = {
-    function(server_name)
-      require('lspconfig')[server_name].setup({
-        capabilities = require('blink.cmp').get_lsp_capabilities(),
-        settings = servers[server_name],
-      })
-    end,
-  },
 })
 
 
